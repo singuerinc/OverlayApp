@@ -10,6 +10,7 @@ public class OverlayEvent extends Event {
   public static const IMAGE_ALWAYS_ON_TOP:String = 'imageAlwaysOnTop';
   public static const IMAGE_LOCK:String = 'imageLock';
   public static const IMAGE_SHOW_HIDE:String = 'imageShowHide';
+  public static const IMAGE_INVERT_COLORS:String = 'imageInvertColors';
 
   public var data:Object;
 

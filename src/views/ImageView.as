@@ -25,6 +25,8 @@ public class ImageView extends Sprite {
   private var INIT_WIDTH:int = 500;
   private var INIT_HEIGHT:int = 500 + 30;
   public var alwaysOnTopActionBtn:ActionButtonView;
+  public var showHideActionBtn:ActionButtonView;
+  public var invertColorsActionBtn:ActionButtonView;
   public var moveActionBtn:ActionButtonView;
 
   public function ImageView() {
@@ -67,13 +69,18 @@ public class ImageView extends Sprite {
     alwaysOnTopActionBtn.y = 0;
     addChild(alwaysOnTopActionBtn);
 
-    alwaysOnTopActionBtn = new ActionButtonView('H', 0x009900, OverlayEvent.IMAGE_SHOW_HIDE);
-    alwaysOnTopActionBtn.x = 15;
-    alwaysOnTopActionBtn.y = 0;
-    addChild(alwaysOnTopActionBtn);
+    showHideActionBtn = new ActionButtonView('H', 0x009900, OverlayEvent.IMAGE_SHOW_HIDE);
+    showHideActionBtn.x = 15;
+    showHideActionBtn.y = 0;
+    addChild(showHideActionBtn);
+
+    invertColorsActionBtn = new ActionButtonView('I', 0xFFFFFF, OverlayEvent.IMAGE_INVERT_COLORS);
+    invertColorsActionBtn.x = 30;
+    invertColorsActionBtn.y = 0;
+    addChild(invertColorsActionBtn);
 
     moveActionBtn = new ActionButtonView('M', 0x119999, null);
-    moveActionBtn.x = 30;
+    moveActionBtn.x = 60;
     moveActionBtn.y = 0;
     addChild(moveActionBtn);
   }

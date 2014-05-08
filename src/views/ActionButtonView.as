@@ -25,17 +25,17 @@ public class ActionButtonView extends Sprite {
 
     state = 0;
 
-//    label = new TextField();
-//    label.antiAliasType = AntiAliasType.ADVANCED;
-//    label.autoSize = TextFieldAutoSize.CENTER;
-//    label.defaultTextFormat = new TextFormat('Roboto', 8, 0x888888);
-//    label.text = text;
-//    label.mouseEnabled = false;
-//
-//    label.x = (w - label.textWidth) * 0.5;
-//    label.y = (h - label.textHeight) * 0.5;
+    label = new TextField();
+    label.antiAliasType = AntiAliasType.ADVANCED;
+    label.autoSize = TextFieldAutoSize.CENTER;
+    label.defaultTextFormat = new TextFormat('Roboto', 6, 0xBBBBBB);
+    label.text = text;
+    label.mouseEnabled = false;
 
-//    addChild(label);
+    label.x = (_w - label.textWidth) * 0.5;
+    label.y = (_h - label.textHeight) * 0.5;
+
+    addChild(label);
 
   }
 

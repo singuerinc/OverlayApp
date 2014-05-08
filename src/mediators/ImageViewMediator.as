@@ -45,6 +45,8 @@ public class ImageViewMediator extends Mediator {
     view.moveActionBtn.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
 
     mediatorMap.mediate(view.alwaysOnTopActionBtn);
+    mediatorMap.mediate(view.invertColorsActionBtn);
+    mediatorMap.mediate(view.showHideActionBtn);
   }
 
   protected function _activateHandler(event:Event):void {
@@ -86,6 +88,9 @@ public class ImageViewMediator extends Mediator {
           break;
         case Keyboard.T:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
+          break;
+        case Keyboard.T:
+          dispatch(new OverlayEvent(OverlayEvent.IMAGE_INVERT_COLORS, view));
           break;
         case Keyboard.L:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_LOCK, view));
