@@ -9,3 +9,4 @@
 - invert colors / multiply?
 - save last position / reset position
 - lock position, disable mouse
+- refresh image (automatically)

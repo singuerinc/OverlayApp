@@ -103,7 +103,7 @@ public class ImageViewMediator extends Mediator {
           break;
         case Keyboard.NUMPAD_0:
         case Keyboard.NUMBER_0:
-          view.alpha = 1;
+          view.bmp.alpha = 1;
           break;
         case Keyboard.NUMBER_1:
         case Keyboard.NUMBER_2:
@@ -114,7 +114,7 @@ public class ImageViewMediator extends Mediator {
         case Keyboard.NUMBER_7:
         case Keyboard.NUMBER_8:
         case Keyboard.NUMBER_9:
-          view.alpha = (event.keyCode - 48) * 0.1;
+          view.bmp.alpha = (event.keyCode - 48) * 0.1;
           break;
         case Keyboard.NUMPAD_1:
         case Keyboard.NUMPAD_2:
@@ -125,15 +125,15 @@ public class ImageViewMediator extends Mediator {
         case Keyboard.NUMPAD_7:
         case Keyboard.NUMPAD_8:
         case Keyboard.NUMPAD_9:
-          view.alpha = (event.keyCode - 96) * 0.1;
+          view.bmp.alpha = (event.keyCode - 96) * 0.1;
           break;
         case Keyboard.NUMPAD_ADD:
-          view.alpha += 0.1;
-          view.alpha = Math.min(view.alpha, 1);
+          view.bmp.alpha += 0.1;
+          view.bmp.alpha = Math.min(view.alpha, 1);
           break;
         case Keyboard.NUMPAD_SUBTRACT:
-          view.alpha -= 0.1;
-          view.alpha = Math.max(view.alpha, 0);
+          view.bmp.alpha -= 0.1;
+          view.bmp.alpha = Math.max(view.alpha, 0);
           break;
       }
     }
