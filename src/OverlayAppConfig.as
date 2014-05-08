@@ -2,7 +2,12 @@
  * Created by singuerinc on 08/05/2014.
  */
 package {
+import commands.CreateImageViewCommand;
 import commands.DragCompleteCommand;
+
+import flash.events.KeyboardEvent;
+
+import mediators.ImageViewMediator;
 
 import mediators.MainFrameMediator;
 
@@ -17,7 +22,10 @@ import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 import robotlegs.bender.framework.api.IConfig;
 import robotlegs.bender.framework.api.IInjector;
 
+import views.ImageView;
+
 import views.MainFrameView;
+import views.OverlayEvent;
 
 public class OverlayAppConfig implements IConfig
     {
@@ -38,10 +46,13 @@ public class OverlayAppConfig implements IConfig
             injector.map(UserModel).asSingleton();
 
             mediatorMap.map(MainFrameView).toMediator(MainFrameMediator);
+            mediatorMap.map(ImageView).toMediator(ImageViewMediator);
 
-//            commandMap.map(NativeDragEvent.NATIVE_DRAG_COMPLETE).toCommand(DragCompleteCommand);
+            commandMap.map(KeyboardEvent.KEY_DOWN).toCommand(DragCompleteCommand);
+            commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
 
             contextView.view.addChild(new MainFrameView());
+
         }
     }
 }

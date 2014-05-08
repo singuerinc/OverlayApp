@@ -1,0 +1,7 @@
+- icons
+- icon to block window
+- guides
+- opacity indicator
+- cross to remove image and window
+- clone window
+- zoom image?

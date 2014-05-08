@@ -35,7 +35,7 @@
     <!--<description></description>-->
 
     <!-- Copyright information. Optional -->
-    <!--<copyright></copyright>-->
+    <copyright>Copyright © 2014 Nahuel Scotti</copyright>
 
     <!-- Publisher ID. Used if you're updating an application created prior to 1.5.3 -->
     <!--<publisherID></publisherID>-->
@@ -51,7 +51,7 @@
         <content>SWF file name is set automatically at compile time</content>
 
         <!-- The title of the main window. Optional. -->
-        <!--<title></title>-->
+        <title>OverlayApp</title>
 
         <!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
         <systemChrome>none</systemChrome>
@@ -63,10 +63,10 @@
         <visible>true</visible>
 
         <!-- Whether the user can minimize the window. Optional. Default true. -->
-        <!--<minimizable></minimizable>-->
+        <minimizable>false</minimizable>
 
         <!-- Whether the user can maximize the window. Optional. Default true. -->
-        <!--<maximizable></maximizable>-->
+        <maximizable>false</maximizable>
 
         <!-- Whether the user can resize the window. Optional. Default true. -->
         <!--<resizable></resizable>-->
