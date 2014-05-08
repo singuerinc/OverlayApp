@@ -93,46 +93,51 @@ public class ImageViewMediator extends Mediator {
         case Keyboard.L:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_LOCK, view));
           break;
-        case Keyboard.BACKSPACE:
-        case Keyboard.D:
-          if (view) {
-            view.removeBitmap();
-          }
-          break;
-        case Keyboard.NUMPAD_0:
-        case Keyboard.NUMBER_0:
-          view.bmp.alpha = 1;
-          break;
-        case Keyboard.NUMBER_1:
-        case Keyboard.NUMBER_2:
-        case Keyboard.NUMBER_3:
-        case Keyboard.NUMBER_4:
-        case Keyboard.NUMBER_5:
-        case Keyboard.NUMBER_6:
-        case Keyboard.NUMBER_7:
-        case Keyboard.NUMBER_8:
-        case Keyboard.NUMBER_9:
-          view.bmp.alpha = (event.keyCode - 48) * 0.1;
-          break;
-        case Keyboard.NUMPAD_1:
-        case Keyboard.NUMPAD_2:
-        case Keyboard.NUMPAD_3:
-        case Keyboard.NUMPAD_4:
-        case Keyboard.NUMPAD_5:
-        case Keyboard.NUMPAD_6:
-        case Keyboard.NUMPAD_7:
-        case Keyboard.NUMPAD_8:
-        case Keyboard.NUMPAD_9:
-          view.bmp.alpha = (event.keyCode - 96) * 0.1;
-          break;
-        case Keyboard.NUMPAD_ADD:
-          view.bmp.alpha += 0.1;
-          view.bmp.alpha = Math.min(view.alpha, 1);
-          break;
-        case Keyboard.NUMPAD_SUBTRACT:
-          view.bmp.alpha -= 0.1;
-          view.bmp.alpha = Math.max(view.alpha, 0);
-          break;
+      }
+
+      if (view.bmp) {
+        switch (event.keyCode) {
+          case Keyboard.BACKSPACE:
+          case Keyboard.D:
+            if (view) {
+              view.removeBitmap();
+            }
+            break;
+          case Keyboard.NUMPAD_0:
+          case Keyboard.NUMBER_0:
+            view.bmp.alpha = 1;
+            break;
+          case Keyboard.NUMBER_1:
+          case Keyboard.NUMBER_2:
+          case Keyboard.NUMBER_3:
+          case Keyboard.NUMBER_4:
+          case Keyboard.NUMBER_5:
+          case Keyboard.NUMBER_6:
+          case Keyboard.NUMBER_7:
+          case Keyboard.NUMBER_8:
+          case Keyboard.NUMBER_9:
+            view.bmp.alpha = (event.keyCode - 48) * 0.1;
+            break;
+          case Keyboard.NUMPAD_1:
+          case Keyboard.NUMPAD_2:
+          case Keyboard.NUMPAD_3:
+          case Keyboard.NUMPAD_4:
+          case Keyboard.NUMPAD_5:
+          case Keyboard.NUMPAD_6:
+          case Keyboard.NUMPAD_7:
+          case Keyboard.NUMPAD_8:
+          case Keyboard.NUMPAD_9:
+            view.bmp.alpha = (event.keyCode - 96) * 0.1;
+            break;
+          case Keyboard.NUMPAD_ADD:
+            view.bmp.alpha += 0.1;
+            view.bmp.alpha = Math.min(view.bmp.alpha, 1);
+            break;
+          case Keyboard.NUMPAD_SUBTRACT:
+            view.bmp.alpha -= 0.1;
+            view.bmp.alpha = Math.max(view.bmp.alpha, 0);
+            break;
+        }
       }
     }
   }

@@ -12,7 +12,6 @@ import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 
-import views.buttons.ActionButtonView;
 import views.buttons.AlwaysOnTopActionButtonView;
 import views.buttons.InvertColorsActionButtonView;
 import views.buttons.LockUnlockActionButtonView;
@@ -76,22 +75,22 @@ public class ImageView extends Sprite {
     actionsContainer.graphics.endFill();
     addChild(actionsContainer);
 
-    alwaysOnTopActionBtn = new AlwaysOnTopActionButtonView('T', 0x999999, OverlayEvent.IMAGE_ALWAYS_ON_TOP);
+    alwaysOnTopActionBtn = new AlwaysOnTopActionButtonView();
     alwaysOnTopActionBtn.x = 5;
     alwaysOnTopActionBtn.y = 5;
     actionsContainer.addChild(alwaysOnTopActionBtn);
 
-    lockUnlockActionBtn = new LockUnlockActionButtonView('T', 0x999999, OverlayEvent.IMAGE_LOCK);
+    lockUnlockActionBtn = new LockUnlockActionButtonView();
     lockUnlockActionBtn.x = 20;
     lockUnlockActionBtn.y = 5;
     actionsContainer.addChild(lockUnlockActionBtn);
 
-    showHideActionBtn = new ShowHideActionButtonView('H', 0x009900, OverlayEvent.IMAGE_SHOW_HIDE);
+    showHideActionBtn = new ShowHideActionButtonView();
     showHideActionBtn.x = 35;
     showHideActionBtn.y = 5;
     actionsContainer.addChild(showHideActionBtn);
 
-    invertColorsActionBtn = new InvertColorsActionButtonView('I', 0xFFFFFF, OverlayEvent.IMAGE_INVERT_COLORS);
+    invertColorsActionBtn = new InvertColorsActionButtonView();
     invertColorsActionBtn.x = 70;
     invertColorsActionBtn.y = 5;
     actionsContainer.addChild(invertColorsActionBtn);

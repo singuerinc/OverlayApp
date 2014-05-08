@@ -2,9 +2,12 @@
  * Created by singuerinc on 08/05/2014.
  */
 package views.buttons {
+import views.OverlayEvent;
+
 public class ShowHideActionButtonView extends ActionButtonView {
-  public function ShowHideActionButtonView(text:String, color:uint, clickEventType:String) {
-    super(text, color, clickEventType);
+  public function ShowHideActionButtonView() {
+    clickEventType = OverlayEvent.IMAGE_SHOW_HIDE;
+    super();
   }
 
 

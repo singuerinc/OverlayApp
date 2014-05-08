@@ -2,9 +2,12 @@
  * Created by singuerinc on 08/05/2014.
  */
 package views.buttons {
+import views.OverlayEvent;
+
 public class AlwaysOnTopActionButtonView extends ActionButtonView {
-  public function AlwaysOnTopActionButtonView(text:String, color:uint, clickEventType:String) {
-    super(text, color, clickEventType);
+  public function AlwaysOnTopActionButtonView() {
+    clickEventType = OverlayEvent.IMAGE_ALWAYS_ON_TOP;
+    super();
   }
 
 
