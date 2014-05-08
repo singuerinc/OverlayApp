@@ -6,3 +6,4 @@
 - clone window
 - zoom image?
 - create cool icon
+- invert colors / multiply?
