@@ -5,6 +5,7 @@ package {
 import commands.CreateImageViewCommand;
 import commands.DragCompleteCommand;
 import commands.ImageAlwaysOnTopCommand;
+import commands.ImageShowHideCommand;
 
 import flash.events.KeyboardEvent;
 
@@ -56,6 +57,7 @@ public class OverlayAppConfig implements IConfig {
 
     commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
     commandMap.map(OverlayEvent.IMAGE_ALWAYS_ON_TOP).toCommand(ImageAlwaysOnTopCommand);
+    commandMap.map(OverlayEvent.IMAGE_SHOW_HIDE).toCommand(ImageShowHideCommand);
 
     contextView.view.addChild(new MainFrameView());
 

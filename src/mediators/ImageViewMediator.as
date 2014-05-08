@@ -20,6 +20,7 @@ import robotlegs.bender.bundles.mvcs.Mediator;
 import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
 import views.ImageView;
+import views.OverlayEvent;
 
 public class ImageViewMediator extends Mediator {
 
@@ -41,7 +42,7 @@ public class ImageViewMediator extends Mediator {
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, _onDrop);
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_EXIT, _onDragExit);
 
-    view.stage.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
+    view.moveActionBtn.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
 
     mediatorMap.mediate(view.alwaysOnTopActionBtn);
   }
@@ -79,6 +80,16 @@ public class ImageViewMediator extends Mediator {
 
     if (!event.controlKey && !event.altKey) {
       switch (event.keyCode) {
+        case Keyboard.S:
+        case Keyboard.H:
+          dispatch(new OverlayEvent(OverlayEvent.IMAGE_SHOW_HIDE, view));
+          break;
+        case Keyboard.T:
+          dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
+          break;
+        case Keyboard.L:
+          dispatch(new OverlayEvent(OverlayEvent.IMAGE_LOCK, view));
+          break;
         case Keyboard.BACKSPACE:
         case Keyboard.D:
           if (view) {

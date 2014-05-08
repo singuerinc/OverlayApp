@@ -13,16 +13,19 @@ import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 import flash.events.Event;
+import flash.events.MouseEvent;
 
 public class ImageView extends Sprite {
 
   private var _bmp:Bitmap;
   public var dropArea:DropArea;
+  public var bmpContainer:Sprite;
   private var _window:NativeWindow;
 
   private var INIT_WIDTH:int = 500;
   private var INIT_HEIGHT:int = 500 + 30;
   public var alwaysOnTopActionBtn:ActionButtonView;
+  public var moveActionBtn:ActionButtonView;
 
   public function ImageView() {
 
@@ -53,24 +56,39 @@ public class ImageView extends Sprite {
     dropArea.y = 15;
     addChild(dropArea);
 
+    bmpContainer = new Sprite();
+    bmpContainer.mouseEnabled = false;
+    bmpContainer.mouseChildren = false;
+    bmpContainer.y = 15;
+    addChild(bmpContainer);
+
     alwaysOnTopActionBtn = new ActionButtonView('T', 0x999999, OverlayEvent.IMAGE_ALWAYS_ON_TOP);
     alwaysOnTopActionBtn.x = 0;
     alwaysOnTopActionBtn.y = 0;
     addChild(alwaysOnTopActionBtn);
+
+    alwaysOnTopActionBtn = new ActionButtonView('H', 0x009900, OverlayEvent.IMAGE_SHOW_HIDE);
+    alwaysOnTopActionBtn.x = 15;
+    alwaysOnTopActionBtn.y = 0;
+    addChild(alwaysOnTopActionBtn);
+
+    moveActionBtn = new ActionButtonView('M', 0x119999, null);
+    moveActionBtn.x = 30;
+    moveActionBtn.y = 0;
+    addChild(moveActionBtn);
   }
 
   public function setBitmap(bmp:Bitmap):void {
 
     try {
-      removeChild(_bmp);
+      bmpContainer.removeChild(_bmp);
     } catch (e:Error) {
 
     } finally {
       _bmp = bmp;
       _bmp.alpha = 1;
       _bmp.visible = false;
-      _bmp.y = 15;
-      addChild(_bmp);
+      bmpContainer.addChild(_bmp);
     }
 
     stage.stageWidth = _bmp.width;
@@ -82,7 +100,7 @@ public class ImageView extends Sprite {
 
   public function removeBitmap():void {
     try {
-      removeChild(_bmp);
+      bmpContainer.removeChild(_bmp);
     } catch (e:Error) {
 
     } finally {
@@ -92,6 +110,10 @@ public class ImageView extends Sprite {
 
       TweenMax.to(dropArea, .4, {autoAlpha: 0.5});
     }
+  }
+
+  public function get bmp():Bitmap {
+    return _bmp;
   }
 }
 }

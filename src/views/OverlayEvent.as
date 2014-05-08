@@ -8,6 +8,8 @@ public class OverlayEvent extends Event {
 
   public static const CREATE_IMAGE_VIEW:String = 'createImageView';
   public static const IMAGE_ALWAYS_ON_TOP:String = 'imageAlwaysOnTop';
+  public static const IMAGE_LOCK:String = 'imageLock';
+  public static const IMAGE_SHOW_HIDE:String = 'imageShowHide';
 
   public var data:Object;
 
