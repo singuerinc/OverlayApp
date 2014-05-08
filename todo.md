@@ -5,3 +5,4 @@
 - cross to remove image and window
 - clone window
 - zoom image?
+- create cool icon
