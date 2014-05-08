@@ -21,7 +21,7 @@ public class ImageView extends Sprite {
   private var _window:NativeWindow;
 
   private var INIT_WIDTH:int = 500;
-  private var INIT_HEIGHT:int = 500;
+  private var INIT_HEIGHT:int = 500 + 30;
   public var alwaysOnTopActionBtn:ActionButtonView;
 
   public function ImageView() {
@@ -44,7 +44,7 @@ public class ImageView extends Sprite {
     _window.stage.align = StageAlign.TOP_LEFT;
 
     stage.stageWidth = INIT_WIDTH;
-    stage.stageHeight = INIT_HEIGHT + 30;
+    stage.stageHeight = INIT_HEIGHT;
 
     stage.nativeWindow.activate();
     stage.nativeWindow.alwaysInFront = true;
@@ -69,11 +69,12 @@ public class ImageView extends Sprite {
       _bmp = bmp;
       _bmp.alpha = 1;
       _bmp.visible = false;
+      _bmp.y = 15;
       addChild(_bmp);
     }
 
     stage.stageWidth = _bmp.width;
-    stage.stageHeight = _bmp.height;
+    stage.stageHeight = _bmp.height + 30;
 
     TweenMax.to(dropArea, .4, {autoAlpha: 0, delay: .2});
     TweenMax.to(_bmp, .4, {autoAlpha: 1, delay: .2});
