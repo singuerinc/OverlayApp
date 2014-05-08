@@ -16,8 +16,12 @@ public class ImageAlwaysOnTopCommand extends Command {
 
   override public function execute():void {
 
-    var window:NativeWindow = ((event.data as ImageView).stage.nativeWindow) as NativeWindow;
+    var view:ImageView = (event.data as ImageView);
+
+    var window:NativeWindow = (view.stage.nativeWindow) as NativeWindow;
     window.alwaysInFront = !window.alwaysInFront;
+
+    view.alwaysOnTopActionBtn.state = window.alwaysInFront ? 0 : 1;
   }
 }
 }

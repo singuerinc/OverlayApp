@@ -16,13 +16,18 @@ public class ImageInvertColorsCommand extends Command {
 
     var view:ImageView = (event.data as ImageView);
 
-    var cm:ColorMatrix = new ColorMatrix();
-    cm.invert();
+    if (view.bmp) {
 
-    if (view.bmp.filters.length > 0) {
-      view.bmp.filters = [];
-    } else {
-      view.bmp.filters = [cm.filter];
+      var cm:ColorMatrix = new ColorMatrix();
+      cm.invert();
+
+      if (view.bmp.filters.length > 0) {
+        view.bmp.filters = [];
+        view.invertColorsActionBtn.state = 0;
+      } else {
+        view.bmp.filters = [cm.filter];
+        view.invertColorsActionBtn.state = 1;
+      }
     }
 
   }

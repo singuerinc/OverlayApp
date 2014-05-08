@@ -3,7 +3,6 @@
  */
 package views {
 import com.greensock.TweenMax;
-import com.greensock.easing.Quad;
 
 import flash.display.Bitmap;
 import flash.display.NativeWindow;
@@ -12,28 +11,35 @@ import flash.display.NativeWindowSystemChrome;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
-import flash.events.Event;
-import flash.events.MouseEvent;
+
+import views.buttons.ActionButtonView;
+import views.buttons.AlwaysOnTopActionButtonView;
+import views.buttons.InvertColorsActionButtonView;
+import views.buttons.LockUnlockActionButtonView;
+import views.buttons.ShowHideActionButtonView;
 
 public class ImageView extends Sprite {
 
-  private var _bmp:Bitmap;
   public var dropArea:DropArea;
   public var bmpContainer:Sprite;
+
+  private var _bmp:Bitmap;
   private var _window:NativeWindow;
 
   private var INIT_WIDTH:int = 500;
-  private var INIT_HEIGHT:int = 500 + 30;
-  public var alwaysOnTopActionBtn:ActionButtonView;
-  public var showHideActionBtn:ActionButtonView;
-  public var invertColorsActionBtn:ActionButtonView;
-  public var moveActionBtn:ActionButtonView;
+  private var INIT_HEIGHT:int = 500 + 45;
+
+  public var locked:Boolean = false;
+
+  public var alwaysOnTopActionBtn:AlwaysOnTopActionButtonView;
+  public var showHideActionBtn:ShowHideActionButtonView;
+  public var lockUnlockActionBtn:LockUnlockActionButtonView;
+  public var invertColorsActionBtn:InvertColorsActionButtonView;
+  public var actionsContainer:Sprite;
 
   public function ImageView() {
 
     super();
-
-    trace('hola!');
 
     var windowOptions:NativeWindowInitOptions = new NativeWindowInitOptions();
 
@@ -54,35 +60,41 @@ public class ImageView extends Sprite {
     stage.nativeWindow.activate();
     stage.nativeWindow.alwaysInFront = true;
 
-    dropArea = new DropArea(INIT_WIDTH, INIT_HEIGHT);
-    dropArea.y = 15;
+    dropArea = new DropArea();
+    dropArea.y = 25;
     addChild(dropArea);
 
     bmpContainer = new Sprite();
     bmpContainer.mouseEnabled = false;
     bmpContainer.mouseChildren = false;
-    bmpContainer.y = 15;
+    bmpContainer.y = 25;
     addChild(bmpContainer);
 
-    alwaysOnTopActionBtn = new ActionButtonView('T', 0x999999, OverlayEvent.IMAGE_ALWAYS_ON_TOP);
-    alwaysOnTopActionBtn.x = 0;
-    alwaysOnTopActionBtn.y = 0;
-    addChild(alwaysOnTopActionBtn);
+    actionsContainer = new Sprite();
+    actionsContainer.graphics.beginFill(0x000000);
+    actionsContainer.graphics.drawRect(0, 0, 100, 20);
+    actionsContainer.graphics.endFill();
+    addChild(actionsContainer);
 
-    showHideActionBtn = new ActionButtonView('H', 0x009900, OverlayEvent.IMAGE_SHOW_HIDE);
-    showHideActionBtn.x = 15;
-    showHideActionBtn.y = 0;
-    addChild(showHideActionBtn);
+    alwaysOnTopActionBtn = new AlwaysOnTopActionButtonView('T', 0x999999, OverlayEvent.IMAGE_ALWAYS_ON_TOP);
+    alwaysOnTopActionBtn.x = 5;
+    alwaysOnTopActionBtn.y = 5;
+    actionsContainer.addChild(alwaysOnTopActionBtn);
 
-    invertColorsActionBtn = new ActionButtonView('I', 0xFFFFFF, OverlayEvent.IMAGE_INVERT_COLORS);
-    invertColorsActionBtn.x = 30;
-    invertColorsActionBtn.y = 0;
-    addChild(invertColorsActionBtn);
+    lockUnlockActionBtn = new LockUnlockActionButtonView('T', 0x999999, OverlayEvent.IMAGE_LOCK);
+    lockUnlockActionBtn.x = 20;
+    lockUnlockActionBtn.y = 5;
+    actionsContainer.addChild(lockUnlockActionBtn);
 
-    moveActionBtn = new ActionButtonView('M', 0x119999, null);
-    moveActionBtn.x = 60;
-    moveActionBtn.y = 0;
-    addChild(moveActionBtn);
+    showHideActionBtn = new ShowHideActionButtonView('H', 0x009900, OverlayEvent.IMAGE_SHOW_HIDE);
+    showHideActionBtn.x = 35;
+    showHideActionBtn.y = 5;
+    actionsContainer.addChild(showHideActionBtn);
+
+    invertColorsActionBtn = new InvertColorsActionButtonView('I', 0xFFFFFF, OverlayEvent.IMAGE_INVERT_COLORS);
+    invertColorsActionBtn.x = 70;
+    invertColorsActionBtn.y = 5;
+    actionsContainer.addChild(invertColorsActionBtn);
   }
 
   public function setBitmap(bmp:Bitmap):void {
@@ -93,16 +105,16 @@ public class ImageView extends Sprite {
 
     } finally {
       _bmp = bmp;
-      _bmp.alpha = 1;
+      _bmp.alpha = 0;
       _bmp.visible = false;
       bmpContainer.addChild(_bmp);
     }
 
     stage.stageWidth = _bmp.width;
-    stage.stageHeight = _bmp.height + 30;
+    stage.stageHeight = _bmp.height + 45;
 
     TweenMax.to(dropArea, .4, {autoAlpha: 0, delay: .2});
-    TweenMax.to(_bmp, .4, {autoAlpha: 1, delay: .2});
+    TweenMax.to(_bmp, 1, {autoAlpha: 0.8, delay: .2});
   }
 
   public function removeBitmap():void {

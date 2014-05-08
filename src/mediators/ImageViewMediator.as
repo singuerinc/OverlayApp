@@ -42,9 +42,10 @@ public class ImageViewMediator extends Mediator {
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, _onDrop);
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_EXIT, _onDragExit);
 
-    view.moveActionBtn.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
+    view.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
 
     mediatorMap.mediate(view.alwaysOnTopActionBtn);
+    mediatorMap.mediate(view.lockUnlockActionBtn);
     mediatorMap.mediate(view.invertColorsActionBtn);
     mediatorMap.mediate(view.showHideActionBtn);
   }
@@ -58,12 +59,14 @@ public class ImageViewMediator extends Mediator {
   }
 
   protected function _mouseDownHandler(event:MouseEvent):void {
-    view.stage.nativeWindow.startMove();
+    if (!view.locked) {
+      view.stage.nativeWindow.startMove();
+    }
   }
 
   private function _onKeyDown(event:KeyboardEvent):void {
 
-    if (event.controlKey && !event.altKey) {
+    if (!event.controlKey && !event.altKey) {
       switch (event.keyCode) {
         case Keyboard.LEFT:
           view.stage.nativeWindow.x -= (event.shiftKey) ? 10.0 : 1.0;
@@ -77,11 +80,6 @@ public class ImageViewMediator extends Mediator {
         case Keyboard.DOWN:
           view.stage.nativeWindow.y += (event.shiftKey) ? 10.0 : 1.0;
           break;
-      }
-    }
-
-    if (!event.controlKey && !event.altKey) {
-      switch (event.keyCode) {
         case Keyboard.S:
         case Keyboard.H:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_SHOW_HIDE, view));
@@ -89,7 +87,7 @@ public class ImageViewMediator extends Mediator {
         case Keyboard.T:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
           break;
-        case Keyboard.T:
+        case Keyboard.I:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_INVERT_COLORS, view));
           break;
         case Keyboard.L:
@@ -140,7 +138,7 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onDragExit(event:NativeDragEvent):void {
-
+    view.dropArea.dropOut();
   }
 
   private function _onDrop(event:NativeDragEvent):void {
@@ -160,7 +158,7 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onDragOver(event:NativeDragEvent):void {
-
+    view.dropArea.dropIn();
   }
 
   private function _onDragIn(event:NativeDragEvent):void {

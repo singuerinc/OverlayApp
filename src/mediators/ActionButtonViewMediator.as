@@ -6,8 +6,8 @@ import flash.events.MouseEvent;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
-import views.ActionButtonView;
 import views.OverlayEvent;
+import views.buttons.ActionButtonView;
 
 public class ActionButtonViewMediator extends Mediator {
 
@@ -19,8 +19,7 @@ public class ActionButtonViewMediator extends Mediator {
   }
 
   private function _onClick(event:MouseEvent):void {
-    view.state = view.state == 0 ? 1 : 0;
-    dispatch(new OverlayEvent(view.clickEventType, view.parent));
+    dispatch(new OverlayEvent(view.clickEventType, view.parent.parent));
   }
 }
 }
