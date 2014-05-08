@@ -8,3 +8,4 @@
 - create cool icon
 - invert colors / multiply?
 - save last position / reset position
+- lock position, disable mouse
