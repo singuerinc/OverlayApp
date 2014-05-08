@@ -4,8 +4,11 @@
 package {
 import commands.CreateImageViewCommand;
 import commands.DragCompleteCommand;
+import commands.ImageAlwaysOnTopCommand;
 
 import flash.events.KeyboardEvent;
+
+import mediators.ActionButtonViewMediator;
 
 import mediators.ImageViewMediator;
 
@@ -22,37 +25,40 @@ import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 import robotlegs.bender.framework.api.IConfig;
 import robotlegs.bender.framework.api.IInjector;
 
+import views.ActionButtonView;
+
 import views.ImageView;
 
 import views.MainFrameView;
 import views.OverlayEvent;
 
-public class OverlayAppConfig implements IConfig
-    {
-        [Inject]
-        public var injector:IInjector;
+public class OverlayAppConfig implements IConfig {
+  [Inject]
+  public var injector:IInjector;
 
-        [Inject]
-        public var mediatorMap:IMediatorMap;
+  [Inject]
+  public var mediatorMap:IMediatorMap;
 
-        [Inject]
-        public var commandMap:IEventCommandMap;
+  [Inject]
+  public var commandMap:IEventCommandMap;
 
-        [Inject]
-        public var contextView:ContextView;
+  [Inject]
+  public var contextView:ContextView;
 
-        public function configure():void
-        {
-            injector.map(UserModel).asSingleton();
+  public function configure():void {
+    injector.map(UserModel).asSingleton();
 
-            mediatorMap.map(MainFrameView).toMediator(MainFrameMediator);
-            mediatorMap.map(ImageView).toMediator(ImageViewMediator);
+    mediatorMap.map(MainFrameView).toMediator(MainFrameMediator);
+    mediatorMap.map(ActionButtonView).toMediator(ActionButtonViewMediator);
+    mediatorMap.map(ImageView).toMediator(ImageViewMediator);
 
-            commandMap.map(KeyboardEvent.KEY_DOWN).toCommand(DragCompleteCommand);
-            commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
+    commandMap.map(KeyboardEvent.KEY_DOWN).toCommand(DragCompleteCommand);
 
-            contextView.view.addChild(new MainFrameView());
+    commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
+    commandMap.map(OverlayEvent.IMAGE_ALWAYS_ON_TOP).toCommand(ImageAlwaysOnTopCommand);
 
-        }
-    }
+    contextView.view.addChild(new MainFrameView());
+
+  }
+}
 }

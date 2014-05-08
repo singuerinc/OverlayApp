@@ -12,6 +12,7 @@ import flash.display.NativeWindowSystemChrome;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
+import flash.events.Event;
 
 public class ImageView extends Sprite {
 
@@ -21,10 +22,13 @@ public class ImageView extends Sprite {
 
   private var INIT_WIDTH:int = 500;
   private var INIT_HEIGHT:int = 500;
+  public var alwaysOnTopActionBtn:ActionButtonView;
 
   public function ImageView() {
 
     super();
+
+    trace('hola!');
 
     var windowOptions:NativeWindowInitOptions = new NativeWindowInitOptions();
 
@@ -40,14 +44,19 @@ public class ImageView extends Sprite {
     _window.stage.align = StageAlign.TOP_LEFT;
 
     stage.stageWidth = INIT_WIDTH;
-    stage.stageHeight = INIT_HEIGHT;
+    stage.stageHeight = INIT_HEIGHT + 30;
 
     stage.nativeWindow.activate();
     stage.nativeWindow.alwaysInFront = true;
 
     dropArea = new DropArea(INIT_WIDTH, INIT_HEIGHT);
+    dropArea.y = 15;
     addChild(dropArea);
 
+    alwaysOnTopActionBtn = new ActionButtonView('T', 0x999999, OverlayEvent.IMAGE_ALWAYS_ON_TOP);
+    alwaysOnTopActionBtn.x = 0;
+    alwaysOnTopActionBtn.y = 0;
+    addChild(alwaysOnTopActionBtn);
   }
 
   public function setBitmap(bmp:Bitmap):void {

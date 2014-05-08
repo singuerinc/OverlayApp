@@ -26,8 +26,8 @@ public class DropArea extends Sprite {
     text.antiAliasType = AntiAliasType.ADVANCED;
     text.autoSize = TextFieldAutoSize.CENTER;
     text.defaultTextFormat = new TextFormat('Roboto', 32, 0x777777);
-    text.textColor = 0xFFFFFF;
     text.text = 'Drop an image here.';
+    text.mouseEnabled = false;
 
     text.x = (width - text.textWidth) * 0.5;
     text.y = (height - text.textHeight) * 0.5;

@@ -17,6 +17,7 @@ import flash.net.URLRequest;
 import flash.ui.Keyboard;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
+import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
 import views.ImageView;
 
@@ -24,6 +25,9 @@ public class ImageViewMediator extends Mediator {
 
   [Inject]
   public var view:ImageView;
+
+  [Inject]
+  public var mediatorMap:IMediatorMap;
 
   override public function initialize():void {
 
@@ -38,6 +42,8 @@ public class ImageViewMediator extends Mediator {
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_EXIT, _onDragExit);
 
     view.stage.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
+
+    mediatorMap.mediate(view.alwaysOnTopActionBtn);
   }
 
   protected function _activateHandler(event:Event):void {
