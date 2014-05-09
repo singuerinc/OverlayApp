@@ -1,13 +1,13 @@
-- icons
-- icon to block window
+- <del>icons</del>
+- <del>icon to block window</del>
 - guides
-- opacity indicator
+- opacity indicator!
 - cross to remove image and window
 - clone window
 - zoom image?
 - create cool icon
-- invert colors / multiply?
+- <del>invert colors</del> / multiply?
 - save last position / reset position
-- lock position, disable mouse
+- <del>lock position</del>, disable mouse (isn't possible)
 - refresh image (automatically)
 - copy color to clipboard
