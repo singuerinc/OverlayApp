@@ -34,7 +34,7 @@ The most common scenario to use it is in web development.
 |+ and -|Changes image alpha.|
 |i|Invert image colours.|
 |d|Delete the image.|
-|&lt; arrows &gt;|Changes window position +=1px, with "Shift" +=10px|
+|"arrows"|Changes window position +=1px, with "Shift" +=10px|
 |l|Lock/Unlock the window.|
 |s or h|Show and hide the window.|
 
