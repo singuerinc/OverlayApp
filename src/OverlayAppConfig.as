@@ -3,21 +3,17 @@
  */
 package {
 import commands.CreateImageViewCommand;
-import commands.DragCompleteCommand;
 import commands.ImageAlwaysOnTopCommand;
 import commands.ImageChangeAlphaCommand;
 import commands.ImageInvertColorsCommand;
 import commands.ImageLockUnlockCommand;
 import commands.ImageShowHideCommand;
+import commands.RemoveImageViewCommand;
 
-import flash.events.KeyboardEvent;
-
-import mediators.ActionButtonViewMediator;
 import mediators.ImageViewMediator;
 import mediators.MainFrameMediator;
 
 import models.ImageModelCollection;
-
 import models.UserModel;
 
 import robotlegs.bender.extensions.contextView.ContextView;
@@ -28,15 +24,25 @@ import robotlegs.bender.framework.api.IConfig;
 import robotlegs.bender.framework.api.IInjector;
 
 import signals.AlwaysOnTopSignal;
-
 import signals.ChangeAlphaSignal;
+import signals.InvertColorsSignal;
+import signals.LockOrUnlockSignal;
+import signals.RemoveImageViewSignal;
+import signals.ShowHideSignal;
 
 import views.ImageView;
 import views.MainFrameView;
 import views.OverlayEvent;
-import views.buttons.ActionButtonView;
 import views.buttons.AlwaysOnTopActionBtnMediator;
 import views.buttons.AlwaysOnTopActionBtnView;
+import views.buttons.InvertColorsActionBtnMediator;
+import views.buttons.InvertColorsActionBtnView;
+import views.buttons.LockUnlockActionBtnMediator;
+import views.buttons.LockUnlockActionBtnView;
+import views.buttons.RemoveImageViewActionBtnMediator;
+import views.buttons.RemoveImageViewActionBtnView;
+import views.buttons.ShowHideActionBtnMediator;
+import views.buttons.ShowHideActionBtnView;
 
 public class OverlayAppConfig implements IConfig {
   [Inject]
@@ -60,19 +66,23 @@ public class OverlayAppConfig implements IConfig {
     injector.map(ImageModelCollection).asSingleton();
 
     mediatorMap.map(MainFrameView).toMediator(MainFrameMediator);
-    mediatorMap.map(ActionButtonView).toMediator(ActionButtonViewMediator);
-    mediatorMap.map(AlwaysOnTopActionBtnView).toMediator(AlwaysOnTopActionBtnMediator);
     mediatorMap.map(ImageView).toMediator(ImageViewMediator);
 
-    commandMap.map(KeyboardEvent.KEY_DOWN).toCommand(DragCompleteCommand);
+    //top bar buttons
+    mediatorMap.map(AlwaysOnTopActionBtnView).toMediator(AlwaysOnTopActionBtnMediator);
+    mediatorMap.map(LockUnlockActionBtnView).toMediator(LockUnlockActionBtnMediator);
+    mediatorMap.map(ShowHideActionBtnView).toMediator(ShowHideActionBtnMediator);
+    mediatorMap.map(InvertColorsActionBtnView).toMediator(InvertColorsActionBtnMediator);
+    mediatorMap.map(RemoveImageViewActionBtnView).toMediator(RemoveImageViewActionBtnMediator);
 
     commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
-    commandMap.map(OverlayEvent.IMAGE_SHOW_HIDE).toCommand(ImageShowHideCommand);
-    commandMap.map(OverlayEvent.IMAGE_LOCK).toCommand(ImageLockUnlockCommand);
-    commandMap.map(OverlayEvent.IMAGE_INVERT_COLORS).toCommand(ImageInvertColorsCommand);
 
     signalCommandMap.map(AlwaysOnTopSignal).toCommand(ImageAlwaysOnTopCommand);
+    signalCommandMap.map(LockOrUnlockSignal).toCommand(ImageLockUnlockCommand);
     signalCommandMap.map(ChangeAlphaSignal).toCommand(ImageChangeAlphaCommand);
+    signalCommandMap.map(ShowHideSignal).toCommand(ImageShowHideCommand);
+    signalCommandMap.map(InvertColorsSignal).toCommand(ImageInvertColorsCommand);
+    signalCommandMap.map(RemoveImageViewSignal).toCommand(RemoveImageViewCommand);
 
     contextView.view.addChild(new MainFrameView());
 

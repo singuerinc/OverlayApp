@@ -13,9 +13,9 @@ import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 
 import views.buttons.AlwaysOnTopActionBtnView;
-import views.buttons.InvertColorsActionButtonView;
-import views.buttons.LockUnlockActionButtonView;
-import views.buttons.ShowHideActionButtonView;
+import views.buttons.InvertColorsActionBtnView;
+import views.buttons.LockUnlockActionBtnView;
+import views.buttons.ShowHideActionBtnView;
 
 public class ImageView extends Sprite {
 
@@ -28,12 +28,10 @@ public class ImageView extends Sprite {
   private var INIT_WIDTH:int = 500;
   private var INIT_HEIGHT:int = 500 + 45;
 
-  public var locked:Boolean = false;
-
   public var alwaysOnTopActionBtn:AlwaysOnTopActionBtnView;
-  public var showHideActionBtn:ShowHideActionButtonView;
-  public var lockUnlockActionBtn:LockUnlockActionButtonView;
-  public var invertColorsActionBtn:InvertColorsActionButtonView;
+  public var showHideActionBtn:ShowHideActionBtnView;
+  public var lockUnlockActionBtn:LockUnlockActionBtnView;
+  public var invertColorsActionBtn:InvertColorsActionBtnView;
   public var actionsContainer:Sprite;
 
   public function ImageView() {
@@ -80,17 +78,17 @@ public class ImageView extends Sprite {
     alwaysOnTopActionBtn.y = 5;
     actionsContainer.addChild(alwaysOnTopActionBtn);
 
-    lockUnlockActionBtn = new LockUnlockActionButtonView();
+    lockUnlockActionBtn = new LockUnlockActionBtnView();
     lockUnlockActionBtn.x = 20;
     lockUnlockActionBtn.y = 5;
     actionsContainer.addChild(lockUnlockActionBtn);
 
-    showHideActionBtn = new ShowHideActionButtonView();
+    showHideActionBtn = new ShowHideActionBtnView();
     showHideActionBtn.x = 35;
     showHideActionBtn.y = 5;
     actionsContainer.addChild(showHideActionBtn);
 
-    invertColorsActionBtn = new InvertColorsActionButtonView();
+    invertColorsActionBtn = new InvertColorsActionBtnView();
     invertColorsActionBtn.x = 70;
     invertColorsActionBtn.y = 5;
     actionsContainer.addChild(invertColorsActionBtn);
@@ -114,20 +112,6 @@ public class ImageView extends Sprite {
 
     TweenMax.to(dropArea, .4, {autoAlpha: 0, delay: .2});
     TweenMax.to(_bmp, 1, {autoAlpha: bmpAlpha, delay: .2});
-  }
-
-  public function removeBitmap():void {
-    try {
-      bmpContainer.removeChild(_bmp);
-    } catch (e:Error) {
-
-    } finally {
-
-      stage.stageWidth = INIT_WIDTH;
-      stage.stageHeight = INIT_HEIGHT;
-
-      TweenMax.to(dropArea, .4, {autoAlpha: 1});
-    }
   }
 
   public function get bmp():Bitmap {

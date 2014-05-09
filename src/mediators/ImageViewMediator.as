@@ -17,18 +17,19 @@ import flash.net.URLRequest;
 import flash.ui.Keyboard;
 
 import models.ImageModel;
-
 import models.ImageModelCollection;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
 import signals.AlwaysOnTopSignal;
-
 import signals.ChangeAlphaSignal;
+import signals.InvertColorsSignal;
+import signals.LockOrUnlockSignal;
+import signals.RemoveImageViewSignal;
+import signals.ShowHideSignal;
 
 import views.ImageView;
-import views.OverlayEvent;
 
 public class ImageViewMediator extends Mediator {
 
@@ -44,6 +45,14 @@ public class ImageViewMediator extends Mediator {
   public var changeAlphaSignal:ChangeAlphaSignal;
   [Inject]
   public var alwaysOnTopSignal:AlwaysOnTopSignal;
+  [Inject]
+  public var lockOrUnlockSignal:LockOrUnlockSignal;
+  [Inject]
+  public var showHideSignal:ShowHideSignal;
+  [Inject]
+  public var invertColorsSignal:InvertColorsSignal;
+  [Inject]
+  public var removeImageViewSignal:RemoveImageViewSignal;
 
   public var model:ImageModel;
 
@@ -52,6 +61,7 @@ public class ImageViewMediator extends Mediator {
     super.initialize();
 
     model = imageModelCollection.itemFor(view);
+    imageModelCollection.currentImage = view;
 
     view.stage.nativeWindow.addEventListener(Event.ACTIVATE, _activateHandler, false, 0, true);
     view.stage.nativeWindow.addEventListener(Event.DEACTIVATE, _deactivateHandler, false, 0, true);
@@ -80,9 +90,13 @@ public class ImageViewMediator extends Mediator {
   }
 
   protected function _mouseDownHandler(event:MouseEvent):void {
-    if (!view.locked) {
-      view.stage.nativeWindow.startMove();
+
+    if (model.locked) {
+      return
     }
+
+    view.stage.nativeWindow.startMove();
+
   }
 
   private function _onKeyDown(event:KeyboardEvent):void {
@@ -103,17 +117,16 @@ public class ImageViewMediator extends Mediator {
           break;
         case Keyboard.S:
         case Keyboard.H:
-          dispatch(new OverlayEvent(OverlayEvent.IMAGE_SHOW_HIDE, view));
+          showHideSignal.dispatch(!model.visible);
           break;
         case Keyboard.T:
           alwaysOnTopSignal.dispatch(!model.alwaysOnTop);
-//          dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
           break;
         case Keyboard.I:
-          dispatch(new OverlayEvent(OverlayEvent.IMAGE_INVERT_COLORS, view));
+          invertColorsSignal.dispatch(!model.invertedColors);
           break;
         case Keyboard.L:
-          dispatch(new OverlayEvent(OverlayEvent.IMAGE_LOCK, view));
+          lockOrUnlockSignal.dispatch(!model.locked);
           break;
       }
 
@@ -121,9 +134,7 @@ public class ImageViewMediator extends Mediator {
         switch (event.keyCode) {
           case Keyboard.BACKSPACE:
           case Keyboard.D:
-            if (view) {
-              view.removeBitmap();
-            }
+            removeImageViewSignal.dispatch();
             break;
           case Keyboard.NUMPAD_0:
           case Keyboard.NUMBER_0:

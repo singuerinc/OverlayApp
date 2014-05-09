@@ -4,7 +4,7 @@
 package views.buttons {
 import flash.display.Sprite;
 
-public class AlwaysOnTopActionBtnView extends Sprite {
+public class ShowHideActionBtnView extends Sprite {
 
   private var _state:uint;
 
@@ -18,10 +18,8 @@ public class AlwaysOnTopActionBtnView extends Sprite {
     if (this._state == 0) {
 
       graphics.clear();
-      graphics.beginFill(0xFF0000, 0.4);
-      graphics.drawRect(0, 0, w, h);
       graphics.beginFill(0xFF0000);
-      graphics.drawRect(0, 0, w, 2);
+      graphics.drawRect(0, 0, w, h);
       graphics.endFill();
 
     } else if (this._state == 1) {
@@ -29,8 +27,6 @@ public class AlwaysOnTopActionBtnView extends Sprite {
       graphics.clear();
       graphics.beginFill(0xFF0000, 0.4);
       graphics.drawRect(0, 0, w, h);
-      graphics.beginFill(0xFF0000, 0.6);
-      graphics.drawRect(0, h - 2, w, 2);
       graphics.endFill();
     }
 

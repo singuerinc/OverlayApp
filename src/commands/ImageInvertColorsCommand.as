@@ -2,31 +2,42 @@
  * Created by singuerinc on 08/05/2014.
  */
 package commands {
+import models.ImageModel;
+import models.ImageModelCollection;
+
 import robotlegs.bender.bundles.mvcs.Command;
 
+import signals.InvertColorsSignal;
+
 import views.ImageView;
-import views.OverlayEvent;
 
 public class ImageInvertColorsCommand extends Command {
 
   [Inject]
-  public var event:OverlayEvent;
+  public var signal:InvertColorsSignal;
+
+  [Inject]
+  public var imageModelCollection:ImageModelCollection;
 
   override public function execute():void {
 
-    var view:ImageView = (event.data as ImageView);
+    var view:ImageView = imageModelCollection.currentImage;
+    var model:ImageModel = imageModelCollection.itemFor(view);
+
+    model.invertedColors = signal.invertedColors;
 
     if (view.bmp) {
 
-      var cm:ColorMatrix = new ColorMatrix();
-      cm.invert();
+      if (model.invertedColors) {
 
-      if (view.bmp.filters.length > 0) {
-        view.bmp.filters = [];
-        view.invertColorsActionBtn.state = 0;
-      } else {
+        var cm:ColorMatrix = new ColorMatrix();
+        cm.invert();
+
         view.bmp.filters = [cm.filter];
-        view.invertColorsActionBtn.state = 1;
+
+      } else {
+
+        view.bmp.filters = [];
       }
     }
 

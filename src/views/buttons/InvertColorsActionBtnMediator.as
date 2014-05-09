@@ -9,17 +9,19 @@ import models.ImageModelCollection;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
-import signals.AlwaysOnTopSignal;
+import signals.InvertColorsSignal;
+
+import signals.LockOrUnlockSignal;
 
 import views.ImageView;
 
-public class AlwaysOnTopActionBtnMediator extends Mediator {
+public class InvertColorsActionBtnMediator extends Mediator {
 
   [Inject]
-  public var view:AlwaysOnTopActionBtnView;
+  public var view:InvertColorsActionBtnView;
 
   [Inject]
-  public var alwaysOnTopSignal:AlwaysOnTopSignal;
+  public var signal:InvertColorsSignal;
 
   [Inject]
   public var imageModelCollection:ImageModelCollection;
@@ -29,19 +31,18 @@ public class AlwaysOnTopActionBtnMediator extends Mediator {
     var imageView:ImageView = imageModelCollection.currentImage;
     var model:ImageModel = imageModelCollection.itemFor(imageView);
 
-    view.state = model.alwaysOnTop ? 0 : 1;
+    view.state = model.invertedColors ? 0 : 1;
 
-    alwaysOnTopSignal.add(_onAlwaysOnTopSignal);
+    signal.add(_onSignal);
     view.addEventListener(MouseEvent.CLICK, function (event:MouseEvent):void {
 
-      alwaysOnTopSignal.dispatch(!model.alwaysOnTop);
+      signal.dispatch(!model.invertedColors);
 
     });
   }
 
-  private function _onAlwaysOnTopSignal(onTop:Boolean):void {
-    view.state = onTop ? 0 : 1;
+  private function _onSignal(invertedColors:Boolean):void {
+    view.state = invertedColors ? 0 : 1;
   }
-
 }
 }

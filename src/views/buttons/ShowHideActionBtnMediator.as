@@ -9,17 +9,19 @@ import models.ImageModelCollection;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
-import signals.AlwaysOnTopSignal;
+import signals.LockOrUnlockSignal;
+import signals.ShowHideSignal;
 
 import views.ImageView;
+import views.buttons.ShowHideActionBtnView;
 
-public class AlwaysOnTopActionBtnMediator extends Mediator {
-
-  [Inject]
-  public var view:AlwaysOnTopActionBtnView;
+public class ShowHideActionBtnMediator extends Mediator {
 
   [Inject]
-  public var alwaysOnTopSignal:AlwaysOnTopSignal;
+  public var view:ShowHideActionBtnView;
+
+  [Inject]
+  public var showHideSignal:ShowHideSignal;
 
   [Inject]
   public var imageModelCollection:ImageModelCollection;
@@ -29,19 +31,18 @@ public class AlwaysOnTopActionBtnMediator extends Mediator {
     var imageView:ImageView = imageModelCollection.currentImage;
     var model:ImageModel = imageModelCollection.itemFor(imageView);
 
-    view.state = model.alwaysOnTop ? 0 : 1;
+    view.state = model.visible ? 0 : 1;
 
-    alwaysOnTopSignal.add(_onAlwaysOnTopSignal);
+    showHideSignal.add(_onShowHideSignal);
     view.addEventListener(MouseEvent.CLICK, function (event:MouseEvent):void {
 
-      alwaysOnTopSignal.dispatch(!model.alwaysOnTop);
+      showHideSignal.dispatch(!model.visible);
 
     });
   }
 
-  private function _onAlwaysOnTopSignal(onTop:Boolean):void {
-    view.state = onTop ? 0 : 1;
+  private function _onShowHideSignal(visible:Boolean):void {
+    view.state = visible ? 0 : 1;
   }
-
 }
 }

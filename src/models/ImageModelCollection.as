@@ -7,6 +7,7 @@ import org.as3commons.collections.Map;
 import views.ImageView;
 
 public class ImageModelCollection extends Map {
+
   private var _currentImage:ImageView;
 
   override public function itemFor(key:*):* {
