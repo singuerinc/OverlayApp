@@ -6,7 +6,7 @@ The most common scenario to use it is in web development.
 ### How it works ###
 
 1. Open Overlay (yeah, obvious step...)
-2. **Drag and drop an image** (jpg, png or gif) into the dropdown area.
+2. **Drag and drop an image** (jpg, png or gif) into the drop area.
 3. Place Overlay whatever you want (Chrome for example) and lock the window (**L** key).
 4. Develop you web page and try to make exactly as the image (you art director will love you)
 
