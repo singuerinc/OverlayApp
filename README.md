@@ -10,13 +10,9 @@ The most common scenario to use it is in web development.
 3. Place Overlay whatever you want (over Chrome for example) and lock the window (**L** key).
 4. Develop you web page, try to make it exactly as the image (your art director will love you)
 
-### Screenshots ###
+![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
 
-- Invert colors (**i** key)
-
-![invert colors](https://dl.dropboxusercontent.com/u/311265/overlay/overlay.png)
-
-- Icons
+### Icons ###
 
 ![icons](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_icons.png)
 
