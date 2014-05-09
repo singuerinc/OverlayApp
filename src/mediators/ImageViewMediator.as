@@ -16,8 +16,16 @@ import flash.filesystem.File;
 import flash.net.URLRequest;
 import flash.ui.Keyboard;
 
+import models.ImageModel;
+
+import models.ImageModelCollection;
+
 import robotlegs.bender.bundles.mvcs.Mediator;
 import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+
+import signals.AlwaysOnTopSignal;
+
+import signals.ChangeAlphaSignal;
 
 import views.ImageView;
 import views.OverlayEvent;
@@ -26,13 +34,24 @@ public class ImageViewMediator extends Mediator {
 
   [Inject]
   public var view:ImageView;
+  [Inject]
+  public var imageModelCollection:ImageModelCollection;
 
   [Inject]
   public var mediatorMap:IMediatorMap;
 
+  [Inject]
+  public var changeAlphaSignal:ChangeAlphaSignal;
+  [Inject]
+  public var alwaysOnTopSignal:AlwaysOnTopSignal;
+
+  public var model:ImageModel;
+
   override public function initialize():void {
 
     super.initialize();
+
+    model = imageModelCollection.itemFor(view);
 
     view.stage.nativeWindow.addEventListener(Event.ACTIVATE, _activateHandler, false, 0, true);
     view.stage.nativeWindow.addEventListener(Event.DEACTIVATE, _deactivateHandler, false, 0, true);
@@ -85,6 +104,7 @@ public class ImageViewMediator extends Mediator {
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_SHOW_HIDE, view));
           break;
         case Keyboard.T:
+          alwaysOnTopSignal.dispatch(view.stage.nativeWindow);
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
           break;
         case Keyboard.I:
@@ -105,7 +125,7 @@ public class ImageViewMediator extends Mediator {
             break;
           case Keyboard.NUMPAD_0:
           case Keyboard.NUMBER_0:
-            view.bmp.alpha = 1;
+            changeAlphaSignal.dispatch(view, 1);
             break;
           case Keyboard.NUMBER_1:
           case Keyboard.NUMBER_2:
@@ -116,7 +136,7 @@ public class ImageViewMediator extends Mediator {
           case Keyboard.NUMBER_7:
           case Keyboard.NUMBER_8:
           case Keyboard.NUMBER_9:
-            view.bmp.alpha = (event.keyCode - 48) * 0.1;
+            changeAlphaSignal.dispatch(view, (event.keyCode - 48) * 0.1);
             break;
           case Keyboard.NUMPAD_1:
           case Keyboard.NUMPAD_2:
@@ -127,15 +147,13 @@ public class ImageViewMediator extends Mediator {
           case Keyboard.NUMPAD_7:
           case Keyboard.NUMPAD_8:
           case Keyboard.NUMPAD_9:
-            view.bmp.alpha = (event.keyCode - 96) * 0.1;
+            changeAlphaSignal.dispatch(view, (event.keyCode - 96) * 0.1);
             break;
           case Keyboard.NUMPAD_ADD:
-            view.bmp.alpha += 0.1;
-            view.bmp.alpha = Math.min(view.bmp.alpha, 1);
+            changeAlphaSignal.dispatch(view, model.alpha + 0.1);
             break;
           case Keyboard.NUMPAD_SUBTRACT:
-            view.bmp.alpha -= 0.1;
-            view.bmp.alpha = Math.max(view.bmp.alpha, 0);
+            changeAlphaSignal.dispatch(view, model.alpha - 0.1);
             break;
         }
       }

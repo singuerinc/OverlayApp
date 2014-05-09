@@ -7,6 +7,7 @@ import flash.geom.Point;
 
 import robotlegs.bender.bundles.mvcs.MVCSBundle;
 import robotlegs.bender.extensions.contextView.ContextView;
+import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
 import robotlegs.bender.framework.api.IContext;
 import robotlegs.bender.framework.impl.Context;
 
@@ -24,6 +25,7 @@ public class OverlayApp extends Sprite {
 
     _context = new Context()
         .install(MVCSBundle)
+        .install(SignalCommandMapExtension)
         .configure(OverlayAppConfig)
         .configure(new ContextView(this));
 

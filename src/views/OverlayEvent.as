@@ -11,6 +11,7 @@ public class OverlayEvent extends Event {
   public static const IMAGE_LOCK:String = 'imageLock';
   public static const IMAGE_SHOW_HIDE:String = 'imageShowHide';
   public static const IMAGE_INVERT_COLORS:String = 'imageInvertColors';
+  public static const IMAGE_CHANGE_ALPHA:String = 'imageChangeAlpha';
 
   public var data:Object;
 
