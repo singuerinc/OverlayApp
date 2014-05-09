@@ -4,24 +4,32 @@
 package commands {
 import flash.display.NativeWindow;
 
+import models.ImageModel;
+import models.ImageModelCollection;
+
 import robotlegs.bender.bundles.mvcs.Command;
 
+import signals.AlwaysOnTopSignal;
+
 import views.ImageView;
-import views.OverlayEvent;
 
 public class ImageAlwaysOnTopCommand extends Command {
 
   [Inject]
-  public var event:OverlayEvent;
+  public var signal:AlwaysOnTopSignal;
+
+  [Inject]
+  public var imageModelCollection:ImageModelCollection;
 
   override public function execute():void {
 
-    var view:ImageView = (event.data as ImageView);
+    var view:ImageView = imageModelCollection.currentImage;
+    var model:ImageModel = imageModelCollection.itemFor(view);
+
+    model.alwaysOnTop = signal.onTop;
 
     var window:NativeWindow = (view.stage.nativeWindow) as NativeWindow;
-    window.alwaysInFront = !window.alwaysInFront;
-
-    view.alwaysOnTopActionBtn.state = window.alwaysInFront ? 0 : 1;
+    window.alwaysInFront = model.alwaysOnTop;
   }
 }
 }

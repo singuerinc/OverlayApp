@@ -35,6 +35,8 @@ import views.ImageView;
 import views.MainFrameView;
 import views.OverlayEvent;
 import views.buttons.ActionButtonView;
+import views.buttons.AlwaysOnTopActionBtnMediator;
+import views.buttons.AlwaysOnTopActionBtnView;
 
 public class OverlayAppConfig implements IConfig {
   [Inject]
@@ -59,16 +61,15 @@ public class OverlayAppConfig implements IConfig {
 
     mediatorMap.map(MainFrameView).toMediator(MainFrameMediator);
     mediatorMap.map(ActionButtonView).toMediator(ActionButtonViewMediator);
+    mediatorMap.map(AlwaysOnTopActionBtnView).toMediator(AlwaysOnTopActionBtnMediator);
     mediatorMap.map(ImageView).toMediator(ImageViewMediator);
 
     commandMap.map(KeyboardEvent.KEY_DOWN).toCommand(DragCompleteCommand);
 
     commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
-//    commandMap.map(OverlayEvent.IMAGE_ALWAYS_ON_TOP).toCommand(ImageAlwaysOnTopCommand);
     commandMap.map(OverlayEvent.IMAGE_SHOW_HIDE).toCommand(ImageShowHideCommand);
     commandMap.map(OverlayEvent.IMAGE_LOCK).toCommand(ImageLockUnlockCommand);
     commandMap.map(OverlayEvent.IMAGE_INVERT_COLORS).toCommand(ImageInvertColorsCommand);
-//    commandMap.map(OverlayEvent.IMAGE_CHANGE_ALPHA).toCommand(ImageChangeAlphaCommand);
 
     signalCommandMap.map(AlwaysOnTopSignal).toCommand(ImageAlwaysOnTopCommand);
     signalCommandMap.map(ChangeAlphaSignal).toCommand(ImageChangeAlphaCommand);

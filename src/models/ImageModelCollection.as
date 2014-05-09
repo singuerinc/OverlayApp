@@ -4,7 +4,10 @@
 package models {
 import org.as3commons.collections.Map;
 
+import views.ImageView;
+
 public class ImageModelCollection extends Map {
+  private var _currentImage:ImageView;
 
   override public function itemFor(key:*):* {
 
@@ -18,6 +21,14 @@ public class ImageModelCollection extends Map {
     }
 
     return model;
+  }
+
+  public function set currentImage(currentImage:ImageView):void {
+    _currentImage = currentImage;
+  }
+
+  public function get currentImage():ImageView {
+    return _currentImage;
   }
 }
 }

@@ -49,3 +49,5 @@ The most common scenario to use it is in web development.
 - <del>lock position</del>, disable mouse (isn't possible)
 - refresh image (automatically)
 - copy color to clipboard
+- change alpha changes opacity indicator
+- on image remove, reset model alpha

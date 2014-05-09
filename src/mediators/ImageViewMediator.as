@@ -70,10 +70,12 @@ public class ImageViewMediator extends Mediator {
   }
 
   protected function _activateHandler(event:Event):void {
+    imageModelCollection.currentImage = view;
     view.stage.addEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown, false, 0, true);
   }
 
   protected function _deactivateHandler(event:Event):void {
+    imageModelCollection.currentImage = null;
     view.stage.removeEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown);
   }
 
@@ -104,8 +106,8 @@ public class ImageViewMediator extends Mediator {
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_SHOW_HIDE, view));
           break;
         case Keyboard.T:
-          alwaysOnTopSignal.dispatch(view.stage.nativeWindow);
-          dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
+          alwaysOnTopSignal.dispatch(!model.alwaysOnTop);
+//          dispatch(new OverlayEvent(OverlayEvent.IMAGE_ALWAYS_ON_TOP, view));
           break;
         case Keyboard.I:
           dispatch(new OverlayEvent(OverlayEvent.IMAGE_INVERT_COLORS, view));
@@ -177,7 +179,10 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onImageLoaded(event:Event):void {
-    view.setBitmap(event.target.content as Bitmap);
+    // FIXME: do a reset or something
+    // FIXME: maybe a new model...
+    model.alpha = ImageModel.INIT_ALPHA;
+    view.setBitmap(event.target.content as Bitmap, model.alpha);
   }
 
   private function _onDragOver(event:NativeDragEvent):void {

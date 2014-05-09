@@ -12,7 +12,7 @@ import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 
-import views.buttons.AlwaysOnTopActionButtonView;
+import views.buttons.AlwaysOnTopActionBtnView;
 import views.buttons.InvertColorsActionButtonView;
 import views.buttons.LockUnlockActionButtonView;
 import views.buttons.ShowHideActionButtonView;
@@ -30,7 +30,7 @@ public class ImageView extends Sprite {
 
   public var locked:Boolean = false;
 
-  public var alwaysOnTopActionBtn:AlwaysOnTopActionButtonView;
+  public var alwaysOnTopActionBtn:AlwaysOnTopActionBtnView;
   public var showHideActionBtn:ShowHideActionButtonView;
   public var lockUnlockActionBtn:LockUnlockActionButtonView;
   public var invertColorsActionBtn:InvertColorsActionButtonView;
@@ -75,7 +75,7 @@ public class ImageView extends Sprite {
     actionsContainer.graphics.endFill();
     addChild(actionsContainer);
 
-    alwaysOnTopActionBtn = new AlwaysOnTopActionButtonView();
+    alwaysOnTopActionBtn = new AlwaysOnTopActionBtnView();
     alwaysOnTopActionBtn.x = 5;
     alwaysOnTopActionBtn.y = 5;
     actionsContainer.addChild(alwaysOnTopActionBtn);
@@ -96,7 +96,7 @@ public class ImageView extends Sprite {
     actionsContainer.addChild(invertColorsActionBtn);
   }
 
-  public function setBitmap(bmp:Bitmap):void {
+  public function setBitmap(bmp:Bitmap, bmpAlpha:Number):void {
 
     try {
       bmpContainer.removeChild(_bmp);
@@ -113,7 +113,7 @@ public class ImageView extends Sprite {
     stage.stageHeight = _bmp.height + 45;
 
     TweenMax.to(dropArea, .4, {autoAlpha: 0, delay: .2});
-    TweenMax.to(_bmp, 1, {autoAlpha: 0.8, delay: .2});
+    TweenMax.to(_bmp, 1, {autoAlpha: bmpAlpha, delay: .2});
   }
 
   public function removeBitmap():void {
