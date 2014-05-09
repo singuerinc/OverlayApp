@@ -1,14 +1,19 @@
-# About
+# Overlay · About
 
 Overlay is an application to overlay an image and use it as a guide.
 The most common scenario to use it is in web development.
 
-## How it works ##
+### How it works ###
 
 1. Open Overlay (yeah, obvious step...)
 2. **Drag and drop an image** (jpg, png or gif) into the dropdown area.
 3. Place Overlay whatever you want (Chrome for example) and lock the window (**L** key).
 4. Develop you web page and try to make exactly as the image (you art director will love you)
+
+### Screenshots ###
+
+Invert colors (**i** key)
+![invert colors](https://dl.dropboxusercontent.com/u/311265/overlay/overlay.png)
 
 # Keymap
 
