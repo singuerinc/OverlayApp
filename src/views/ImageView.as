@@ -126,7 +126,7 @@ public class ImageView extends Sprite {
       stage.stageWidth = INIT_WIDTH;
       stage.stageHeight = INIT_HEIGHT;
 
-      TweenMax.to(dropArea, .4, {autoAlpha: 0.5});
+      TweenMax.to(dropArea, .4, {autoAlpha: 1});
     }
   }
 

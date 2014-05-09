@@ -20,7 +20,7 @@ public class InvertColorsActionButtonView extends ActionButtonView {
       graphics.lineTo(_w, 0);
       graphics.lineTo(0, _h);
       graphics.lineTo(0, 0);
-      graphics.beginFill(0xFF0000, 0.2);
+      graphics.beginFill(0xFF0000, 0.4);
       graphics.moveTo(_w, 0);
       graphics.lineTo(0, _h);
       graphics.lineTo(_w, _h);
@@ -30,7 +30,7 @@ public class InvertColorsActionButtonView extends ActionButtonView {
     } else if (this._state == 1) {
 
       graphics.clear();
-      graphics.beginFill(0xFF0000, 0.2);
+      graphics.beginFill(0xFF0000, 0.4);
       graphics.moveTo(0, 0);
       graphics.lineTo(_w, 0);
       graphics.lineTo(0, _h);

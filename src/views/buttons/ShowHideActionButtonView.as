@@ -23,7 +23,7 @@ public class ShowHideActionButtonView extends ActionButtonView {
     } else if (this._state == 1) {
 
       graphics.clear();
-      graphics.beginFill(0xFF0000, 0.2);
+      graphics.beginFill(0xFF0000, 0.4);
       graphics.drawRect(0, 0, _w, _h);
       graphics.endFill();
     }
