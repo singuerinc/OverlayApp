@@ -23,6 +23,7 @@ The most common scenario to use it is in web development.
 |d|Delete the image.|
 |"arrows"|Changes window position +=1px, with "Shift" +=10px|
 |l|Lock/Unlock the window.|
+|t|Window always on top (on|off).|
 |s or h|Show and hide the window.|
 
 # TODO
