@@ -6,24 +6,19 @@ import flash.display.Sprite;
 
 public class RemoveImageViewActionBtnView extends Sprite {
 
-
   public function RemoveImageViewActionBtnView() {
 
     var w:int = 10;
     var h:int = 10;
 
     graphics.clear();
-    graphics.beginFill(0x00FF00);
+    graphics.beginFill(1, 0x000000);
+    graphics.drawRect(0, 0, w, h);
+    graphics.lineStyle(1, 0x00FF00);
     graphics.moveTo(0, 0);
-    graphics.lineTo(w, 0);
-    graphics.lineTo(0, h);
-    graphics.lineTo(0, 0);
-    graphics.beginFill(0x00FF00, 0.4);
+    graphics.lineTo(w, h);
     graphics.moveTo(w, 0);
     graphics.lineTo(0, h);
-    graphics.lineTo(w, h);
-    graphics.lineTo(w, 0);
-    graphics.endFill();
 
   }
 }

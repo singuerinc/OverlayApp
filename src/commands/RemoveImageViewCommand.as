@@ -24,15 +24,21 @@ public class RemoveImageViewCommand extends Command {
 
     var view:ImageView = imageModelCollection.currentImage;
 
-    if (view.bmp) {
 
+    try {
       view.bmp.parent.removeChild(view.bmp);
-
-      view.stage.stageWidth = 500;
-      view.stage.stageHeight = 545;
-
-      TweenMax.to(view.dropArea, .4, {autoAlpha: 1});
+    } catch (e:Error) {
+      
     }
+
+    view.stage.stageWidth = 500;
+    view.stage.stageHeight = 545;
+
+    view.invertColorsActionBtn.visible = false;
+    view.removeImageViewActionBtn.visible = false;
+
+    TweenMax.to(view.dropArea, .4, {autoAlpha: 1});
+
 
   }
 }

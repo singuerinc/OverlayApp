@@ -60,7 +60,7 @@ public class DropArea extends Sprite {
 
   public function dropOut():void {
     graphics.clear();
-    graphics.beginFill(0x000000, 0.8);
+    graphics.beginFill(0x000000, 0.9);
     graphics.drawRect(0, 0, W, H);
     graphics.endFill();
   }

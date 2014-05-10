@@ -15,24 +15,10 @@ import flash.display.StageScaleMode;
 import views.buttons.AlwaysOnTopActionBtnView;
 import views.buttons.InvertColorsActionBtnView;
 import views.buttons.LockUnlockActionBtnView;
+import views.buttons.RemoveImageViewActionBtnView;
 import views.buttons.ShowHideActionBtnView;
 
 public class ImageView extends Sprite {
-
-  public var dropArea:DropArea;
-  public var bmpContainer:Sprite;
-
-  private var _bmp:Bitmap;
-  private var _window:NativeWindow;
-
-  private var INIT_WIDTH:int = 500;
-  private var INIT_HEIGHT:int = 500 + 45;
-
-  public var alwaysOnTopActionBtn:AlwaysOnTopActionBtnView;
-  public var showHideActionBtn:ShowHideActionBtnView;
-  public var lockUnlockActionBtn:LockUnlockActionBtnView;
-  public var invertColorsActionBtn:InvertColorsActionBtnView;
-  public var actionsContainer:Sprite;
 
   public function ImageView() {
 
@@ -91,31 +77,37 @@ public class ImageView extends Sprite {
     invertColorsActionBtn = new InvertColorsActionBtnView();
     invertColorsActionBtn.x = 70;
     invertColorsActionBtn.y = 5;
+    invertColorsActionBtn.visible = false;
     actionsContainer.addChild(invertColorsActionBtn);
+
+    removeImageViewActionBtn = new RemoveImageViewActionBtnView();
+    removeImageViewActionBtn.x = 85;
+    removeImageViewActionBtn.y = 5;
+    removeImageViewActionBtn.visible = false;
+    actionsContainer.addChild(removeImageViewActionBtn);
   }
 
-  public function setBitmap(bmp:Bitmap, bmpAlpha:Number):void {
+  public var dropArea:DropArea;
+  public var bmpContainer:Sprite;
+  public var alwaysOnTopActionBtn:AlwaysOnTopActionBtnView;
+  public var showHideActionBtn:ShowHideActionBtnView;
+  public var lockUnlockActionBtn:LockUnlockActionBtnView;
+  public var invertColorsActionBtn:InvertColorsActionBtnView;
+  public var removeImageViewActionBtn:RemoveImageViewActionBtnView;
+  public var actionsContainer:Sprite;
+  private var _window:NativeWindow;
+  private var INIT_WIDTH:int = 500;
+  private var INIT_HEIGHT:int = 500 + 45;
 
-    try {
-      bmpContainer.removeChild(_bmp);
-    } catch (e:Error) {
+  private var _bmp:Bitmap;
 
-    } finally {
-      _bmp = bmp;
-      _bmp.alpha = 0;
-      _bmp.visible = false;
-      bmpContainer.addChild(_bmp);
-    }
-
-    stage.stageWidth = _bmp.width;
-    stage.stageHeight = _bmp.height + 45;
-
-    TweenMax.to(dropArea, .4, {autoAlpha: 0, delay: .2});
-    TweenMax.to(_bmp, 1, {autoAlpha: bmpAlpha, delay: .2});
+  public function set bmp(value:Bitmap):void {
+    _bmp = value;
   }
 
   public function get bmp():Bitmap {
     return _bmp;
   }
+
 }
 }

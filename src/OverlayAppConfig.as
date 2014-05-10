@@ -25,6 +25,7 @@ import robotlegs.bender.framework.api.IInjector;
 
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
+import signals.CreateImageViewSignal;
 import signals.InvertColorsSignal;
 import signals.LockOrUnlockSignal;
 import signals.RemoveImageViewSignal;
@@ -32,7 +33,6 @@ import signals.ShowHideSignal;
 
 import views.ImageView;
 import views.MainFrameView;
-import views.OverlayEvent;
 import views.buttons.AlwaysOnTopActionBtnMediator;
 import views.buttons.AlwaysOnTopActionBtnView;
 import views.buttons.InvertColorsActionBtnMediator;
@@ -75,8 +75,7 @@ public class OverlayAppConfig implements IConfig {
     mediatorMap.map(InvertColorsActionBtnView).toMediator(InvertColorsActionBtnMediator);
     mediatorMap.map(RemoveImageViewActionBtnView).toMediator(RemoveImageViewActionBtnMediator);
 
-    commandMap.map(OverlayEvent.CREATE_IMAGE_VIEW).toCommand(CreateImageViewCommand);
-
+    signalCommandMap.map(CreateImageViewSignal).toCommand(CreateImageViewCommand);
     signalCommandMap.map(AlwaysOnTopSignal).toCommand(ImageAlwaysOnTopCommand);
     signalCommandMap.map(LockOrUnlockSignal).toCommand(ImageLockUnlockCommand);
     signalCommandMap.map(ChangeAlphaSignal).toCommand(ImageChangeAlphaCommand);

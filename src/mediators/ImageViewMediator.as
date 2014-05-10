@@ -2,6 +2,8 @@
  * Created by singuerinc on 08/05/2014.
  */
 package mediators {
+import com.greensock.TweenMax;
+
 import flash.desktop.Clipboard;
 import flash.desktop.ClipboardFormats;
 import flash.desktop.NativeDragActions;
@@ -77,6 +79,7 @@ public class ImageViewMediator extends Mediator {
     mediatorMap.mediate(view.lockUnlockActionBtn);
     mediatorMap.mediate(view.invertColorsActionBtn);
     mediatorMap.mediate(view.showHideActionBtn);
+    mediatorMap.mediate(view.removeImageViewActionBtn);
   }
 
   protected function _activateHandler(event:Event):void {
@@ -85,7 +88,6 @@ public class ImageViewMediator extends Mediator {
   }
 
   protected function _deactivateHandler(event:Event):void {
-    imageModelCollection.currentImage = null;
     view.stage.removeEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown);
   }
 
@@ -190,10 +192,27 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onImageLoaded(event:Event):void {
+
+    removeImageViewSignal.dispatch();
+
+    view.invertColorsActionBtn.visible = true;
+    view.removeImageViewActionBtn.visible = true;
+
     // FIXME: do a reset or something
     // FIXME: maybe a new model...
     model.alpha = ImageModel.INIT_ALPHA;
-    view.setBitmap(event.target.content as Bitmap, model.alpha);
+
+    view.bmp = (event.target.content as Bitmap);
+
+    view.bmp.alpha = 0;
+    view.bmp.visible = false;
+    view.bmpContainer.addChild(view.bmp);
+
+    view.stage.stageWidth = view.bmp.width;
+    view.stage.stageHeight = view.bmp.height + 45;
+
+    TweenMax.to(view.dropArea, .4, {autoAlpha: 0, delay: .2});
+    TweenMax.to(view.bmp, 1, {autoAlpha: model.alpha, delay: .2});
   }
 
   private function _onDragOver(event:NativeDragEvent):void {

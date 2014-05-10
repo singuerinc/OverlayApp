@@ -26,6 +26,7 @@ public class ImageModelCollection extends Map {
 
   public function set currentImage(currentImage:ImageView):void {
     _currentImage = currentImage;
+    trace('-------> _currentImage', currentImage);
   }
 
   public function get currentImage():ImageView {
