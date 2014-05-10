@@ -12,15 +12,6 @@ The most common scenario to use it is in web development.
 
 ![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
 
-### Icons ###
-
-![icons](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_icons.png)
-
-1. Always on top (on|off)
-2. Lock/Unlock window
-3. Show/Hide window
-4. Invert colors
-
 
 # Keymap
 
