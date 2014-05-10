@@ -40,7 +40,7 @@ The most common scenario to use it is in web development.
 - <del>icon to block window</del>
 - guides
 - opacity indicator!
-- cross to remove image and window
+- <del>cross to remove image and window</del>
 - clone window
 - zoom image?
 - create cool icon
@@ -51,3 +51,5 @@ The most common scenario to use it is in web development.
 - copy color to clipboard
 - change alpha changes opacity indicator
 - on image remove, reset model alpha
+- update manager
+- analytics
