@@ -9,8 +9,8 @@ import robotlegs.bender.bundles.mvcs.Command;
 
 import signals.ChangeAlphaSignal;
 
-import views.BitmapImageView;
 import views.ImageView;
+import views.ui.BitmapImageView;
 
 public class ImageChangeAlphaCommand extends Command {
 

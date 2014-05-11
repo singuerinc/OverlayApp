@@ -1,7 +1,7 @@
 /**
  * Created by singuerinc on 08/05/2014.
  */
-package views {
+package views.ui {
 import flash.display.Sprite;
 import flash.text.AntiAliasType;
 import flash.text.GridFitType;

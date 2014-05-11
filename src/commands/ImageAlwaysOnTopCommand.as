@@ -35,10 +35,10 @@ public class ImageAlwaysOnTopCommand extends Command {
     var window:NativeWindow = (view.stage.nativeWindow) as NativeWindow;
     window.alwaysInFront = model.alwaysOnTop;
 
-    var valueTxt:String = model.alwaysOnTop ? 'on' : 'off';
+    var valueTxt:String = model.alwaysOnTop ? '' : ' off';
     var icon:AlwaysOnTopActionBtnView = new AlwaysOnTopActionBtnView();
     icon.state = window.alwaysInFront ? 0 : 1;
-    notification.dispatch('Always on top: ' + valueTxt, icon);
+    notification.dispatch('Always on top' + valueTxt, icon);
   }
 }
 }

@@ -92,7 +92,7 @@ public class ImageViewMediator extends Mediator {
   protected function _mouseDownHandler(event:MouseEvent):void {
 
     if (model.locked) {
-      return
+      return;
     }
 
     view.stage.nativeWindow.startMove();
@@ -131,6 +131,9 @@ public class ImageViewMediator extends Mediator {
 
       if (view.bmp) {
         switch (event.keyCode) {
+          case Keyboard.Z:
+            loadImageViewSignal.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
+            break;
           case Keyboard.BACKSPACE:
           case Keyboard.D:
             removeImageViewSignal.dispatch();

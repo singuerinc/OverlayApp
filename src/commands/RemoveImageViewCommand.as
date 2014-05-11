@@ -2,8 +2,6 @@
  * Created by singuerinc on 10/05/2014.
  */
 package commands {
-import com.greensock.TweenMax;
-
 import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
@@ -31,7 +29,8 @@ public class RemoveImageViewCommand extends Command {
     view.invertColorsActionBtn.visible = false;
     view.removeImageViewActionBtn.visible = false;
 
-    TweenMax.to(view.dropArea, .4, {autoAlpha: 1});
+    view.dropArea.alpha = 1;
+    view.dropArea.visible = true;
   }
 }
 }

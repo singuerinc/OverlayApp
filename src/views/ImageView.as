@@ -17,6 +17,8 @@ import views.buttons.InvertColorsActionBtnView;
 import views.buttons.LockUnlockActionBtnView;
 import views.buttons.RemoveImageViewActionBtnView;
 import views.buttons.ShowHideActionBtnView;
+import views.ui.BitmapImageView;
+import views.ui.DropAreaView;
 
 public class ImageView extends SignalSprite {
   public function ImageView() {

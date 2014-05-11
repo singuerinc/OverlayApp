@@ -15,6 +15,7 @@ import commands.LoadImageViewCommand;
 import commands.RemoveImageViewCommand;
 
 import mediators.BitmapImageViewMediator;
+import mediators.GuidesViewMediator;
 import mediators.ImageViewMediator;
 import mediators.MainFrameViewMediator;
 
@@ -40,7 +41,6 @@ import signals.LockOrUnlockSignal;
 import signals.RemoveImageViewSignal;
 import signals.ShowHideSignal;
 
-import views.BitmapImageView;
 import views.ImageView;
 import views.MainFrameView;
 import views.buttons.AlwaysOnTopActionBtnMediator;
@@ -53,6 +53,8 @@ import views.buttons.RemoveImageViewActionBtnMediator;
 import views.buttons.RemoveImageViewActionBtnView;
 import views.buttons.ShowHideActionBtnMediator;
 import views.buttons.ShowHideActionBtnView;
+import views.ui.BitmapImageView;
+import views.ui.GuidesView;
 
 public class OverlayAppConfig implements IConfig {
   [Inject]
@@ -86,6 +88,7 @@ public class OverlayAppConfig implements IConfig {
     mediatorMap.map(InvertColorsActionBtnView).toMediator(InvertColorsActionBtnMediator);
     mediatorMap.map(RemoveImageViewActionBtnView).toMediator(RemoveImageViewActionBtnMediator);
     mediatorMap.map(BitmapImageView).toMediator(BitmapImageViewMediator);
+    mediatorMap.map(GuidesView).toMediator(GuidesViewMediator);
 
     signalCommandMap.map(CreateImageViewSignal).toCommand(CreateImageViewCommand);
     signalCommandMap.map(AlwaysOnTopSignal).toCommand(ImageAlwaysOnTopCommand);

@@ -2,8 +2,6 @@
  * Created by singuerinc on 10/05/2014.
  */
 package commands {
-import com.greensock.TweenMax;
-
 import flash.display.Bitmap;
 import flash.display.Loader;
 import flash.events.Event;
@@ -19,9 +17,8 @@ import signals.DisplayNotificationSignal;
 import signals.LoadImageViewSignal;
 import signals.RemoveImageViewSignal;
 
-import views.BitmapImageView;
 import views.ImageView;
-import views.ui.ColorNotificationIcon;
+import views.ui.BitmapImageView;
 
 public class LoadImageViewCommand extends Command {
 
@@ -51,11 +48,7 @@ public class LoadImageViewCommand extends Command {
     loader.load(urlReq);
   }
 
-  private function _onImageLoaded(event:Event):void {
-
-    removeImageViewSignal.dispatch();
-
-    var view:ImageView = model.current;
+  private function _addBitmap(view:ImageView, bmp:Bitmap):void {
     var model:ImageModel = model.itemFor(view);
 
     view.invertColorsActionBtn.visible = true;
@@ -63,7 +56,7 @@ public class LoadImageViewCommand extends Command {
 
     model.alpha = ImageModel.INIT_ALPHA;
 
-    view.bmp = new BitmapImageView(event.target.content as Bitmap);
+    view.bmp = new BitmapImageView(bmp);
     view.bmp.y = 25;
     view.addChildAt(view.bmp, 0);
 
@@ -72,10 +65,20 @@ public class LoadImageViewCommand extends Command {
     view.stage.stageWidth = view.bmp.width;
     view.stage.stageHeight = view.bmp.height + 45;
 
-    TweenMax.to(view.dropArea, .4, {autoAlpha: 0, delay: .2});
-    TweenMax.to(view.bmp, 1, {autoAlpha: model.alpha, delay: .2});
+    view.dropArea.visible = false;
 
     notificationSignal.dispatch('Image loaded: ' + _url, null);
+  }
+
+  private function _onImageLoaded(event:Event):void {
+
+    var view:ImageView = model.current;
+    var bmp:Bitmap = event.target.content as Bitmap;
+
+    if (view.bmp) {
+      removeImageViewSignal.dispatch();
+    }
+    _addBitmap(view, bmp);
   }
 }
 }
