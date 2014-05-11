@@ -12,15 +12,6 @@ The most common scenario to use it is in web development.
 
 ![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
 
-### Icons ###
-
-![icons](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_icons.png)
-
-1. Always on top (on|off)
-2. Lock/Unlock window
-3. Show/Hide window
-4. Invert colors
-
 
 # Keymap
 
@@ -32,6 +23,7 @@ The most common scenario to use it is in web development.
 |d|Delete the image.|
 |"arrows"|Changes window position +=1px, with "Shift" +=10px|
 |l|Lock/Unlock the window.|
+|t|Window always on top (on|off).|
 |s or h|Show and hide the window.|
 
 # TODO
@@ -40,7 +32,7 @@ The most common scenario to use it is in web development.
 - <del>icon to block window</del>
 - guides
 - opacity indicator!
-- cross to remove image and window
+- <del>cross to remove image and window</del>
 - clone window
 - zoom image?
 - create cool icon
@@ -51,3 +43,5 @@ The most common scenario to use it is in web development.
 - copy color to clipboard
 - change alpha changes opacity indicator
 - on image remove, reset model alpha
+- update manager
+- analytics
