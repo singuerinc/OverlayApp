@@ -13,6 +13,7 @@ import signals.AlwaysOnTopSignal;
 import signals.DisplayNotificationSignal;
 
 import views.ImageView;
+import views.buttons.AlwaysOnTopActionBtnView;
 
 public class ImageAlwaysOnTopCommand extends Command {
 
@@ -34,7 +35,10 @@ public class ImageAlwaysOnTopCommand extends Command {
     var window:NativeWindow = (view.stage.nativeWindow) as NativeWindow;
     window.alwaysInFront = model.alwaysOnTop;
 
-    notification.dispatch();
+    var valueTxt:String = model.alwaysOnTop ? 'on' : 'off';
+    var icon:AlwaysOnTopActionBtnView = new AlwaysOnTopActionBtnView();
+    icon.state = window.alwaysInFront ? 0 : 1;
+    notification.dispatch('Always on top: ' + valueTxt, icon);
   }
 }
 }
