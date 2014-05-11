@@ -9,7 +9,6 @@ import robotlegs.bender.bundles.mvcs.Mediator;
 import signals.CopyHexColorSignal;
 
 import views.BitmapImageView;
-import views.ImageView;
 
 public class BitmapImageViewMediator extends Mediator {
 
@@ -30,7 +29,7 @@ public class BitmapImageViewMediator extends Mediator {
       var x:int = event.localX;
       var y:int = event.localY;
       var color:uint = view.bitmap.bitmapData.getPixel(x, y);
-      signal.dispatch((view.parent as ImageView), color);
+      signal.dispatch(color);
     }
 
   }

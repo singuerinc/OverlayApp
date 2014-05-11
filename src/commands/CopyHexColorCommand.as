@@ -26,7 +26,7 @@ public class CopyHexColorCommand extends Command {
     Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, hex);
 
     var color:uint = Number('0x' + hex);
-    notificationSignal.dispatch(signal.imageView, 'Color #' + hex + ' copied to Clipboard', new ColorNotificationIcon(color));
+    notificationSignal.dispatch('Color #' + hex + ' copied to Clipboard', new ColorNotificationIcon(color));
   }
 }
 }

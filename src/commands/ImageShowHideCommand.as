@@ -17,12 +17,12 @@ public class ImageShowHideCommand extends Command {
   public var signal:ShowHideSignal;
 
   [Inject]
-  public var imageModelCollection:ImageModelCollection;
+  public var model:ImageModelCollection;
 
   override public function execute():void {
 
-    var view:ImageView = imageModelCollection.currentImage;
-    var model:ImageModel = imageModelCollection.itemFor(view);
+    var view:ImageView = model.currentImage;
+    var model:ImageModel = model.itemFor(view);
 
     model.visible = signal.visible;
 

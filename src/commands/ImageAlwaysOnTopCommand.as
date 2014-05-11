@@ -10,6 +10,7 @@ import models.ImageModelCollection;
 import robotlegs.bender.bundles.mvcs.Command;
 
 import signals.AlwaysOnTopSignal;
+import signals.DisplayNotificationSignal;
 
 import views.ImageView;
 
@@ -17,6 +18,8 @@ public class ImageAlwaysOnTopCommand extends Command {
 
   [Inject]
   public var signal:AlwaysOnTopSignal;
+  [Inject]
+  public var notification:DisplayNotificationSignal;
 
   [Inject]
   public var imageModelCollection:ImageModelCollection;
@@ -30,6 +33,8 @@ public class ImageAlwaysOnTopCommand extends Command {
 
     var window:NativeWindow = (view.stage.nativeWindow) as NativeWindow;
     window.alwaysInFront = model.alwaysOnTop;
+
+    notification.dispatch();
   }
 }
 }

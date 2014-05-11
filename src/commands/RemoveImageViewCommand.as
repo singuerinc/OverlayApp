@@ -13,12 +13,11 @@ import views.ImageView;
 public class RemoveImageViewCommand extends Command {
 
   [Inject]
-  public var imageModelCollection:ImageModelCollection;
+  public var model:ImageModelCollection;
 
   override public function execute():void {
 
-    var view:ImageView = imageModelCollection.currentImage;
-
+    var view:ImageView = model.currentImage;
 
     try {
       view.bmp.parent.removeChild(view.bmp);
@@ -33,8 +32,6 @@ public class RemoveImageViewCommand extends Command {
     view.removeImageViewActionBtn.visible = false;
 
     TweenMax.to(view.dropArea, .4, {autoAlpha: 1});
-
-
   }
 }
 }

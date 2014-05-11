@@ -12,7 +12,6 @@ public class LockOrUnlockSignal extends Signal {
     super(Boolean);
   }
 
-
   override public function dispatch(...valueObjects):void {
     this.locked = valueObjects[0];
     super.dispatch.apply(this, valueObjects);

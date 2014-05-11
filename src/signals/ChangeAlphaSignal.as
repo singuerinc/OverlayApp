@@ -4,21 +4,16 @@
 package signals {
 import org.osflash.signals.Signal;
 
-import views.ImageView;
-
 public class ChangeAlphaSignal extends Signal {
 
-  public var imageView:ImageView;
-  public var alpha:Number;
-
   public function ChangeAlphaSignal() {
-    super(ImageView, Number);
+    super(Number);
   }
 
+  public var alpha:Number;
 
   override public function dispatch(...valueObjects):void {
-    this.imageView = valueObjects[0];
-    this.alpha = valueObjects[1];
+    this.alpha = valueObjects[0];
     super.dispatch.apply(this, valueObjects);
   }
 }

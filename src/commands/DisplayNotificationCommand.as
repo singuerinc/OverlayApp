@@ -8,6 +8,8 @@ import com.greensock.easing.Quad;
 
 import flash.display.Sprite;
 
+import models.ImageModelCollection;
+
 import org.as3commons.collections.SortedList;
 import org.as3commons.collections.framework.IIterator;
 
@@ -27,11 +29,14 @@ public class DisplayNotificationCommand extends Command {
   [Inject]
   public var mediatorMap:IMediatorMap;
 
+  [Inject]
+  public var model:ImageModelCollection;
+
   override public function execute():void {
 
     var text:String = signal.text;
     var icon:Sprite = signal.icon;
-    var imageView:ImageView = signal.imageView;
+    var imageView:ImageView = model.currentImage;
 
     var notifications:SortedList = imageView.notifications; //FIXME: Put in model
     var notification:NotificationView = new NotificationView(text, icon);

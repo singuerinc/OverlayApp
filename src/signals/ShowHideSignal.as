@@ -12,7 +12,6 @@ public class ShowHideSignal extends Signal {
     super(Boolean);
   }
 
-
   override public function dispatch(...valueObjects):void {
     this.visible = valueObjects[0];
     super.dispatch.apply(this, valueObjects);

@@ -36,7 +36,7 @@ public class LoadImageViewCommand extends Command {
   public var removeImageViewSignal:RemoveImageViewSignal;
 
   [Inject]
-  public var imageModelCollection:ImageModelCollection;
+  public var model:ImageModelCollection;
 
   private var _url:String;
 
@@ -55,8 +55,8 @@ public class LoadImageViewCommand extends Command {
 
     removeImageViewSignal.dispatch();
 
-    var view:ImageView = imageModelCollection.currentImage;
-    var model:ImageModel = imageModelCollection.itemFor(view);
+    var view:ImageView = model.currentImage;
+    var model:ImageModel = model.itemFor(view);
 
     view.invertColorsActionBtn.visible = true;
     view.removeImageViewActionBtn.visible = true;
@@ -75,9 +75,7 @@ public class LoadImageViewCommand extends Command {
     TweenMax.to(view.dropArea, .4, {autoAlpha: 0, delay: .2});
     TweenMax.to(view.bmp, 1, {autoAlpha: model.alpha, delay: .2});
 
-    // FIXME: No se puede enviar una notificación si no existe un bitmap,
-    // ya que se necesita el width para saber donde colocarla.
-    notificationSignal.dispatch(view, 'Image loaded: ' + _url, null);
+    notificationSignal.dispatch('Image loaded: ' + _url, null);
   }
 }
 }
