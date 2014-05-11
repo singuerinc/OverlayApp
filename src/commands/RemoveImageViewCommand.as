@@ -8,14 +8,9 @@ import models.ImageModelCollection;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
-import signals.RemoveImageViewSignal;
-
 import views.ImageView;
 
 public class RemoveImageViewCommand extends Command {
-
-  [Inject]
-  public var signal:RemoveImageViewSignal;
 
   [Inject]
   public var imageModelCollection:ImageModelCollection;
@@ -28,7 +23,7 @@ public class RemoveImageViewCommand extends Command {
     try {
       view.bmp.parent.removeChild(view.bmp);
     } catch (e:Error) {
-      
+
     }
 
     view.stage.stageWidth = 500;

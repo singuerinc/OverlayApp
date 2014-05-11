@@ -2,14 +2,14 @@
  * Created by singuerinc on 08/05/2014.
  */
 package commands {
-import flash.display.Bitmap;
-
 import models.ImageModel;
 import models.ImageModelCollection;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
 import signals.ChangeAlphaSignal;
+
+import views.BitmapImageView;
 
 public class ImageChangeAlphaCommand extends Command {
 
@@ -22,7 +22,7 @@ public class ImageChangeAlphaCommand extends Command {
   override public function execute():void {
 
     var alpha:Number = signal.alpha;
-    var bmp:Bitmap = signal.imageView.bmp;
+    var bmp:BitmapImageView = signal.imageView.bmp;
 
     var model:ImageModel = imageModelCollection.itemFor(signal.imageView);
 

@@ -4,32 +4,33 @@
 package views {
 import flash.display.Sprite;
 import flash.text.AntiAliasType;
+import flash.text.GridFitType;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFormat;
 
-public class DropArea extends Sprite {
+public class DropAreaView extends Sprite {
 
   private var text:TextField;
 
   private var W:int = 500;
   private var H:int = 500;
 
-  public function DropArea() {
+  public function DropAreaView() {
 
     super();
 
     dropOut();
 
     text = new TextField();
+    text.gridFitType = GridFitType.PIXEL;
     text.antiAliasType = AntiAliasType.ADVANCED;
     text.autoSize = TextFieldAutoSize.LEFT;
     text.wordWrap = true;
     text.multiline = true;
     text.width = W - 100;
-    text.defaultTextFormat = new TextFormat('Envy Code R VS', 14, 0x999999);
+    text.defaultTextFormat = new TextFormat('Inconsolata', 14, 0xAAAAAA, false);
     text.htmlText = 'Drop an image here.';
-    text.defaultTextFormat = new TextFormat('Envy Code R VS', 11, 0x666666);
     text.htmlText +='<br/>';
     text.htmlText +='0 to 9  · Changes image alpha.';
     text.htmlText +='+ and - · Changes image alpha.';

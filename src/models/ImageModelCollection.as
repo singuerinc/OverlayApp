@@ -10,6 +10,14 @@ public class ImageModelCollection extends Map {
 
   private var _currentImage:ImageView;
 
+  public function get currentImage():ImageView {
+    return _currentImage;
+  }
+
+  public function set currentImage(currentImage:ImageView):void {
+    _currentImage = currentImage;
+  }
+
   override public function itemFor(key:*):* {
 
     var model:* = super.itemFor(key);
@@ -22,15 +30,6 @@ public class ImageModelCollection extends Map {
     }
 
     return model;
-  }
-
-  public function set currentImage(currentImage:ImageView):void {
-    _currentImage = currentImage;
-    trace('-------> _currentImage', currentImage);
-  }
-
-  public function get currentImage():ImageView {
-    return _currentImage;
   }
 }
 }

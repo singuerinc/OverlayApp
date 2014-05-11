@@ -2,9 +2,6 @@
  * Created by singuerinc on 08/05/2014.
  */
 package views {
-import com.greensock.TweenMax;
-
-import flash.display.Bitmap;
 import flash.display.NativeWindow;
 import flash.display.NativeWindowInitOptions;
 import flash.display.NativeWindowSystemChrome;
@@ -12,14 +9,16 @@ import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
 
+import org.as3commons.collections.SortedList;
+import org.osflash.signals.natives.base.SignalSprite;
+
 import views.buttons.AlwaysOnTopActionBtnView;
 import views.buttons.InvertColorsActionBtnView;
 import views.buttons.LockUnlockActionBtnView;
 import views.buttons.RemoveImageViewActionBtnView;
 import views.buttons.ShowHideActionBtnView;
 
-public class ImageView extends Sprite {
-
+public class ImageView extends SignalSprite {
   public function ImageView() {
 
     super();
@@ -43,15 +42,9 @@ public class ImageView extends Sprite {
     stage.nativeWindow.activate();
     stage.nativeWindow.alwaysInFront = true;
 
-    dropArea = new DropArea();
+    dropArea = new DropAreaView();
     dropArea.y = 25;
     addChild(dropArea);
-
-    bmpContainer = new Sprite();
-    bmpContainer.mouseEnabled = false;
-    bmpContainer.mouseChildren = false;
-    bmpContainer.y = 25;
-    addChild(bmpContainer);
 
     actionsContainer = new Sprite();
     actionsContainer.graphics.beginFill(0x000000);
@@ -85,10 +78,14 @@ public class ImageView extends Sprite {
     removeImageViewActionBtn.y = 5;
     removeImageViewActionBtn.visible = false;
     actionsContainer.addChild(removeImageViewActionBtn);
+
+    notificationsContainer = new Sprite();
+    addChild(notificationsContainer);
   }
 
-  public var dropArea:DropArea;
-  public var bmpContainer:Sprite;
+  public var notifications:SortedList = new SortedList();
+  public var notificationsContainer:Sprite;
+  public var dropArea:DropAreaView;
   public var alwaysOnTopActionBtn:AlwaysOnTopActionBtnView;
   public var showHideActionBtn:ShowHideActionBtnView;
   public var lockUnlockActionBtn:LockUnlockActionBtnView;
@@ -96,17 +93,18 @@ public class ImageView extends Sprite {
   public var removeImageViewActionBtn:RemoveImageViewActionBtnView;
   public var actionsContainer:Sprite;
   private var _window:NativeWindow;
+
   private var INIT_WIDTH:int = 500;
   private var INIT_HEIGHT:int = 500 + 45;
 
-  private var _bmp:Bitmap;
+  private var _bmp:BitmapImageView;
 
-  public function set bmp(value:Bitmap):void {
-    _bmp = value;
+  public function get bmp():BitmapImageView {
+    return _bmp;
   }
 
-  public function get bmp():Bitmap {
-    return _bmp;
+  public function set bmp(value:BitmapImageView):void {
+    _bmp = value;
   }
 
 }

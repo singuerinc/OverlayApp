@@ -2,20 +2,15 @@
  * Created by singuerinc on 08/05/2014.
  */
 package mediators {
-import com.greensock.TweenMax;
-
 import flash.desktop.Clipboard;
 import flash.desktop.ClipboardFormats;
 import flash.desktop.NativeDragActions;
 import flash.desktop.NativeDragManager;
-import flash.display.Bitmap;
-import flash.display.Loader;
 import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
 import flash.events.NativeDragEvent;
 import flash.filesystem.File;
-import flash.net.URLRequest;
 import flash.ui.Keyboard;
 
 import models.ImageModel;
@@ -27,6 +22,7 @@ import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
 import signals.InvertColorsSignal;
+import signals.LoadImageViewSignal;
 import signals.LockOrUnlockSignal;
 import signals.RemoveImageViewSignal;
 import signals.ShowHideSignal;
@@ -54,6 +50,8 @@ public class ImageViewMediator extends Mediator {
   [Inject]
   public var invertColorsSignal:InvertColorsSignal;
   [Inject]
+  public var loadImageViewSignal:LoadImageViewSignal;
+  [Inject]
   public var removeImageViewSignal:RemoveImageViewSignal;
 
   public var model:ImageModel;
@@ -73,7 +71,7 @@ public class ImageViewMediator extends Mediator {
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, _onDrop);
     view.addEventListener(NativeDragEvent.NATIVE_DRAG_EXIT, _onDragExit);
 
-    view.addEventListener(MouseEvent.MOUSE_DOWN, _mouseDownHandler, false, 0, true);
+    view.signals.mouseDown.add(_mouseDownHandler);
 
     mediatorMap.mediate(view.alwaysOnTopActionBtn);
     mediatorMap.mediate(view.lockUnlockActionBtn);
@@ -98,7 +96,6 @@ public class ImageViewMediator extends Mediator {
     }
 
     view.stage.nativeWindow.startMove();
-
   }
 
   private function _onKeyDown(event:KeyboardEvent):void {
@@ -180,39 +177,14 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onDrop(event:NativeDragEvent):void {
+
     var clipboard:Clipboard = event.clipboard;
     if (clipboard.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
       var dropFiles:Array = clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
       var imageFile:File = dropFiles[0];
-      var loader:Loader = new Loader();
-      var urlReq:URLRequest = new URLRequest(imageFile.url);
-      loader.contentLoaderInfo.addEventListener(Event.COMPLETE, _onImageLoaded);
-      loader.load(urlReq);
+      loadImageViewSignal.dispatch(imageFile.url);
     }
-  }
 
-  private function _onImageLoaded(event:Event):void {
-
-    removeImageViewSignal.dispatch();
-
-    view.invertColorsActionBtn.visible = true;
-    view.removeImageViewActionBtn.visible = true;
-
-    // FIXME: do a reset or something
-    // FIXME: maybe a new model...
-    model.alpha = ImageModel.INIT_ALPHA;
-
-    view.bmp = (event.target.content as Bitmap);
-
-    view.bmp.alpha = 0;
-    view.bmp.visible = false;
-    view.bmpContainer.addChild(view.bmp);
-
-    view.stage.stageWidth = view.bmp.width;
-    view.stage.stageHeight = view.bmp.height + 45;
-
-    TweenMax.to(view.dropArea, .4, {autoAlpha: 0, delay: .2});
-    TweenMax.to(view.bmp, 1, {autoAlpha: model.alpha, delay: .2});
   }
 
   private function _onDragOver(event:NativeDragEvent):void {

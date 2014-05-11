@@ -2,9 +2,9 @@
  * Created by singuerinc on 08/05/2014.
  */
 package views.buttons {
-import flash.display.Sprite;
+import org.osflash.signals.natives.base.SignalSprite;
 
-public class RemoveImageViewActionBtnView extends Sprite {
+public class RemoveImageViewActionBtnView extends SignalSprite {
 
   public function RemoveImageViewActionBtnView() {
 

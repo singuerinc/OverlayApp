@@ -2,9 +2,9 @@
  * Created by singuerinc on 08/05/2014.
  */
 package views.buttons {
-import flash.display.Sprite;
+import org.osflash.signals.natives.base.SignalSprite;
 
-public class ShowHideActionBtnView extends Sprite {
+public class ShowHideActionBtnView extends SignalSprite {
 
   private var _state:uint;
 
