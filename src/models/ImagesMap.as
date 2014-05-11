@@ -6,16 +6,16 @@ import org.as3commons.collections.Map;
 
 import views.ImageView;
 
-public class ImageModelCollection extends Map {
+public class ImagesMap extends Map {
 
-  private var _currentImage:ImageView;
+  private var _current:ImageView;
 
-  public function get currentImage():ImageView {
-    return _currentImage;
+  public function get current():ImageView {
+    return _current;
   }
 
-  public function set currentImage(currentImage:ImageView):void {
-    _currentImage = currentImage;
+  public function set current(currentImage:ImageView):void {
+    _current = currentImage;
   }
 
   override public function itemFor(key:*):* {

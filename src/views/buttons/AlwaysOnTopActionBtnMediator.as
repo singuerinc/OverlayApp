@@ -5,7 +5,7 @@ package views.buttons {
 import flash.events.MouseEvent;
 
 import models.ImageModel;
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -22,11 +22,11 @@ public class AlwaysOnTopActionBtnMediator extends Mediator {
   public var alwaysOnTopSignal:AlwaysOnTopSignal;
 
   [Inject]
-  public var imageModelCollection:ImageModelCollection;
+  public var imageModelCollection:ImagesMap;
 
   override public function initialize():void {
 
-    var imageView:ImageView = imageModelCollection.currentImage;
+    var imageView:ImageView = imageModelCollection.current;
     var model:ImageModel = imageModelCollection.itemFor(imageView);
 
     view.state = model.alwaysOnTop ? 0 : 1;

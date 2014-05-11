@@ -3,7 +3,7 @@
  */
 package commands {
 import models.ImageModel;
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
@@ -18,11 +18,11 @@ public class ImageChangeAlphaCommand extends Command {
   public var signal:ChangeAlphaSignal;
 
   [Inject]
-  public var model:ImageModelCollection;
+  public var model:ImagesMap;
 
   override public function execute():void {
 
-    var imageView:ImageView = model.currentImage;
+    var imageView:ImageView = model.current;
 
     var alpha:Number = signal.alpha;
     var bmp:BitmapImageView = imageView.bmp;

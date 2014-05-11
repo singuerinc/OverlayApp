@@ -3,7 +3,7 @@
  */
 package commands {
 import models.ImageModel;
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
@@ -17,11 +17,11 @@ public class ImageInvertColorsCommand extends Command {
   public var signal:InvertColorsSignal;
 
   [Inject]
-  public var model:ImageModelCollection;
+  public var model:ImagesMap;
 
   override public function execute():void {
 
-    var view:ImageView = model.currentImage;
+    var view:ImageView = model.current;
     var model:ImageModel = model.itemFor(view);
 
     model.invertedColors = signal.invertedColors;

@@ -14,7 +14,7 @@ import flash.filesystem.File;
 import flash.ui.Keyboard;
 
 import models.ImageModel;
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
@@ -34,7 +34,7 @@ public class ImageViewMediator extends Mediator {
   [Inject]
   public var view:ImageView;
   [Inject]
-  public var imageModelCollection:ImageModelCollection;
+  public var imageModelCollection:ImagesMap;
 
   [Inject]
   public var mediatorMap:IMediatorMap;
@@ -61,7 +61,7 @@ public class ImageViewMediator extends Mediator {
     super.initialize();
 
     model = imageModelCollection.itemFor(view);
-    imageModelCollection.currentImage = view;
+    imageModelCollection.current = view;
 
     view.stage.nativeWindow.addEventListener(Event.ACTIVATE, _activateHandler, false, 0, true);
     view.stage.nativeWindow.addEventListener(Event.DEACTIVATE, _deactivateHandler, false, 0, true);
@@ -81,7 +81,7 @@ public class ImageViewMediator extends Mediator {
   }
 
   protected function _activateHandler(event:Event):void {
-    imageModelCollection.currentImage = view;
+    imageModelCollection.current = view;
     view.stage.addEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown, false, 0, true);
   }
 

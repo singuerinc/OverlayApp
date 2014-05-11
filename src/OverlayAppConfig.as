@@ -3,6 +3,7 @@
  */
 package {
 import commands.CopyHexColorCommand;
+import commands.CopyLocationCommand;
 import commands.CreateImageViewCommand;
 import commands.DisplayNotificationCommand;
 import commands.ImageAlwaysOnTopCommand;
@@ -17,7 +18,7 @@ import mediators.BitmapImageViewMediator;
 import mediators.ImageViewMediator;
 import mediators.MainFrameViewMediator;
 
-import models.ImageModelCollection;
+import models.ImagesMap;
 import models.UserModel;
 
 import robotlegs.bender.extensions.contextView.ContextView;
@@ -30,6 +31,7 @@ import robotlegs.bender.framework.api.IInjector;
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
 import signals.CopyHexColorSignal;
+import signals.CopyLocationSignal;
 import signals.CreateImageViewSignal;
 import signals.DisplayNotificationSignal;
 import signals.InvertColorsSignal;
@@ -72,7 +74,7 @@ public class OverlayAppConfig implements IConfig {
 
 
     injector.map(UserModel).asSingleton();
-    injector.map(ImageModelCollection).asSingleton();
+    injector.map(ImagesMap).asSingleton();
 
     mediatorMap.map(ImageView).toMediator(ImageViewMediator);
     mediatorMap.map(MainFrameView).toMediator(MainFrameViewMediator);
@@ -95,6 +97,7 @@ public class OverlayAppConfig implements IConfig {
     signalCommandMap.map(RemoveImageViewSignal).toCommand(RemoveImageViewCommand);
     signalCommandMap.map(CopyHexColorSignal).toCommand(CopyHexColorCommand);
     signalCommandMap.map(DisplayNotificationSignal).toCommand(DisplayNotificationCommand);
+    signalCommandMap.map(CopyLocationSignal).toCommand(CopyLocationCommand);
 
     contextView.view.addChild(new MainFrameView());
 

@@ -5,7 +5,7 @@ package commands {
 import flash.display.NativeWindow;
 
 import models.ImageModel;
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
@@ -22,11 +22,11 @@ public class ImageAlwaysOnTopCommand extends Command {
   public var notification:DisplayNotificationSignal;
 
   [Inject]
-  public var imageModelCollection:ImageModelCollection;
+  public var imageModelCollection:ImagesMap;
 
   override public function execute():void {
 
-    var view:ImageView = imageModelCollection.currentImage;
+    var view:ImageView = imageModelCollection.current;
     var model:ImageModel = imageModelCollection.itemFor(view);
 
     model.alwaysOnTop = signal.onTop;

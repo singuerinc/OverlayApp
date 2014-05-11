@@ -10,7 +10,7 @@ import flash.events.Event;
 import flash.net.URLRequest;
 
 import models.ImageModel;
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
@@ -36,7 +36,7 @@ public class LoadImageViewCommand extends Command {
   public var removeImageViewSignal:RemoveImageViewSignal;
 
   [Inject]
-  public var model:ImageModelCollection;
+  public var model:ImagesMap;
 
   private var _url:String;
 
@@ -55,7 +55,7 @@ public class LoadImageViewCommand extends Command {
 
     removeImageViewSignal.dispatch();
 
-    var view:ImageView = model.currentImage;
+    var view:ImageView = model.current;
     var model:ImageModel = model.itemFor(view);
 
     view.invertColorsActionBtn.visible = true;

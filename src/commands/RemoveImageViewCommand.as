@@ -4,7 +4,7 @@
 package commands {
 import com.greensock.TweenMax;
 
-import models.ImageModelCollection;
+import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
@@ -13,11 +13,11 @@ import views.ImageView;
 public class RemoveImageViewCommand extends Command {
 
   [Inject]
-  public var model:ImageModelCollection;
+  public var model:ImagesMap;
 
   override public function execute():void {
 
-    var view:ImageView = model.currentImage;
+    var view:ImageView = model.current;
 
     try {
       view.bmp.parent.removeChild(view.bmp);
