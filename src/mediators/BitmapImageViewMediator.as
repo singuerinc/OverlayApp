@@ -33,6 +33,8 @@ public class BitmapImageViewMediator extends Mediator {
     view.guides.alpha = 0;
 
     view.zoom.visible = false;
+    view.zoom.x = view.bitmap.width-100;
+    view.zoom.y = view.bitmap.height-100;
 
     view.signals.click.add(_onClick);
     view.signals.enterFrame.add(_onEnterFrame);

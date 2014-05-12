@@ -25,23 +25,32 @@ public class ZoomView extends Sprite {
 
     addChild(bitmap);
 
-//    var msk:Sprite = new Sprite();
-//    msk.graphics.beginFill(0);
-//    msk.graphics.drawCircle(50, 50, 25);
-//    msk.graphics.endFill();
-//    msk.cacheAsBitmap = true;
-//    addChild(msk);
-//
-//    bitmap.mask = msk;
+    var hGuide:Sprite = new Sprite();
+    hGuide.y = H/2;
+    hGuide.graphics.lineStyle(1, 0x666666, 1);
+    hGuide.graphics.lineTo(W, 0);
+    addChild(hGuide);
+
+    var vGuide:Sprite = new Sprite();
+    vGuide.x = W/2;
+    vGuide.graphics.lineStyle(1, 0x666666, 1);
+    vGuide.graphics.lineTo(0, H);
+    addChild(vGuide);
+
+    var border:Sprite = new Sprite();
+    border.graphics.lineStyle(1, 0x666666, 1);
+    border.graphics.drawRect(0, 0, W, H);
+    addChild(border);
   }
 
   private var bitmap:Bitmap;
   private var bitmapData:BitmapData;
 
+//  public function update(source:BitmapData):void {
   public function update(localX:Number, localY:Number, source:BitmapData):void {
 
-    bitmap.x = localX - (W/2);
-    bitmap.y = localY - (H/2);
+//    bitmap.x = localX - (W/2);
+//    bitmap.y = localY - (H/2);
 
     var m:Matrix = new Matrix();
     m.translate(-localX+(50/ZOOM), -localY+(50/ZOOM));
