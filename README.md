@@ -1,6 +1,7 @@
 # Overlay · About
 
 Overlay is an application to overlay an image and use it as a guide.
+
 The most common scenario to use it is in web development.
 
 ### How it works ###
