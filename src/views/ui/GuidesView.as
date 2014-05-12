@@ -14,15 +14,15 @@ public class GuidesView extends Sprite {
 
   public function GuidesView(w:uint, h:uint) {
 
-    blendMode = BlendMode.INVERT;
+    blendMode = BlendMode.ADD;
 
     _hGuide = new SignalSprite();
-    _hGuide.graphics.lineStyle(1, 0, 1);
+    _hGuide.graphics.lineStyle(1, 0xFF0000, 1);
     _hGuide.graphics.lineTo(w, 0);
     addChild(_hGuide);
 
     _vGuide = new SignalSprite();
-    _vGuide.graphics.lineStyle(1, 0, 1);
+    _vGuide.graphics.lineStyle(1, 0xFF0000, 1);
     _vGuide.graphics.lineTo(0, h);
     addChild(_vGuide);
   }
