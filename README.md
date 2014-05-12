@@ -6,9 +6,9 @@ The most common scenario to use it is in web development.
 ### How it works ###
 
 1. Open Overlay (yeah, obvious step...)
-2. **Drag and drop an image** (jpg, png or gif) into the drop area.
-3. Place Overlay whatever you want (over Chrome for example) and lock the window (**L** key).
-4. Develop you web page, try to make it exactly as the image (your art director will love you)
+2. **Drag and drop an image** (jpg, png or gif) into the drop area
+3. Position the Overlay window where you want it (over Chrome for example) and lock the window (**L** key)
+4. Start coding and try to match the image (suddently the art director will start loving your work)
 
 ![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
 
@@ -38,10 +38,10 @@ The most common scenario to use it is in web development.
 - create cool icon
 - <del>invert colors</del> / multiply?
 - save last position / reset position
-- <del>lock position</del>, disable mouse (isn't possible)
+- <del>lock position</del>, disable mouse (it's not possible)
 - refresh image (automatically)
 - copy color to clipboard
-- change alpha changes opacity indicator
+- changing image alpha updates the opacity indicator
 - on image remove, reset model alpha
 - update manager
 - analytics
