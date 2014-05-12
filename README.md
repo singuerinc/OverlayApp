@@ -25,12 +25,15 @@ The most common scenario to use it is in web development.
 |l|Lock/Unlock the window.|
 |t|Window always on top (on|off).|
 |s or h|Show and hide the window.|
+|alt+move|Show guides|
+|alt+click|Copy position|
+|cmd+click|Copy hex color|
 
 # TODO
 
 - <del>more functionality icons</del>
 - <del>icon to block window</del>
-- guides
+- <del>guides</del>
 - opacity indicator!
 - <del>cross to remove image and window</del>
 - clone window
@@ -40,8 +43,9 @@ The most common scenario to use it is in web development.
 - save last position / reset position
 - <del>lock position</del>, disable mouse (it's not possible)
 - refresh image (automatically)
-- copy color to clipboard
+- <del>copy color to clipboard</del>
 - changing image alpha updates the opacity indicator
 - on image remove, reset model alpha
 - update manager
 - analytics
+- builds for Win, Mac, Linux
