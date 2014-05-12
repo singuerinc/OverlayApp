@@ -34,9 +34,8 @@ The most common scenario to use it is in web development.
 - <del>more functionality icons</del>
 - <del>icon to block window</del>
 - <del>guides</del>
-- opacity indicator!
+- <del>opacity indicator!</del>
 - <del>cross to remove image and window</del>
-- clone window
 - zoom image?
 - create cool icon
 - <del>invert colors</del> / multiply?
@@ -44,11 +43,11 @@ The most common scenario to use it is in web development.
 - <del>lock position</del>, disable mouse (it's not possible)
 - refresh image (automatically)
 - <del>copy color to clipboard</del>
-- changing image alpha updates the opacity indicator
+- <del>changing image alpha updates the opacity indicator</del>
 - on image remove, reset model alpha
 - update manager
 - analytics
 - builds for Win, Mac, Linux
-- load from url
+- load from url?
 - load multiples images
 - click and drag: draw a rect area
