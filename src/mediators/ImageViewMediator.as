@@ -130,6 +130,7 @@ public class ImageViewMediator extends Mediator {
       }
 
       if (view.bmp) {
+        trace('down', event.keyCode);
         switch (event.keyCode) {
           case Keyboard.Z:
             loadImageViewSignal.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
@@ -140,7 +141,7 @@ public class ImageViewMediator extends Mediator {
             break;
           case Keyboard.NUMPAD_0:
           case Keyboard.NUMBER_0:
-            changeAlphaSignal.dispatch(view, 1);
+            changeAlphaSignal.dispatch(1);
             break;
           case Keyboard.NUMBER_1:
           case Keyboard.NUMBER_2:
@@ -151,7 +152,7 @@ public class ImageViewMediator extends Mediator {
           case Keyboard.NUMBER_7:
           case Keyboard.NUMBER_8:
           case Keyboard.NUMBER_9:
-            changeAlphaSignal.dispatch(view, (event.keyCode - 48) * 0.1);
+            changeAlphaSignal.dispatch((event.keyCode - 48) * 0.1);
             break;
           case Keyboard.NUMPAD_1:
           case Keyboard.NUMPAD_2:
@@ -162,13 +163,13 @@ public class ImageViewMediator extends Mediator {
           case Keyboard.NUMPAD_7:
           case Keyboard.NUMPAD_8:
           case Keyboard.NUMPAD_9:
-            changeAlphaSignal.dispatch(view, (event.keyCode - 96) * 0.1);
+            changeAlphaSignal.dispatch((event.keyCode - 96) * 0.1);
             break;
           case Keyboard.NUMPAD_ADD:
-            changeAlphaSignal.dispatch(view, model.alpha + 0.1);
+            changeAlphaSignal.dispatch(model.alpha + 0.1);
             break;
           case Keyboard.NUMPAD_SUBTRACT:
-            changeAlphaSignal.dispatch(view, model.alpha - 0.1);
+            changeAlphaSignal.dispatch(model.alpha - 0.1);
             break;
         }
       }

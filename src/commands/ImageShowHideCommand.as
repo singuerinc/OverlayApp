@@ -27,7 +27,7 @@ public class ImageShowHideCommand extends Command {
     model.visible = signal.visible;
 
     view.bmp.visible = model.visible;
-    view.dropArea.visible = model.visible;
+    view.dropArea.visible = false;
   }
 }
 }
