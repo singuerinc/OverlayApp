@@ -7,9 +7,11 @@ import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
+import signals.DisplayNotificationSignal;
 import signals.ShowHideSignal;
 
 import views.ImageView;
+import views.buttons.ShowHideActionBtnView;
 
 public class ImageShowHideCommand extends Command {
 
@@ -18,6 +20,9 @@ public class ImageShowHideCommand extends Command {
 
   [Inject]
   public var model:ImagesMap;
+
+  [Inject]
+  public var notification:DisplayNotificationSignal;
 
   override public function execute():void {
 
@@ -28,6 +33,11 @@ public class ImageShowHideCommand extends Command {
 
     view.bmp.visible = model.visible;
     view.dropArea.visible = false;
+
+    var valueTxt:String = model.visible ? 'Show' : 'Hide';
+    var icon:ShowHideActionBtnView = new ShowHideActionBtnView();
+    icon.state = model.visible ? 0 : 1;
+    notification.dispatch(valueTxt, icon);
   }
 }
 }

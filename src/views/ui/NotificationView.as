@@ -22,12 +22,16 @@ public class NotificationView extends Sprite {
 
     _textField = new TextField();
     _textField.x = 5;
+    _textField.y = 4;
     addChild(_textField);
 
     _textField.gridFitType = GridFitType.PIXEL;
     _textField.antiAliasType = AntiAliasType.ADVANCED;
     _textField.autoSize = TextFieldAutoSize.LEFT;
-    _textField.defaultTextFormat = new TextFormat('Inconsolata', 14, 0x888888, false);
+    _textField.defaultTextFormat = new TextFormat('Visitor TT1 BRK', 10, 0xFFFFFF, false);
+    _textField.alpha = 0.8;
+    _textField.selectable = false;
+    _textField.mouseEnabled = false;
     _textField.text = _text;
 
     if (icon) {
@@ -45,7 +49,7 @@ public class NotificationView extends Sprite {
     var h:int = 20;
 
     graphics.clear();
-    graphics.beginFill(0x000000, 0.9);
+    graphics.beginFill(0x000000, 1);
     graphics.drawRect(0, 0, w, h);
     graphics.endFill();
   }

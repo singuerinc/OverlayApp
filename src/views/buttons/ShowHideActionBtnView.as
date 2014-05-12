@@ -11,19 +11,8 @@ import flash.text.TextFormat;
 import org.osflash.signals.natives.base.SignalSprite;
 
 public class ShowHideActionBtnView extends SignalSprite {
-  private var _textField:TextField;
 
   public function ShowHideActionBtnView() {
-
-    _textField = new TextField();
-    _textField.x = 0;
-    _textField.y = 0;
-    addChild(_textField);
-
-    _textField.gridFitType = GridFitType.PIXEL;
-    _textField.antiAliasType = AntiAliasType.ADVANCED;
-    _textField.autoSize = TextFieldAutoSize.LEFT;
-    _textField.defaultTextFormat = new TextFormat('Inconsolata', 8, 0xFFFFFF, false);
 
   }
 
@@ -51,10 +40,6 @@ public class ShowHideActionBtnView extends SignalSprite {
       graphics.endFill();
     }
 
-  }
-
-  public function updateAlpha(alpha:Number):void {
-    _textField.text = Math.floor(alpha*100).toString();
   }
 }
 }

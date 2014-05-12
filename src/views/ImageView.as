@@ -19,8 +19,10 @@ import views.buttons.RemoveImageViewActionBtnView;
 import views.buttons.ShowHideActionBtnView;
 import views.ui.BitmapImageView;
 import views.ui.DropAreaView;
+import views.ui.ImageAlphaDisplayView;
 
 public class ImageView extends SignalSprite {
+
   public function ImageView() {
 
     super();
@@ -50,7 +52,7 @@ public class ImageView extends SignalSprite {
 
     actionsContainer = new Sprite();
     actionsContainer.graphics.beginFill(0x000000);
-    actionsContainer.graphics.drawRect(0, 0, 100, 20);
+    actionsContainer.graphics.drawRect(0, 0, 200, 20);
     actionsContainer.graphics.endFill();
     addChild(actionsContainer);
 
@@ -81,6 +83,12 @@ public class ImageView extends SignalSprite {
     removeImageViewActionBtn.visible = false;
     actionsContainer.addChild(removeImageViewActionBtn);
 
+    imageAlphaDisplayView = new ImageAlphaDisplayView();
+    imageAlphaDisplayView.x = 100;
+    imageAlphaDisplayView.y = 5;
+    imageAlphaDisplayView.visible = false;
+    actionsContainer.addChild(imageAlphaDisplayView);
+
     notificationsContainer = new Sprite();
     addChild(notificationsContainer);
   }
@@ -88,11 +96,15 @@ public class ImageView extends SignalSprite {
   public var notifications:SortedList = new SortedList();
   public var notificationsContainer:Sprite;
   public var dropArea:DropAreaView;
+
   public var alwaysOnTopActionBtn:AlwaysOnTopActionBtnView;
   public var showHideActionBtn:ShowHideActionBtnView;
   public var lockUnlockActionBtn:LockUnlockActionBtnView;
+
   public var invertColorsActionBtn:InvertColorsActionBtnView;
   public var removeImageViewActionBtn:RemoveImageViewActionBtnView;
+  public var imageAlphaDisplayView:ImageAlphaDisplayView;
+
   public var actionsContainer:Sprite;
   private var _window:NativeWindow;
 

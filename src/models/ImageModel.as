@@ -4,13 +4,14 @@
 package models {
 public class ImageModel {
 
-  public static const INIT_ALPHA:Number = 0.8;
+  public static const INIT_ALPHA:Number = 1;
 
   private var _alpha:Number;
   private var _alwaysOnTop:Boolean;
   private var _locked:Boolean;
   private var _visible:Boolean;
   private var _invertedColors:Boolean;
+  private var _moved:Boolean;
 
   public function ImageModel() {
     _alpha = INIT_ALPHA;
@@ -62,6 +63,14 @@ public class ImageModel {
 
   public function set invertedColors(value:Boolean):void {
     _invertedColors = value;
+  }
+
+  public function set moved(moved:Boolean):void {
+    _moved = moved;
+  }
+
+  public function get moved():Boolean {
+    return _moved;
   }
 }
 }

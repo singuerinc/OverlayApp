@@ -29,7 +29,7 @@ public class ImageChangeAlphaCommand extends Command {
 
     var model:ImageModel = model.itemFor(imageView);
 
-    model.alpha = alpha;
+    model.alpha = Math.max(0, Math.min(alpha, 1));
     bmp.alpha = model.alpha;
 
   }

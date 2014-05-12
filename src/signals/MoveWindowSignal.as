@@ -2,18 +2,20 @@
  * Created by singuerinc on 09/05/2014.
  */
 package signals {
+import flash.geom.Point;
+
 import org.osflash.signals.PrioritySignal;
 
-public class ChangeAlphaSignal extends PrioritySignal {
+public class MoveWindowSignal extends PrioritySignal {
 
-  public function ChangeAlphaSignal() {
-    super(Number);
+  public function MoveWindowSignal() {
+    super(Point);
   }
 
-  public var alpha:Number;
+  public var point:Point;
 
   override public function dispatch(...valueObjects):void {
-    this.alpha = valueObjects[0];
+    this.point = valueObjects[0];
     super.dispatch.apply(this, valueObjects);
   }
 }

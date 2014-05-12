@@ -21,7 +21,7 @@ public class MainFrameViewMediator extends Mediator {
 
   override public function initialize():void {
     createImageViewSignal.dispatch();
-    load.dispatch('file:///Users/singuerinc/Desktop/2224741-alien19793.jpg');
+    load.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
   }
 
 }

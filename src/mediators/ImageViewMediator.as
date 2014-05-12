@@ -11,6 +11,7 @@ import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
 import flash.events.NativeDragEvent;
 import flash.filesystem.File;
+import flash.geom.Point;
 import flash.ui.Keyboard;
 
 import models.ImageModel;
@@ -24,6 +25,7 @@ import signals.ChangeAlphaSignal;
 import signals.InvertColorsSignal;
 import signals.LoadImageViewSignal;
 import signals.LockOrUnlockSignal;
+import signals.MoveWindowSignal;
 import signals.RemoveImageViewSignal;
 import signals.ShowHideSignal;
 
@@ -53,6 +55,8 @@ public class ImageViewMediator extends Mediator {
   public var loadImageViewSignal:LoadImageViewSignal;
   [Inject]
   public var removeImageViewSignal:RemoveImageViewSignal;
+  [Inject]
+  public var moveWindowSignal:MoveWindowSignal;
 
   public var model:ImageModel;
 
@@ -78,6 +82,7 @@ public class ImageViewMediator extends Mediator {
     mediatorMap.mediate(view.invertColorsActionBtn);
     mediatorMap.mediate(view.showHideActionBtn);
     mediatorMap.mediate(view.removeImageViewActionBtn);
+    mediatorMap.mediate(view.imageAlphaDisplayView);
   }
 
   protected function _activateHandler(event:Event):void {
@@ -102,17 +107,21 @@ public class ImageViewMediator extends Mediator {
 
     if (!event.controlKey && !event.altKey) {
       switch (event.keyCode) {
+        case Keyboard.NUMPAD_MULTIPLY:
+          moveWindowSignal.dispatch(new Point(view.stage.nativeWindow.width * (model.moved ? 1 : -1), 0));
+          model.moved = !model.moved;
+          break;
         case Keyboard.LEFT:
-          view.stage.nativeWindow.x -= (event.shiftKey) ? 10.0 : 1.0;
+          moveWindowSignal.dispatch(new Point((event.shiftKey) ? -10.0 : -1.0, 0));
           break;
         case Keyboard.RIGHT:
-          view.stage.nativeWindow.x += (event.shiftKey) ? 10.0 : 1.0;
+          moveWindowSignal.dispatch(new Point((event.shiftKey) ? 10.0 : 1.0, 0));
           break;
         case Keyboard.UP:
-          view.stage.nativeWindow.y -= (event.shiftKey) ? 10.0 : 1.0;
+          moveWindowSignal.dispatch(new Point(0, (event.shiftKey) ? -10.0 : -1.0));
           break;
         case Keyboard.DOWN:
-          view.stage.nativeWindow.y += (event.shiftKey) ? 10.0 : 1.0;
+          moveWindowSignal.dispatch(new Point(0, (event.shiftKey) ? 10.0 : 1.0));
           break;
         case Keyboard.S:
         case Keyboard.H:
@@ -136,7 +145,7 @@ public class ImageViewMediator extends Mediator {
             loadImageViewSignal.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
             break;
           case Keyboard.BACKSPACE:
-          case Keyboard.D:
+          case Keyboard.X:
             removeImageViewSignal.dispatch();
             break;
           case Keyboard.NUMPAD_0:
@@ -166,10 +175,10 @@ public class ImageViewMediator extends Mediator {
             changeAlphaSignal.dispatch((event.keyCode - 96) * 0.1);
             break;
           case Keyboard.NUMPAD_ADD:
-            changeAlphaSignal.dispatch(model.alpha + 0.1);
+            changeAlphaSignal.dispatch(model.alpha + 0.05);
             break;
           case Keyboard.NUMPAD_SUBTRACT:
-            changeAlphaSignal.dispatch(model.alpha - 0.1);
+            changeAlphaSignal.dispatch(model.alpha - 0.05);
             break;
         }
       }

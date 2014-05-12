@@ -7,9 +7,12 @@ import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
+import signals.DisplayNotificationSignal;
+
 import signals.InvertColorsSignal;
 
 import views.ImageView;
+import views.buttons.InvertColorsActionBtnView;
 
 public class ImageInvertColorsCommand extends Command {
 
@@ -18,6 +21,9 @@ public class ImageInvertColorsCommand extends Command {
 
   [Inject]
   public var model:ImagesMap;
+
+  [Inject]
+  public var notification:DisplayNotificationSignal;
 
   override public function execute():void {
 
@@ -36,9 +42,14 @@ public class ImageInvertColorsCommand extends Command {
         view.bmp.filters = [cm.filter];
 
       } else {
-
         view.bmp.filters = [];
       }
+
+      var valueTxt:String = model.invertedColors ? 'Inverted colors' : 'Original colors';
+      var icon:InvertColorsActionBtnView = new InvertColorsActionBtnView();
+      icon.state = model.invertedColors ? 0 : 1;
+      notification.dispatch(valueTxt, icon);
+
     }
 
   }

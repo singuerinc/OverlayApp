@@ -11,12 +11,12 @@ public class PositionNotificationIcon extends Sprite {
     graphics.drawRect(0, 0, 10, 10);
     graphics.endFill();
     graphics.lineStyle(1, 0xFFFFFF);
-    graphics.moveTo(1, 1);
-    graphics.lineTo(9, 9);
-    graphics.moveTo(9, 1);
-    graphics.lineTo(1, 9);
-    graphics.lineStyle(0, 0);
-    graphics.beginFill(0xFF0000, 0.7);
+    graphics.moveTo(0, 0);
+    graphics.lineTo(10, 10);
+    graphics.moveTo(10, 0);
+    graphics.lineTo(0, 10);
+    graphics.lineStyle(0, 0xFFFFFF);
+    graphics.beginFill(0x000000, 0.7);
     graphics.drawRect(2, 2, 5, 5);
     graphics.endFill();
   }

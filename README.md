@@ -49,3 +49,6 @@ The most common scenario to use it is in web development.
 - update manager
 - analytics
 - builds for Win, Mac, Linux
+- load from url
+- load multiples images
+- click and drag: draw a rect area

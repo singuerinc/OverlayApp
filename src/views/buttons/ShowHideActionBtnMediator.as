@@ -9,13 +9,9 @@ import models.ImagesMap;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
-import signals.ChangeAlphaSignal;
-
-import signals.LockOrUnlockSignal;
 import signals.ShowHideSignal;
 
 import views.ImageView;
-import views.buttons.ShowHideActionBtnView;
 
 public class ShowHideActionBtnMediator extends Mediator {
 
@@ -24,9 +20,6 @@ public class ShowHideActionBtnMediator extends Mediator {
 
   [Inject]
   public var showHideSignal:ShowHideSignal;
-
-  [Inject]
-  public var changeAlphaSignal:ChangeAlphaSignal;
 
   [Inject]
   public var imageModelCollection:ImagesMap;
@@ -44,11 +37,6 @@ public class ShowHideActionBtnMediator extends Mediator {
       showHideSignal.dispatch(!model.visible);
     });
 
-    changeAlphaSignal.add(_onAlphaChanged);
-  }
-
-  private function _onAlphaChanged(alpha:Number):void {
-    view.updateAlpha(alpha);
   }
 
   private function _onShowHideSignal(visible:Boolean):void {

@@ -12,10 +12,12 @@ import commands.ImageInvertColorsCommand;
 import commands.ImageLockUnlockCommand;
 import commands.ImageShowHideCommand;
 import commands.LoadImageViewCommand;
+import commands.MoveWindowCommand;
 import commands.RemoveImageViewCommand;
 
 import mediators.BitmapImageViewMediator;
 import mediators.GuidesViewMediator;
+import mediators.ImageAlphaDisplayViewMediator;
 import mediators.ImageViewMediator;
 import mediators.MainFrameViewMediator;
 
@@ -38,6 +40,7 @@ import signals.DisplayNotificationSignal;
 import signals.InvertColorsSignal;
 import signals.LoadImageViewSignal;
 import signals.LockOrUnlockSignal;
+import signals.MoveWindowSignal;
 import signals.RemoveImageViewSignal;
 import signals.ShowHideSignal;
 
@@ -55,6 +58,7 @@ import views.buttons.ShowHideActionBtnMediator;
 import views.buttons.ShowHideActionBtnView;
 import views.ui.BitmapImageView;
 import views.ui.GuidesView;
+import views.ui.ImageAlphaDisplayView;
 
 public class OverlayAppConfig implements IConfig {
   [Inject]
@@ -89,6 +93,7 @@ public class OverlayAppConfig implements IConfig {
     mediatorMap.map(RemoveImageViewActionBtnView).toMediator(RemoveImageViewActionBtnMediator);
     mediatorMap.map(BitmapImageView).toMediator(BitmapImageViewMediator);
     mediatorMap.map(GuidesView).toMediator(GuidesViewMediator);
+    mediatorMap.map(ImageAlphaDisplayView).toMediator(ImageAlphaDisplayViewMediator);
 
     signalCommandMap.map(CreateImageViewSignal).toCommand(CreateImageViewCommand);
     signalCommandMap.map(AlwaysOnTopSignal).toCommand(ImageAlwaysOnTopCommand);
@@ -101,6 +106,7 @@ public class OverlayAppConfig implements IConfig {
     signalCommandMap.map(CopyHexColorSignal).toCommand(CopyHexColorCommand);
     signalCommandMap.map(DisplayNotificationSignal).toCommand(DisplayNotificationCommand);
     signalCommandMap.map(CopyLocationSignal).toCommand(CopyLocationCommand);
+    signalCommandMap.map(MoveWindowSignal).toCommand(MoveWindowCommand);
 
     contextView.view.addChild(new MainFrameView());
 
