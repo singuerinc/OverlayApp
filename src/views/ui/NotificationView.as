@@ -22,13 +22,13 @@ public class NotificationView extends Sprite {
 
     _textField = new TextField();
     _textField.x = 5;
-    _textField.y = 4;
+    _textField.y = 0;
     addChild(_textField);
 
     _textField.gridFitType = GridFitType.PIXEL;
     _textField.antiAliasType = AntiAliasType.ADVANCED;
     _textField.autoSize = TextFieldAutoSize.LEFT;
-    _textField.defaultTextFormat = new TextFormat('Visitor TT1 BRK', 10, 0xFFFFFF, false);
+    _textField.defaultTextFormat = new TextFormat('Munica Extended', 8, 0xFFFFFF, false);
     _textField.alpha = 0.8;
     _textField.selectable = false;
     _textField.mouseEnabled = false;

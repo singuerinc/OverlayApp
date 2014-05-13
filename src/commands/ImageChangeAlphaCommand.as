@@ -22,15 +22,19 @@ public class ImageChangeAlphaCommand extends Command {
 
   override public function execute():void {
 
-    var imageView:ImageView = model.current;
+    var view:ImageView = model.current;
 
-    var alpha:Number = signal.alpha;
-    var bmp:BitmapImageView = imageView.bmp;
+    if (view) {
 
-    var model:ImageModel = model.itemFor(imageView);
+      var alpha:Number = signal.alpha;
+      var bmp:BitmapImageView = view.bmp;
 
-    model.alpha = Math.max(0, Math.min(alpha, 1));
-    bmp.alpha = model.alpha;
+      var model:ImageModel = model.itemFor(view);
+
+      model.alpha = Math.max(0, Math.min(alpha, 1));
+      bmp.alpha = model.alpha;
+
+    }
 
   }
 }

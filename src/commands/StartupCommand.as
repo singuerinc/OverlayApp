@@ -4,10 +4,15 @@
 package commands {
 import com.google.analytics.GATracker;
 
+import flash.system.Capabilities;
+
 import robotlegs.bender.bundles.mvcs.Command;
 import robotlegs.bender.extensions.contextView.ContextView;
 
 import services.AppUpdaterService;
+
+import signals.CreateImageViewSignal;
+import signals.LoadImageViewSignal;
 
 import views.MainFrameView;
 
@@ -20,15 +25,22 @@ public class StartupCommand extends Command {
   public var tracker:GATracker;
   [Inject]
   public var updaterService:AppUpdaterService;
+  [Inject]
+  public var createImageViewSignal:CreateImageViewSignal;
+  [Inject]
+  public var load:LoadImageViewSignal;
 
   override public function execute():void {
 
     contextView.view.addChild(new MainFrameView());
+    createImageViewSignal.dispatch();
 
-//    tracker.trackEvent("Application", "Startup", Capabilities.os);
-//    tracker.trackPageview("/");
+    tracker.trackEvent("Application", "Startup", Capabilities.serverString);
+    tracker.trackPageview("/");
 
     updaterService.updater.initialize();
+
+    // load.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
   }
 }
 }

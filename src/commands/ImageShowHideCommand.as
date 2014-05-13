@@ -27,17 +27,22 @@ public class ImageShowHideCommand extends Command {
   override public function execute():void {
 
     var view:ImageView = model.current;
-    var model:ImageModel = model.itemFor(view);
 
-    model.visible = signal.visible;
+    if (view && view.bmp) {
 
-    view.bmp.visible = model.visible;
-    view.dropArea.visible = false;
+      var model:ImageModel = model.itemFor(view);
 
-    var valueTxt:String = model.visible ? 'Show' : 'Hide';
-    var icon:ShowHideActionBtnView = new ShowHideActionBtnView();
-    icon.state = model.visible ? 0 : 1;
-    notification.dispatch(valueTxt, icon);
+      model.visible = signal.visible;
+
+      view.bmp.visible = model.visible;
+      view.dropArea.visible = false;
+
+      var valueTxt:String = model.visible ? 'Show' : 'Hide';
+      var icon:ShowHideActionBtnView = new ShowHideActionBtnView();
+      icon.state = model.visible ? 0 : 1;
+      notification.dispatch(valueTxt, icon);
+
+    }
   }
 }
 }

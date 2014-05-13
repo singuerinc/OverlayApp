@@ -96,9 +96,7 @@ public class ImageViewMediator extends Mediator {
 
   protected function _mouseDownHandler(event:MouseEvent):void {
 
-    if (model.locked) {
-      return;
-    }
+    if (model.locked) return;
 
     view.stage.nativeWindow.startMove();
   }
@@ -139,11 +137,7 @@ public class ImageViewMediator extends Mediator {
       }
 
       if (view.bmp) {
-        trace('down', event.keyCode);
         switch (event.keyCode) {
-          case Keyboard.Z:
-            loadImageViewSignal.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
-            break;
           case Keyboard.BACKSPACE:
           case Keyboard.X:
             removeImageViewSignal.dispatch();
@@ -190,14 +184,12 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onDrop(event:NativeDragEvent):void {
-
     var clipboard:Clipboard = event.clipboard;
     if (clipboard.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
       var dropFiles:Array = clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
       var imageFile:File = dropFiles[0];
       loadImageViewSignal.dispatch(imageFile.url);
     }
-
   }
 
   private function _onDragOver(event:NativeDragEvent):void {
@@ -205,12 +197,8 @@ public class ImageViewMediator extends Mediator {
   }
 
   private function _onDragIn(event:NativeDragEvent):void {
-
     var transferable:Clipboard = event.clipboard;
-    if (transferable.hasFormat(ClipboardFormats.BITMAP_FORMAT) ||
-        transferable.hasFormat(ClipboardFormats.FILE_LIST_FORMAT) ||
-        transferable.hasFormat(ClipboardFormats.URL_FORMAT)
-        ) {
+    if (transferable.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
       NativeDragManager.dropAction = NativeDragActions.MOVE;
       NativeDragManager.acceptDragDrop(view.dropArea);
     }

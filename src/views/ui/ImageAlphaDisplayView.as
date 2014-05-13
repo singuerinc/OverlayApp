@@ -17,13 +17,13 @@ public class ImageAlphaDisplayView extends SignalSprite {
 
     _textField = new TextField();
     _textField.x = 0;
-    _textField.y = -4;
+    _textField.y = -5;
     addChild(_textField);
 
     _textField.gridFitType = GridFitType.PIXEL;
     _textField.antiAliasType = AntiAliasType.ADVANCED;
     _textField.autoSize = TextFieldAutoSize.LEFT;
-    _textField.defaultTextFormat = new TextFormat('Visitor TT1 BRK', 10, 0x00FF00, false, true);
+    _textField.defaultTextFormat = new TextFormat('Munica Extended', 8, 0x00FF00, false, true);
     _textField.selectable = false;
     _textField.mouseEnabled = false;
     _textField.alpha = 0.99;
