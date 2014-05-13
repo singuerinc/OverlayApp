@@ -23,6 +23,5 @@ public class MainFrameViewMediator extends Mediator {
     createImageViewSignal.dispatch();
     load.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
   }
-
 }
 }

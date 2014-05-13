@@ -1,4 +1,4 @@
-package {
+package core {
 
 import flash.display.Sprite;
 import flash.display.StageAlign;

@@ -1,7 +1,9 @@
 /**
  * Created by singuerinc on 08/05/2014.
  */
-package {
+package core {
+import com.google.analytics.GATracker;
+
 import commands.CopyHexColorCommand;
 import commands.CopyLocationCommand;
 import commands.CreateImageViewCommand;
@@ -14,6 +16,7 @@ import commands.ImageShowHideCommand;
 import commands.LoadImageViewCommand;
 import commands.MoveWindowCommand;
 import commands.RemoveImageViewCommand;
+import commands.StartupCommand;
 
 import mediators.BitmapImageViewMediator;
 import mediators.GuidesViewMediator;
@@ -31,6 +34,8 @@ import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 import robotlegs.bender.framework.api.IConfig;
 import robotlegs.bender.framework.api.IInjector;
 
+import services.AppUpdaterService;
+
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
 import signals.CopyHexColorSignal;
@@ -43,6 +48,8 @@ import signals.LockOrUnlockSignal;
 import signals.MoveWindowSignal;
 import signals.RemoveImageViewSignal;
 import signals.ShowHideSignal;
+import signals.StartupSignal;
+import signals.StartupSignal;
 
 import views.ImageView;
 import views.MainFrameView;
@@ -78,6 +85,8 @@ public class OverlayAppConfig implements IConfig {
 
   public function configure():void {
 
+    injector.map(GATracker).toValue(new GATracker(contextView.view, Settings.GA_ACCOUNT, "AS3"));
+    injector.map(AppUpdaterService).asSingleton();
 
     injector.map(UserModel).asSingleton();
     injector.map(ImagesMap).asSingleton();
@@ -108,8 +117,8 @@ public class OverlayAppConfig implements IConfig {
     signalCommandMap.map(CopyLocationSignal).toCommand(CopyLocationCommand);
     signalCommandMap.map(MoveWindowSignal).toCommand(MoveWindowCommand);
 
-    contextView.view.addChild(new MainFrameView());
-
+    signalCommandMap.map(StartupSignal).toCommand(StartupCommand);
+    injector.getInstance(StartupSignal).dispatch();
   }
 }
 }
