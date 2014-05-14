@@ -4,7 +4,7 @@
 package commands {
 import flash.desktop.Clipboard;
 import flash.desktop.ClipboardFormats;
-import flash.geom.Point;
+import flash.geom.Rectangle;
 
 import robotlegs.bender.bundles.mvcs.Command;
 
@@ -22,11 +22,22 @@ public class CopyLocationCommand extends Command {
 
   override public function execute():void {
 
-    var point:Point = signal.location;
-    var text:String = 'top: ' + point.y + 'px;\nleft: ' + point.x + 'px;';
-    Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, text);
+    var rect:Rectangle = signal.rect;
 
-    notificationSignal.dispatch('Location: x:' + point.x + ', y:' + point.y + ' copied to Clipboard', new PositionNotificationIcon());
+    var clipboardStr:String;
+    var notificationStr:String;
+
+    if (rect.width === 0 && rect.height === 0) {
+      clipboardStr = 'top: ' + rect.y + 'px;\nleft: ' + rect.x + 'px;';
+      notificationStr = 'Location: x:' + rect.x + ', y:' + rect.y + ' copied to Clipboard';
+    } else {
+      clipboardStr = 'top: ' + rect.y + 'px;\nleft: ' + rect.x + 'px;\nwidth: ' + rect.width + 'px;\nheight: ' + rect.height + 'px;';
+      notificationStr = 'Dimensions: x:' + rect.x + ', y:' + rect.y + ', w:' + rect.width + ', h:' + rect.height + ' copied to Clipboard';
+    }
+
+    notificationSignal.dispatch(notificationStr, new PositionNotificationIcon());
+
+    Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, clipboardStr);
   }
 }
 }

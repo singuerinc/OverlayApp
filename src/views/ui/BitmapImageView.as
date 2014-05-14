@@ -7,6 +7,7 @@ import flash.display.Bitmap;
 import org.osflash.signals.natives.base.SignalSprite;
 
 public class BitmapImageView extends SignalSprite {
+  private var _ruler:RulerView;
   public function BitmapImageView(bitmap:Bitmap) {
 
     _bitmap = bitmap;
@@ -17,6 +18,9 @@ public class BitmapImageView extends SignalSprite {
 
     _guides = new GuidesView(this.bitmap.width, this.bitmap.height);
     addChild(_guides);
+
+    _ruler = new RulerView();
+    addChild(_ruler);
 
   }
 
@@ -36,6 +40,10 @@ public class BitmapImageView extends SignalSprite {
 
   public function get zoom():ZoomView {
     return _zoom;
+  }
+
+  public function get ruler():RulerView {
+    return _ruler;
   }
 }
 }

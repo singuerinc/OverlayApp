@@ -29,6 +29,8 @@ public class BitmapImageViewMediator extends Mediator {
 
   private var _alt:Boolean;
   private var _guidesRect:Rectangle;
+  private var _rulerRect:Rectangle;
+  private var _mDown:Boolean;
 
   override public function initialize():void {
 
@@ -36,15 +38,22 @@ public class BitmapImageViewMediator extends Mediator {
     _guidesRect.width = view.bitmap.width;
     _guidesRect.height = view.bitmap.height;
 
+    _rulerRect = new Rectangle();
+
+    view.ruler.visible = false;
+
     view.guides.visible = false;
     view.guides.alpha = 0;
 
     view.zoom.visible = false;
-    view.zoom.x = view.bitmap.width-100;
-    view.zoom.y = view.bitmap.height-100;
+    view.zoom.x = view.bitmap.width - 100;
+    view.zoom.y = view.bitmap.height - 100;
 
-    view.signals.click.add(_onClick);
+    view.signals.mouseDown.add(_onMouseDown);
+    view.signals.mouseMove.add(_onMouseMove);
+    view.signals.mouseUp.add(_onMouseUp);
     view.signals.enterFrame.add(_onEnterFrame);
+
     view.stage.addEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown);
     view.stage.addEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
 
@@ -75,22 +84,68 @@ public class BitmapImageViewMediator extends Mediator {
     }
   }
 
-  private function _onClick(event:MouseEvent):void {
+  private function _onMouseDown(event:MouseEvent):void {
+    if (event.altKey) {
 
-    var x:int = view.mouseX;
-    var y:int = view.mouseY;
+      _mDown = true;
+
+      _rulerRect.x = view.mouseX;
+      _rulerRect.y = view.mouseY;
+
+      _rulerRect.width = 0;
+      _rulerRect.height = 0;
+    }
+  }
+
+  private function _onMouseMove(event:MouseEvent):void {
+    if (_mDown && event.altKey) {
+
+      var x:int = view.mouseX;
+      var y:int = view.mouseY;
+
+      var w:int = x - _rulerRect.x;
+      var h:int = y - _rulerRect.y;
+
+      _rulerRect.width = w;
+      _rulerRect.height = h;
+
+      view.ruler.update(_rulerRect);
+      view.ruler.visible = true;
+
+      event.updateAfterEvent();
+    }
+  }
+
+  private function _onMouseUp(event:MouseEvent):void {
+
+    if (event.altKey) {
+
+      if (_rulerRect.width === 0 && _rulerRect.height === 0) {
+        positionSignal.dispatch(new Rectangle(view.mouseX, view.mouseY, 0, 0));
+      } else {
+
+        var x:int = _rulerRect.width < 0 ? _rulerRect.x + _rulerRect.width : _rulerRect.x;
+        var y:int = _rulerRect.height < 0 ? _rulerRect.y + _rulerRect.height : _rulerRect.y;
+
+        var w:int = Math.abs(_rulerRect.width);
+        var h:int = Math.abs(_rulerRect.height);
+
+        var rect:Rectangle = new Rectangle(x, y, w, h);
+
+        positionSignal.dispatch(rect);
+      }
+    }
+
+    view.ruler.visible = false;
 
     if (event.commandKey) {
 
       var color:uint = view.bitmap.bitmapData.getPixel(x, y);
       colorSignal.dispatch(color);
 
-    } else if (event.altKey) {
-
-      positionSignal.dispatch(new Point(x, y));
-
     }
 
+    _mDown = false;
   }
 }
 }
