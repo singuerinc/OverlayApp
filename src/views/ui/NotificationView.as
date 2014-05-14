@@ -32,7 +32,7 @@ public class NotificationView extends Sprite {
     _textField.antiAliasType = AntiAliasType.ADVANCED;
     _textField.autoSize = TextFieldAutoSize.LEFT;
     _textField.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xFFFFFF, false);
-    _textField.alpha = 0.8;
+    _textField.alpha = 0.99;
     _textField.selectable = false;
     _textField.mouseEnabled = false;
     _textField.text = _text;
