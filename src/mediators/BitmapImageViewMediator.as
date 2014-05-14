@@ -8,6 +8,7 @@ import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
 import flash.geom.Point;
+import flash.geom.Rectangle;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -25,9 +26,15 @@ public class BitmapImageViewMediator extends Mediator {
   public var colorSignal:CopyHexColorSignal;
   [Inject]
   public var positionSignal:CopyLocationSignal;
+
   private var _alt:Boolean;
+  private var _guidesRect:Rectangle;
 
   override public function initialize():void {
+
+    _guidesRect = new Rectangle();
+    _guidesRect.width = view.bitmap.width;
+    _guidesRect.height = view.bitmap.height;
 
     view.guides.visible = false;
     view.guides.alpha = 0;
@@ -61,15 +68,17 @@ public class BitmapImageViewMediator extends Mediator {
 
   private function _onEnterFrame(event:Event):void {
     if (_alt) {
-      view.guides.update(view.mouseX, view.mouseY);
+      _guidesRect.x = view.mouseX;
+      _guidesRect.y = view.mouseY;
+      view.guides.update(_guidesRect);
       view.zoom.update(view.mouseX, view.mouseY, view.bitmap.bitmapData);
     }
   }
 
   private function _onClick(event:MouseEvent):void {
 
-    var x:int = event.localX;
-    var y:int = event.localY;
+    var x:int = view.mouseX;
+    var y:int = view.mouseY;
 
     if (event.commandKey) {
 
