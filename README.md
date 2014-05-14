@@ -22,14 +22,50 @@ The most common scenario to use it is in web development.
 |0 to 9|Changes image alpha.|
 |+ and -|Changes image alpha.|
 |i|Invert image colours.|
-|d|Delete the image.|
+|x|Remove the image.|
 |"arrows"|Changes window position +=1px, with "Shift" +=10px|
+|* key|Move the window back and forth|
 |l|Lock/Unlock the window.|
 |t|Window always on top (on|off).|
 |s or h|Show and hide the window.|
 |alt+move|Show guides|
 |alt+click|Copy position|
 |cmd+click|Copy hex color|
+
+# Features
+
+- Guides
+- Invert image colors
+- Copy hex color to clipboard
+- Copy position to clipboard
+- Zoom area
+
+# Main changes
+
+### 0.0.4
+
+- Guides with numbers
+
+### 0.0.3
+
+- Update manager
+- Analytics
+
+### 0.0.2
+
+- Guides
+- Zoom area
+- Invert image colors
+- Copy color to clipboard
+- Copy position to clipboard
+
+### 0.0.1
+
+- Window always on top
+- Lock/Unlock window
+- Show/Hide window
+- Change image alpha
+
 
 # TODO
 
@@ -46,13 +82,13 @@ The most common scenario to use it is in web development.
 - refresh image (automatically)
 - <del>copy color to clipboard</del>
 - <del>changing image alpha updates the opacity indicator</del>
-- on image remove, reset model alpha
+- <del>on image remove, reset model alpha</del>
 - <del>update manager</del>
 - <del>analytics</del>
-- builds for Win, Mac, Linux
+- builds for Win, <del>Mac</del>, Linux
 - load from url?
 - load multiples images
 - click and drag: draw a rect area
 - scale image
-- restore invertcolors when remove image
+- <del>restore invert colors when remove image</del>
 - save last window position

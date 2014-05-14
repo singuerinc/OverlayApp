@@ -32,8 +32,6 @@ public class StartupCommand extends Command {
 
   override public function execute():void {
 
-
-
     contextView.view.addChild(new MainFrameView());
     createImageViewSignal.dispatch();
 
@@ -42,7 +40,7 @@ public class StartupCommand extends Command {
 
     updaterService.updater.initialize();
 
-    // load.dispatch('file:///Users/singuerinc/Desktop/Doc_Marty_800x400.jpg');
+    // load.dispatch('file:///Users/singuerinc/Desktop/overlay/chrome_welcome.png');
   }
 }
 }
