@@ -9,6 +9,8 @@ import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFormat;
 
+import views.assets.Assets;
+
 public class DropAreaView extends Sprite {
 
   private var _tf:TextField;
@@ -24,6 +26,7 @@ public class DropAreaView extends Sprite {
     dropOut();
 
     _tf = new TextField();
+    _tf.embedFonts = true;
     _tf.alpha = 0.99;
     _tf.gridFitType = GridFitType.PIXEL;
     _tf.antiAliasType = AntiAliasType.ADVANCED;
@@ -31,10 +34,10 @@ public class DropAreaView extends Sprite {
     _tf.wordWrap = true;
     _tf.multiline = true;
     _tf.width = W - 100;
-    _tf.defaultTextFormat = new TextFormat('Munica Extended', 8, 0xFF0000, false);
+    _tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xFF0000, false);
     _tf.htmlText = 'Drop an image here.';
     _tf.htmlText +='<br/>';
-    _tf.defaultTextFormat = new TextFormat('Munica Extended', 8, 0xBBBBBB, false);
+    _tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xBBBBBB, false);
     _tf.htmlText +='<br/>';
     _tf.htmlText +='Shortcuts';
     _tf.htmlText +='<br/>';
@@ -56,6 +59,7 @@ public class DropAreaView extends Sprite {
     _tf.y = (H - _tf.textHeight) * 0.5;
 
     _tf2 = new TextField();
+    _tf2.embedFonts = true;
     _tf2.alpha = 0.99;
     _tf2.gridFitType = GridFitType.PIXEL;
     _tf2.antiAliasType = AntiAliasType.ADVANCED;
@@ -63,10 +67,10 @@ public class DropAreaView extends Sprite {
     _tf2.wordWrap = true;
     _tf2.multiline = true;
     _tf2.width = W - 100;
-    _tf2.defaultTextFormat = new TextFormat('Munica Extended', 8, 0xFF0000, false);
+    _tf2.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xFF0000, false);
     _tf2.htmlText = '<br/>';
     _tf2.htmlText +='<br/>';
-    _tf2.defaultTextFormat = new TextFormat('Munica Extended', 8, 0xBBBBBB, false);
+    _tf2.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xBBBBBB, false);
     _tf2.htmlText +='<br/>';
     _tf2.htmlText +='<br/>';
     _tf2.htmlText +='<br/>';

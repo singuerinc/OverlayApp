@@ -32,6 +32,8 @@ public class StartupCommand extends Command {
 
   override public function execute():void {
 
+
+
     contextView.view.addChild(new MainFrameView());
     createImageViewSignal.dispatch();
 

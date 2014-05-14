@@ -9,6 +9,8 @@ import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
 import flash.text.TextFormat;
 
+import views.assets.Assets;
+
 public class NotificationView extends Sprite {
 
   private var _textField:TextField;
@@ -21,6 +23,7 @@ public class NotificationView extends Sprite {
     this._icon = icon;
 
     _textField = new TextField();
+    _textField.embedFonts = true;
     _textField.x = 5;
     _textField.y = 0;
     addChild(_textField);
@@ -28,7 +31,7 @@ public class NotificationView extends Sprite {
     _textField.gridFitType = GridFitType.PIXEL;
     _textField.antiAliasType = AntiAliasType.ADVANCED;
     _textField.autoSize = TextFieldAutoSize.LEFT;
-    _textField.defaultTextFormat = new TextFormat('Munica Extended', 8, 0xFFFFFF, false);
+    _textField.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xFFFFFF, false);
     _textField.alpha = 0.8;
     _textField.selectable = false;
     _textField.mouseEnabled = false;

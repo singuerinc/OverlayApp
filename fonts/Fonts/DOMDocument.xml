@@ -1,0 +1,41 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" currentTimeline="1" xflVersion="2.4" creatorInfo="Adobe Flash Professional CC" platform="Macintosh" versionInfo="Saved by Adobe Flash Macintosh 13.1 build 226" majorVersion="13" minorVersion="1" buildNumber="226" objectsSnapTo="false" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="DD0DDBBF-5BEF-45B2-9F24-A3048D2A676F">
+     <fonts>
+          <DOMFontItem name="Font1" itemID="53737ba3-00000006" linkageExportForAS="true" linkageBaseClass="flash.text.Font" linkageClassName="Font1" font="MunicaExtended" size="0" id="1" sourceLastImported="1400077601" embedRanges="1|2|3|4|5"/>
+     </fonts>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4F80FF" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[import flash.text.Font;
+Font.registerFont(Font1);]]></script>
+                                   </Actionscript>
+                                   <elements>
+                                        <DOMDynamicText selected="true" fontRenderingMode="bitmap" left="60.4" width="23.2" height="36.75" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="54.1" ty="151.95"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>Font</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs alignment="center" size="8" bitmapSize="160" face="MunicaExtended"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMDynamicText>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <PrinterSettings platform="macintosh"/>
+     <publishHistory>
+          <PublishItem publishSize="8337" publishTime="1400077453"/>
+          <PublishItem publishSize="8356" publishTime="1400077285"/>
+     </publishHistory>
+</DOMDocument>
