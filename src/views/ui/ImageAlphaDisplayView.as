@@ -18,6 +18,7 @@ public class ImageAlphaDisplayView extends SignalSprite {
   public function ImageAlphaDisplayView() {
 
     _textField = new TextField();
+    _textField.embedFonts = true;
     _textField.x = 0;
     _textField.y = -5;
     addChild(_textField);
