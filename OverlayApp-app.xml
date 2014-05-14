@@ -3,7 +3,7 @@
     <id>com.singuerinc.Overlay</id>
     <filename>Overlay</filename>
     <name>Overlay</name>
-    <versionNumber>0.0.2</versionNumber>
+    <versionNumber>0.0.3</versionNumber>
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
     <!--<versionLabel></versionLabel>-->
     <!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required for namespace < 2.5. -->
