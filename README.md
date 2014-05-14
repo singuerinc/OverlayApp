@@ -45,9 +45,10 @@ The most common scenario to use it is in web development.
 - <del>copy color to clipboard</del>
 - <del>changing image alpha updates the opacity indicator</del>
 - on image remove, reset model alpha
-- update manager
-- analytics
+- <del>update manager</del>
+- <del>analytics</del>
 - builds for Win, Mac, Linux
 - load from url?
 - load multiples images
 - click and drag: draw a rect area
+- scale image
