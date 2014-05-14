@@ -3,11 +3,9 @@
 Is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
-## Download
+### [Download]((https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.4.air) ###
 
-[Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.4.air)
-
-### How it works ###
+## How it works ##
 
 1. Open Overlay (yeah, obvious step...)
 2. **Drag and drop an image** (jpg, png or gif) into the drop area
@@ -19,17 +17,20 @@ The most common scenario to use it is in web development.
 
 ## Keymap
 
-|key|behaviour|
+|Key|Behaviour|
 |---|---------|
-|0 to 9|Changes image alpha.|
-|+ and -|Changes image alpha.|
-|i|Invert image colours.|
+|0 to 9|Changes image alpha  ±10%|
+|+ and -|Changes image alpha  ±5%|
+|i|Invert image colors.|
 |x|Remove the image.|
-|"arrows"|Changes window position +=1px, with "Shift" +=10px|
+|||
+|"arrows"|Changes window position ±1px|
+|"arrows"+shift|Changes window position ±10px|
 |* key|Move the window back and forth|
 |l|Lock/Unlock the window.|
-|t|Window always on top (on|off).|
+|t|Window always on top (on-off).|
 |s or h|Show and hide the window.|
+|||
 |alt+move|Show guides|
 |alt+click|Copy position|
 |cmd+click|Copy hex color|
@@ -42,7 +43,7 @@ The most common scenario to use it is in web development.
 - Copy position to clipboard
 - Zoom area
 
-## Main changes
+## Changes log
 
 ### 0.0.4
 
@@ -68,6 +69,8 @@ The most common scenario to use it is in web development.
 - Show/Hide window
 - Change image alpha
 
+
+---
 
 # TODO
 
