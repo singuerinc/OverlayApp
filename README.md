@@ -52,3 +52,4 @@ The most common scenario to use it is in web development.
 - load multiples images
 - click and drag: draw a rect area
 - scale image
+- restore invertcolors when remove image
