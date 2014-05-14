@@ -19,30 +19,29 @@ public class ImageShowHideCommand extends Command {
   public var signal:ShowHideSignal;
 
   [Inject]
-  public var model:ImagesMap;
+  public var map:ImagesMap;
 
   [Inject]
   public var notification:DisplayNotificationSignal;
 
   override public function execute():void {
 
-    var view:ImageView = model.current;
+    var view:ImageView = map.current;
+    var model:ImageModel = map.itemFor(view);
+    model.visible = signal.visible;
 
-    if (view && view.bmp) {
-
-      var model:ImageModel = model.itemFor(view);
-
-      model.visible = signal.visible;
+    if (view.bmp) {
 
       view.bmp.visible = model.visible;
       view.dropArea.visible = false;
 
-      var valueTxt:String = model.visible ? 'Show' : 'Hide';
-      var icon:ShowHideActionBtnView = new ShowHideActionBtnView();
-      icon.state = model.visible ? 0 : 1;
-      notification.dispatch(valueTxt, icon);
-
+    } else {
+      view.dropArea.visible = model.visible;
     }
+
+    var icon:ShowHideActionBtnView = new ShowHideActionBtnView();
+    icon.state = model.visible ? 0 : 1;
+    notification.dispatch(model.visible ? 'Show' : 'Hide', icon);
   }
 }
 }
