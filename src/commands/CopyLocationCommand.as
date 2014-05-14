@@ -23,7 +23,7 @@ public class CopyLocationCommand extends Command {
   override public function execute():void {
 
     var point:Point = signal.location;
-    var text:String = 'top: ' + point.y + 'px;\nleft: ' + point.y + 'px;';
+    var text:String = 'top: ' + point.y + 'px;\nleft: ' + point.x + 'px;';
     Clipboard.generalClipboard.setData(ClipboardFormats.TEXT_FORMAT, text);
 
     notificationSignal.dispatch('Location: x:' + point.x + ', y:' + point.y + ' copied to Clipboard', new PositionNotificationIcon());
