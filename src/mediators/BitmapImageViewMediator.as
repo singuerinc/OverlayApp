@@ -9,6 +9,7 @@ import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
 import flash.geom.Point;
 import flash.geom.Rectangle;
+import flash.ui.Keyboard;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -69,9 +70,18 @@ public class BitmapImageViewMediator extends Mediator {
 
   private function _onKeyDown(event:KeyboardEvent):void {
     _alt = event.altKey;
+
     if (_alt) {
       view.zoom.visible = true;
       TweenMax.to(view.guides, .5, {autoAlpha: 1});
+    }
+
+    if(_alt && event.keyCode === Keyboard.NUMPAD_ADD) {
+      view.zoom.zoom++;
+      view.zoom.update(view.mouseX, view.mouseY, view.bitmap.bitmapData);
+    } else if(_alt && event.keyCode === Keyboard.NUMPAD_SUBTRACT) {
+      view.zoom.zoom--;
+      view.zoom.update(view.mouseX, view.mouseY, view.bitmap.bitmapData);
     }
   }
 

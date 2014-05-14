@@ -12,9 +12,7 @@ public class ZoomView extends Sprite {
 
   private const W:uint = 100;
   private const H:uint = 100;
-  private const ZOOM:uint = 6;
-  private const W2:uint = W/ZOOM;
-  private const H2:uint = H/ZOOM;
+  private var _zoom:uint = 6;
 
   public function ZoomView() {
 
@@ -49,16 +47,20 @@ public class ZoomView extends Sprite {
   private var bitmap:Bitmap;
   private var bitmapData:BitmapData;
 
-//  public function update(source:BitmapData):void {
   public function update(localX:Number, localY:Number, source:BitmapData):void {
 
-//    bitmap.x = localX - (W/2);
-//    bitmap.y = localY - (H/2);
-
     var m:Matrix = new Matrix();
-    m.translate(-localX+(50/ZOOM), -localY+(50/ZOOM));
-    m.scale(ZOOM, ZOOM);
+    m.translate(-localX+((W/2)/zoom), -localY+((H/2)/zoom));
+    m.scale(zoom, zoom);
     bitmapData.draw(source, m);
+  }
+
+  public function get zoom():uint {
+    return _zoom;
+  }
+
+  public function set zoom(value:uint):void {
+    _zoom = Math.min(10, Math.max(1, value));
   }
 }
 }
