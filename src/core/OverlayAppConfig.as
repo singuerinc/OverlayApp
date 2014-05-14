@@ -86,7 +86,7 @@ public class OverlayAppConfig implements IConfig {
 
   public function configure():void {
 
-    injector.map(GATracker).toValue(new GATracker(contextView.view, Settings.GA_ACCOUNT, "AS3", true));
+    injector.map(GATracker).toValue(new GATracker(contextView.view, Settings.GA_ACCOUNT, "AS3"));
     injector.map(AppUpdaterService).asSingleton();
 
     injector.map(UserModel).asSingleton();
