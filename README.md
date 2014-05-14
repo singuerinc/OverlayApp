@@ -1,6 +1,8 @@
-# Overlay · About
+# Overlay
 
-Overlay is an application to overlay an image and use it as a guide.<br/>
+## About
+
+Is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
 [Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.4.air)
@@ -15,7 +17,7 @@ The most common scenario to use it is in web development.
 ![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
 
 
-# Keymap
+## Keymap
 
 |key|behaviour|
 |---|---------|
@@ -32,7 +34,7 @@ The most common scenario to use it is in web development.
 |alt+click|Copy position|
 |cmd+click|Copy hex color|
 
-# Features
+## Features
 
 - Guides
 - Invert image colors
@@ -40,7 +42,7 @@ The most common scenario to use it is in web development.
 - Copy position to clipboard
 - Zoom area
 
-# Main changes
+## Main changes
 
 ### 0.0.4
 
