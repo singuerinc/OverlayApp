@@ -3,6 +3,8 @@
 Overlay is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
+[Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.2.air)
+
 ### How it works ###
 
 1. Open Overlay (yeah, obvious step...)
@@ -45,9 +47,11 @@ The most common scenario to use it is in web development.
 - <del>copy color to clipboard</del>
 - <del>changing image alpha updates the opacity indicator</del>
 - on image remove, reset model alpha
-- update manager
-- analytics
+- <del>update manager</del>
+- <del>analytics</del>
 - builds for Win, Mac, Linux
 - load from url?
 - load multiples images
 - click and drag: draw a rect area
+- scale image
+- restore invertcolors when remove image
