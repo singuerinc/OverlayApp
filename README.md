@@ -3,6 +3,8 @@
 Overlay is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
+[Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.2.air)
+
 ### How it works ###
 
 1. Open Overlay (yeah, obvious step...)
