@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <update xmlns="http://ns.adobe.com/air/framework/update/description/2.5">
-    <versionNumber>0.0.4</versionNumber>
+    <versionNumber>0.0.5</versionNumber>
     <url>https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.5.air</url>
     <description>This is the latest version of the Overlay application.</description>
 </update>
