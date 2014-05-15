@@ -20,6 +20,7 @@ import commands.RemoveImageViewCommand;
 import commands.StartupCommand;
 
 import mediators.BitmapImageViewMediator;
+import mediators.DropAreaViewMediator;
 import mediators.GuidesViewMediator;
 import mediators.ImageAlphaDisplayViewMediator;
 import mediators.ImageViewMediator;
@@ -65,6 +66,7 @@ import views.buttons.RemoveImageViewActionBtnView;
 import views.buttons.ShowHideActionBtnMediator;
 import views.buttons.ShowHideActionBtnView;
 import views.ui.BitmapImageView;
+import views.ui.DropAreaView;
 import views.ui.GuidesView;
 import views.ui.ImageAlphaDisplayView;
 
@@ -93,6 +95,7 @@ public class OverlayAppConfig implements IConfig {
     injector.map(ImagesMap).asSingleton();
 
     mediatorMap.map(ImageView).toMediator(ImageViewMediator);
+    mediatorMap.map(DropAreaView).toMediator(DropAreaViewMediator);
     mediatorMap.map(MainFrameView).toMediator(MainFrameViewMediator);
 
     //top bar buttons

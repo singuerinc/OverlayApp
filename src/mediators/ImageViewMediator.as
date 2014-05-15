@@ -2,15 +2,9 @@
  * Created by singuerinc on 08/05/2014.
  */
 package mediators {
-import flash.desktop.Clipboard;
-import flash.desktop.ClipboardFormats;
-import flash.desktop.NativeDragActions;
-import flash.desktop.NativeDragManager;
 import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
-import flash.events.NativeDragEvent;
-import flash.filesystem.File;
 import flash.geom.Point;
 import flash.ui.Keyboard;
 
@@ -23,7 +17,6 @@ import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
 import signals.InvertColorsSignal;
-import signals.LoadImageViewSignal;
 import signals.LockOrUnlockSignal;
 import signals.MoveWindowSignal;
 import signals.RemoveImageViewSignal;
@@ -52,8 +45,6 @@ public class ImageViewMediator extends Mediator {
   [Inject]
   public var invertColorsSignal:InvertColorsSignal;
   [Inject]
-  public var loadImageViewSignal:LoadImageViewSignal;
-  [Inject]
   public var removeImageViewSignal:RemoveImageViewSignal;
   [Inject]
   public var moveWindowSignal:MoveWindowSignal;
@@ -70,13 +61,9 @@ public class ImageViewMediator extends Mediator {
     view.stage.nativeWindow.addEventListener(Event.ACTIVATE, _activateHandler, false, 0, true);
     view.stage.nativeWindow.addEventListener(Event.DEACTIVATE, _deactivateHandler, false, 0, true);
 
-    view.addEventListener(NativeDragEvent.NATIVE_DRAG_ENTER, _onDragIn);
-    view.addEventListener(NativeDragEvent.NATIVE_DRAG_OVER, _onDragOver);
-    view.addEventListener(NativeDragEvent.NATIVE_DRAG_DROP, _onDrop);
-    view.addEventListener(NativeDragEvent.NATIVE_DRAG_EXIT, _onDragExit);
-
     view.signals.mouseDown.add(_mouseDownHandler);
 
+    mediatorMap.mediate(view.dropArea);
     mediatorMap.mediate(view.alwaysOnTopActionBtn);
     mediatorMap.mediate(view.lockUnlockActionBtn);
     mediatorMap.mediate(view.invertColorsActionBtn);
@@ -176,31 +163,6 @@ public class ImageViewMediator extends Mediator {
             break;
         }
       }
-    }
-  }
-
-  private function _onDragExit(event:NativeDragEvent):void {
-    view.dropArea.dropOut();
-  }
-
-  private function _onDrop(event:NativeDragEvent):void {
-    var clipboard:Clipboard = event.clipboard;
-    if (clipboard.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
-      var dropFiles:Array = clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
-      var imageFile:File = dropFiles[0];
-      loadImageViewSignal.dispatch(imageFile);
-    }
-  }
-
-  private function _onDragOver(event:NativeDragEvent):void {
-    view.dropArea.dropIn();
-  }
-
-  private function _onDragIn(event:NativeDragEvent):void {
-    var transferable:Clipboard = event.clipboard;
-    if (transferable.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
-      NativeDragManager.dropAction = NativeDragActions.MOVE;
-      NativeDragManager.acceptDragDrop(view.dropArea);
     }
   }
 }
