@@ -30,9 +30,8 @@ public class DropAreaView extends Sprite {
     _tf.wordWrap = true;
     _tf.multiline = true;
     _tf.width = W - 100;
-    _tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0x00FF00, false);
-    _tf.htmlText = 'Overlay ver. ' + Settings.getAppVersion();
     _tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xFF0000, false);
+    _tf.htmlText = 'Overlay ver. ' + Settings.getAppVersion();
     _tf.htmlText += 'Drop an image here.';
     _tf.htmlText += '<br/>';
     _tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0xBBBBBB, false);
@@ -51,6 +50,8 @@ public class DropAreaView extends Sprite {
     _tf.htmlText += 'cmd+click';
     _tf.htmlText += 'alt+click';
     _tf.htmlText += 'alt+drag';
+    _tf.htmlText += 'alt+"+"';
+    _tf.htmlText += 'alt+"-"';
     _tf.htmlText += '<br/>';
     _tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0x666666, false);
     _tf.htmlText += 'Window';
@@ -94,6 +95,8 @@ public class DropAreaView extends Sprite {
     _tf2.htmlText += 'Copy color to clipboard';
     _tf2.htmlText += 'Copy position to clipboard';
     _tf2.htmlText += 'Draw a ruler';
+    _tf2.htmlText += 'Zoom in';
+    _tf2.htmlText += 'Zoom out';
     _tf2.htmlText += '<br/>';
     _tf2.htmlText += '<br/>';
     _tf2.htmlText += '<br/>';

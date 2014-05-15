@@ -33,6 +33,8 @@ The most common scenario to use it is in web development.
 |||
 |alt+move|Show guides|
 |alt+click|Copy position|
+|alt+"+"|Zoom in|
+|alt+"-"|Zoom out|
 |cmd+click|Copy hex color|
 
 ## Features
@@ -44,6 +46,10 @@ The most common scenario to use it is in web development.
 - Zoom area
 
 ## Changes log
+
+### 0.0.5
+- Change Zoom with Alt + "+" or "-"
+- Ruler
 
 ### 0.0.4
 
