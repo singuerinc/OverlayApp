@@ -5,6 +5,7 @@ package commands {
 import flash.display.Bitmap;
 import flash.display.Loader;
 import flash.events.Event;
+import flash.filesystem.File;
 import flash.net.URLRequest;
 
 import models.ImageModel;
@@ -39,15 +40,15 @@ public class LoadImageViewCommand extends Command {
   [Inject]
   public var model:ImagesMap;
 
-  private var _url:String;
+  private var _file:File;
 
   override public function execute():void {
 
-    _url = signal.url;
+    _file = signal.file;
 
     //TODO: catch errors?
     var loader:Loader = new Loader();
-    var urlReq:URLRequest = new URLRequest(signal.url);
+    var urlReq:URLRequest = new URLRequest(signal.file.url);
     loader.contentLoaderInfo.addEventListener(Event.COMPLETE, _onImageLoaded);
     loader.load(urlReq);
   }
@@ -72,7 +73,7 @@ public class LoadImageViewCommand extends Command {
 
     view.dropArea.visible = false;
 
-    notificationSignal.dispatch('Image loaded: ' + _url, null);
+    notificationSignal.dispatch('Image loaded: ' + _file.name, null);
   }
 
   private function _onImageLoaded(event:Event):void {

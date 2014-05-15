@@ -4,6 +4,8 @@
 package commands {
 import com.google.analytics.GATracker;
 
+import flash.filesystem.File;
+
 import flash.system.Capabilities;
 
 import robotlegs.bender.bundles.mvcs.Command;
@@ -35,12 +37,12 @@ public class StartupCommand extends Command {
     contextView.view.addChild(new MainFrameView());
     createImageViewSignal.dispatch();
 
-//    tracker.trackEvent("Application", "Startup", Capabilities.serverString);
-//    tracker.trackPageview("/");
+    tracker.trackEvent("Application", "Startup", Capabilities.serverString);
+    tracker.trackPageview("/");
 
     updaterService.updater.initialize();
 
-    load.dispatch('file:///Users/singuerinc/Desktop/overlay/chrome_welcome.png');
+    //load.dispatch(new File().resolvePath('/Users/singuerinc/Desktop/overlay/chrome_welcome.png'));
   }
 }
 }

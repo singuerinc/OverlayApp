@@ -188,7 +188,7 @@ public class ImageViewMediator extends Mediator {
     if (clipboard.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
       var dropFiles:Array = clipboard.getData(ClipboardFormats.FILE_LIST_FORMAT) as Array;
       var imageFile:File = dropFiles[0];
-      loadImageViewSignal.dispatch(imageFile.url);
+      loadImageViewSignal.dispatch(imageFile);
     }
   }
 
