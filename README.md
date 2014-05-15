@@ -45,7 +45,7 @@ The most common scenario to use it is in web development.
 - Copy position to clipboard
 - Zoom area
 
-## Changes log
+## Change log
 
 ### 0.0.6
 - Fix copy color to clipboard coords
