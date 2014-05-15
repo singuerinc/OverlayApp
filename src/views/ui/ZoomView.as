@@ -10,8 +10,8 @@ import flash.geom.Matrix;
 
 public class ZoomView extends Sprite {
 
-  private const W:uint = 100;
-  private const H:uint = 100;
+  private const W:uint = 150;
+  private const H:uint = 150;
   private var _zoom:uint = 6;
 
   public function ZoomView() {
@@ -24,19 +24,19 @@ public class ZoomView extends Sprite {
 
     addChild(bitmap);
 
-    var hGuide:Sprite = new Sprite();
-    hGuide.blendMode = BlendMode.INVERT;
-    hGuide.y = H/2;
-    hGuide.graphics.lineStyle(1, 0xFF6666, 0.9);
-    hGuide.graphics.lineTo(W, 0);
-    addChild(hGuide);
+    var h:Sprite = new Sprite();
+    h.blendMode = BlendMode.INVERT;
+    h.y = H/2;
+    h.graphics.lineStyle(1, 0xFF6666, 0.9);
+    h.graphics.lineTo(W, 0);
+    addChild(h);
 
-    var vGuide:Sprite = new Sprite();
-    vGuide.blendMode = BlendMode.INVERT;
-    vGuide.x = W/2;
-    vGuide.graphics.lineStyle(1, 0xFF6666, 0.9);
-    vGuide.graphics.lineTo(0, H);
-    addChild(vGuide);
+    var v:Sprite = new Sprite();
+    v.blendMode = BlendMode.INVERT;
+    v.x = W/2;
+    v.graphics.lineStyle(1, 0xFF6666, 0.9);
+    v.graphics.lineTo(0, H);
+    addChild(v);
 
     var border:Sprite = new Sprite();
     border.graphics.lineStyle(1, 0x666666, 1);
