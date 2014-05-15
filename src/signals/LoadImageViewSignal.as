@@ -3,19 +3,20 @@
  */
 package signals {
 
+import flash.filesystem.File;
+
 import org.osflash.signals.Signal;
 
 public class LoadImageViewSignal extends Signal {
 
-  public var url:String;
-
   public function LoadImageViewSignal() {
-    super(String);
+    super(File);
   }
 
+  public var file:File;
 
   override public function dispatch(...valueObjects):void {
-    this.url = valueObjects[0];
+    this.file = valueObjects[0];
     super.dispatch.apply(this, valueObjects);
   }
 }
