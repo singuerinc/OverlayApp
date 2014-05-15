@@ -143,17 +143,13 @@ public class BitmapImageViewMediator extends Mediator {
 
         positionSignal.dispatch(rect);
       }
+    } else if (event.commandKey) {
+
+      var color:uint = view.bitmap.bitmapData.getPixel(view.mouseX, view.mouseY);
+      colorSignal.dispatch(color);
     }
 
     view.ruler.visible = false;
-
-    if (event.commandKey) {
-
-      var color:uint = view.bitmap.bitmapData.getPixel(x, y);
-      colorSignal.dispatch(color);
-
-    }
-
     _mDown = false;
   }
 }

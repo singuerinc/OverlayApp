@@ -3,7 +3,7 @@
 Is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
-### [Download]((https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.4.air) ###
+### [Download]((https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.6.air) ###
 
 ## How it works ##
 
@@ -46,6 +46,9 @@ The most common scenario to use it is in web development.
 - Zoom area
 
 ## Changes log
+
+### 0.0.6
+- Fix copy color to clipboard coords
 
 ### 0.0.5
 - Change Zoom with Alt + "+" or "-"
