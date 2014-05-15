@@ -96,7 +96,7 @@ public class ImageViewMediator extends Mediator {
 
   protected function _mouseDownHandler(event:MouseEvent):void {
 
-    if (model.locked) return;
+    if (model.locked || event.altKey || event.commandKey) return;
 
     view.stage.nativeWindow.startMove();
   }

@@ -26,12 +26,12 @@ public class GuidesView extends Sprite {
   public function GuidesView(w:uint, h:uint) {
 
     _h = new SignalSprite();
-    _h.graphics.lineStyle(1, 0xFF0000, 1);
+    _h.graphics.lineStyle(1, 0x00FFFF, 1);
     _h.graphics.lineTo(w, 0);
     addChild(_h);
 
     _v = new SignalSprite();
-    _v.graphics.lineStyle(1, 0xFF0000, 1);
+    _v.graphics.lineStyle(1, 0x00FFFF, 1);
     _v.graphics.lineTo(0, h);
     addChild(_v);
 
@@ -55,7 +55,7 @@ public class GuidesView extends Sprite {
     tf.gridFitType = GridFitType.PIXEL;
     tf.antiAliasType = AntiAliasType.ADVANCED;
     tf.autoSize = TextFieldAutoSize.NONE;
-    tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0x00FF00, false, true, null, null, null, TextFormatAlign.CENTER);
+    tf.defaultTextFormat = new TextFormat(Assets.FONT1, 8, 0x00FFFF, false, true, null, null, null, TextFormatAlign.CENTER);
     tf.selectable = false;
     tf.mouseEnabled = false;
     tf.alpha = 0.99;

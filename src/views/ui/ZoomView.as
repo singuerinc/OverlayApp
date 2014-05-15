@@ -10,11 +10,9 @@ import flash.geom.Matrix;
 
 public class ZoomView extends Sprite {
 
-  private const W:uint = 100;
-  private const H:uint = 100;
-  private const ZOOM:uint = 6;
-  private const W2:uint = W/ZOOM;
-  private const H2:uint = H/ZOOM;
+  private const W:uint = 150;
+  private const H:uint = 150;
+  private var _zoom:uint = 6;
 
   public function ZoomView() {
 
@@ -26,19 +24,19 @@ public class ZoomView extends Sprite {
 
     addChild(bitmap);
 
-    var hGuide:Sprite = new Sprite();
-    hGuide.blendMode = BlendMode.INVERT;
-    hGuide.y = H/2;
-    hGuide.graphics.lineStyle(1, 0xFF6666, 0.9);
-    hGuide.graphics.lineTo(W, 0);
-    addChild(hGuide);
+    var h:Sprite = new Sprite();
+    h.blendMode = BlendMode.INVERT;
+    h.y = H/2;
+    h.graphics.lineStyle(1, 0xFF6666, 0.9);
+    h.graphics.lineTo(W, 0);
+    addChild(h);
 
-    var vGuide:Sprite = new Sprite();
-    vGuide.blendMode = BlendMode.INVERT;
-    vGuide.x = W/2;
-    vGuide.graphics.lineStyle(1, 0xFF6666, 0.9);
-    vGuide.graphics.lineTo(0, H);
-    addChild(vGuide);
+    var v:Sprite = new Sprite();
+    v.blendMode = BlendMode.INVERT;
+    v.x = W/2;
+    v.graphics.lineStyle(1, 0xFF6666, 0.9);
+    v.graphics.lineTo(0, H);
+    addChild(v);
 
     var border:Sprite = new Sprite();
     border.graphics.lineStyle(1, 0x666666, 1);
@@ -49,16 +47,20 @@ public class ZoomView extends Sprite {
   private var bitmap:Bitmap;
   private var bitmapData:BitmapData;
 
-//  public function update(source:BitmapData):void {
   public function update(localX:Number, localY:Number, source:BitmapData):void {
 
-//    bitmap.x = localX - (W/2);
-//    bitmap.y = localY - (H/2);
-
     var m:Matrix = new Matrix();
-    m.translate(-localX+(50/ZOOM), -localY+(50/ZOOM));
-    m.scale(ZOOM, ZOOM);
+    m.translate(-localX+((W/2)/zoom), -localY+((H/2)/zoom));
+    m.scale(zoom, zoom);
     bitmapData.draw(source, m);
+  }
+
+  public function get zoom():uint {
+    return _zoom;
+  }
+
+  public function set zoom(value:uint):void {
+    _zoom = Math.min(10, Math.max(1, value));
   }
 }
 }
