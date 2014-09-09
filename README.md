@@ -108,3 +108,5 @@ The most common scenario to use it is in web development.
 - scale image
 - <del>restore invert colors when remove image</del>
 - save last window position
+- drag & drop new image replace existent
+- more images in readme showing functionality
