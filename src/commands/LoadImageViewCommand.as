@@ -15,6 +15,7 @@ import robotlegs.bender.bundles.mvcs.Command;
 import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
 import signals.ChangeAlphaSignal;
+import signals.ChangeScaleSignal;
 
 import signals.DisplayNotificationSignal;
 import signals.LoadImageViewSignal;
@@ -36,6 +37,8 @@ public class LoadImageViewCommand extends Command {
   public var removeImageViewSignal:RemoveImageViewSignal;
   [Inject]
   public var changeAlphaSignal:ChangeAlphaSignal;
+  [Inject]
+  public var changeScaleSignal:ChangeScaleSignal;
 
   [Inject]
   public var model:ImagesMap;
@@ -59,14 +62,17 @@ public class LoadImageViewCommand extends Command {
     view.invertColorsActionBtn.visible = true;
     view.removeImageViewActionBtn.visible = true;
     view.imageAlphaDisplayView.visible = true;
+    view.scaleView.visible = true;
 
     view.bmp = new BitmapImageView(bmp);
     view.bmp.y = 25;
     view.addChildAt(view.bmp, 0);
 
     mediatorMap.mediate(view.bmp);
+    mediatorMap.mediate(view.bmp.guides);
 
     changeAlphaSignal.dispatch(ImageModel.INIT_ALPHA);
+    changeScaleSignal.dispatch(ImageModel.INIT_SCALE);
 
     view.stage.stageWidth = view.bmp.width;
     view.stage.stageHeight = view.bmp.height + 45;

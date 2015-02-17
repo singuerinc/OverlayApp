@@ -20,6 +20,7 @@ import views.buttons.ShowHideActionBtnView;
 import views.ui.BitmapImageView;
 import views.ui.DropAreaView;
 import views.ui.ImageAlphaDisplayView;
+import views.ui.ScaleView;
 
 public class ImageView extends SignalSprite {
 
@@ -52,7 +53,7 @@ public class ImageView extends SignalSprite {
 
     actionsContainer = new Sprite();
     actionsContainer.graphics.beginFill(0x000000);
-    actionsContainer.graphics.drawRect(0, 0, 125, 20);
+    actionsContainer.graphics.drawRect(0, 0, 240, 20);
     actionsContainer.graphics.endFill();
     addChild(actionsContainer);
 
@@ -89,6 +90,12 @@ public class ImageView extends SignalSprite {
     imageAlphaDisplayView.visible = false;
     actionsContainer.addChild(imageAlphaDisplayView);
 
+    scaleView = new ScaleView();
+    scaleView.x = 125;
+    scaleView.y = 5;
+    scaleView.visible = false;
+    actionsContainer.addChild(scaleView);
+
     notificationsContainer = new Sprite();
     addChild(notificationsContainer);
   }
@@ -104,6 +111,7 @@ public class ImageView extends SignalSprite {
   public var invertColorsActionBtn:InvertColorsActionBtnView;
   public var removeImageViewActionBtn:RemoveImageViewActionBtnView;
   public var imageAlphaDisplayView:ImageAlphaDisplayView;
+  public var scaleView:ScaleView;
 
   public var actionsContainer:Sprite;
   private var _window:NativeWindow;

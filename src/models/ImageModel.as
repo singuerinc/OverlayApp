@@ -5,8 +5,10 @@ package models {
 public class ImageModel {
 
   public static const INIT_ALPHA:Number = 1;
+  public static const INIT_SCALE:Number = 1;
 
   private var _alpha:Number;
+  private var _scale:Number;
   private var _alwaysOnTop:Boolean;
   private var _locked:Boolean;
   private var _visible:Boolean;
@@ -15,6 +17,7 @@ public class ImageModel {
 
   public function ImageModel() {
     _alpha = INIT_ALPHA;
+    _scale = INIT_SCALE;
     _alwaysOnTop = true;
     _locked = false;
     _visible = true;
@@ -29,8 +32,20 @@ public class ImageModel {
     this._alpha = newValue;
   }
 
+  public function set scale(value:Number):void {
+
+    var newValue:Number = Math.min(value, 3);
+    newValue = Math.max(newValue, 0.5);
+
+    this._scale = newValue;
+  }
+
   public function get alpha():Number {
     return this._alpha;
+  }
+
+  public function get scale():Number {
+    return this._scale;
   }
 
   public function set alwaysOnTop(value:Boolean):void {

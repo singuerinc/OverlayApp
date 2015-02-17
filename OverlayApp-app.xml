@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<application xmlns="http://ns.adobe.com/air/application/13.0">
+<application xmlns="http://ns.adobe.com/air/application/16.0">
     <id>com.singuerinc.Overlay</id>
     <filename>Overlay</filename>
     <name>Overlay</name>
-    <versionNumber>0.0.6</versionNumber>
+    <versionNumber>0.0.7</versionNumber>
     <!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents the version of the application, as it should be shown to users. Optional. -->
     <!--<versionLabel></versionLabel>-->
     <!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required for namespace < 2.5. -->
     <!--<version>0.0.0</version>-->
     <description>Overlay is an application to overlay an image and use it as a guide.</description>
-    <copyright>Copyright © 2014 Nahuel Scotti</copyright>
+    <copyright>Copyright © 2015 Nahuel Scotti</copyright>
     <initialWindow>
         <content>SWF file name is set automatically at compile time</content>
         <title>Overlay</title>

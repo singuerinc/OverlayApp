@@ -11,6 +11,7 @@ import commands.CreateImageViewCommand;
 import commands.DisplayNotificationCommand;
 import commands.ImageAlwaysOnTopCommand;
 import commands.ImageChangeAlphaCommand;
+import commands.ImageChangeScaleCommand;
 import commands.ImageInvertColorsCommand;
 import commands.ImageLockUnlockCommand;
 import commands.ImageShowHideCommand;
@@ -25,6 +26,7 @@ import mediators.GuidesViewMediator;
 import mediators.ImageAlphaDisplayViewMediator;
 import mediators.ImageViewMediator;
 import mediators.MainFrameViewMediator;
+import mediators.ScaleViewMediator;
 
 import models.ImagesMap;
 import models.UserModel;
@@ -40,6 +42,7 @@ import services.AppUpdaterService;
 
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
+import signals.ChangeScaleSignal;
 import signals.CopyHexColorSignal;
 import signals.CopyLocationSignal;
 import signals.CreateImageViewSignal;
@@ -69,6 +72,7 @@ import views.ui.BitmapImageView;
 import views.ui.DropAreaView;
 import views.ui.GuidesView;
 import views.ui.ImageAlphaDisplayView;
+import views.ui.ScaleView;
 
 public class OverlayAppConfig implements IConfig {
   [Inject]
@@ -107,11 +111,13 @@ public class OverlayAppConfig implements IConfig {
     mediatorMap.map(BitmapImageView).toMediator(BitmapImageViewMediator);
     mediatorMap.map(GuidesView).toMediator(GuidesViewMediator);
     mediatorMap.map(ImageAlphaDisplayView).toMediator(ImageAlphaDisplayViewMediator);
+    mediatorMap.map(ScaleView).toMediator(ScaleViewMediator);
 
     signalCommandMap.map(CreateImageViewSignal).toCommand(CreateImageViewCommand);
     signalCommandMap.map(AlwaysOnTopSignal).toCommand(ImageAlwaysOnTopCommand);
     signalCommandMap.map(LockOrUnlockSignal).toCommand(ImageLockUnlockCommand);
     signalCommandMap.map(ChangeAlphaSignal).toCommand(ImageChangeAlphaCommand);
+    signalCommandMap.map(ChangeScaleSignal).toCommand(ImageChangeScaleCommand);
     signalCommandMap.map(ShowHideSignal).toCommand(ImageShowHideCommand);
     signalCommandMap.map(InvertColorsSignal).toCommand(ImageInvertColorsCommand);
     signalCommandMap.map(LoadImageViewSignal).toCommand(LoadImageViewCommand);

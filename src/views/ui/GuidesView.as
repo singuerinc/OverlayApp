@@ -26,14 +26,12 @@ public class GuidesView extends Sprite {
   public function GuidesView(w:uint, h:uint) {
 
     _h = new SignalSprite();
-    _h.graphics.lineStyle(1, 0x00FFFF, 1);
-    _h.graphics.lineTo(w, 0);
     addChild(_h);
 
     _v = new SignalSprite();
-    _v.graphics.lineStyle(1, 0x00FFFF, 1);
-    _v.graphics.lineTo(0, h);
     addChild(_v);
+
+    drawGuides(w, h);
 
     _h.blendMode = BlendMode.INVERT;
     _v.blendMode = BlendMode.INVERT;
@@ -43,6 +41,13 @@ public class GuidesView extends Sprite {
 
     _vTxt = txt();
     addChild(_vTxt);
+  }
+
+  public function drawGuides(w:Number, h:Number):void {
+    _h.graphics.lineStyle(1, 0x00FFFF, 1);
+    _h.graphics.lineTo(w, 0);
+    _v.graphics.lineStyle(1, 0x00FFFF, 1);
+    _v.graphics.lineTo(0, h);
   }
 
   private function txt():TextField{

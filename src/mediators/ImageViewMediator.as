@@ -16,6 +16,7 @@ import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 
 import signals.AlwaysOnTopSignal;
 import signals.ChangeAlphaSignal;
+import signals.ChangeScaleSignal;
 import signals.InvertColorsSignal;
 import signals.LockOrUnlockSignal;
 import signals.MoveWindowSignal;
@@ -36,6 +37,8 @@ public class ImageViewMediator extends Mediator {
 
   [Inject]
   public var changeAlphaSignal:ChangeAlphaSignal;
+  [Inject]
+  public var changeScaleSignal:ChangeScaleSignal;
   [Inject]
   public var alwaysOnTopSignal:AlwaysOnTopSignal;
   [Inject]
@@ -70,6 +73,7 @@ public class ImageViewMediator extends Mediator {
     mediatorMap.mediate(view.showHideActionBtn);
     mediatorMap.mediate(view.removeImageViewActionBtn);
     mediatorMap.mediate(view.imageAlphaDisplayView);
+    mediatorMap.mediate(view.scaleView);
   }
 
   protected function _activateHandler(event:Event):void {
@@ -160,6 +164,13 @@ public class ImageViewMediator extends Mediator {
             break;
           case Keyboard.NUMPAD_SUBTRACT:
             changeAlphaSignal.dispatch(model.alpha - 0.05);
+            break;
+          case Keyboard.Z:
+            if (event.shiftKey) {
+              changeScaleSignal.dispatch(model.scale - 0.25);
+            } else {
+              changeScaleSignal.dispatch(model.scale + 0.25);
+            }
             break;
         }
       }

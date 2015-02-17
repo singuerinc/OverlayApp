@@ -42,7 +42,7 @@ public class StartupCommand extends Command {
 
     updaterService.updater.initialize();
 
-    //load.dispatch(new File().resolvePath('/Users/singuerinc/Desktop/overlay/chrome_welcome.png'));
+    load.dispatch(new File().resolvePath('/Users/singuerinc/Desktop/Screen Shot 2015-02-17 at 15.29.30.png'));
   }
 }
 }
