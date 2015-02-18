@@ -96,7 +96,6 @@ The most common scenario to use it is in web development.
 - [x] <del>guides</del>
 - [x] <del>opacity indicator!</del>
 - [x] <del>cross to remove image and window</del>
-- [ ] zoom image?
 - [ ] create cool icon
 - [x] <del>invert colors</del> / multiply?
 - [ ] save last position / reset position
@@ -110,8 +109,8 @@ The most common scenario to use it is in web development.
 - [ ] builds for Win, <del>Mac</del>, Linux
 - [ ] load from url?
 - [ ] load multiples images
-- [ ] click and drag: draw a rect area
-- [ ] scale image
+- [x] click and drag: draw a rect area
+- [x] scale image
 - [x] <del>restore invert colors when remove image</del>
 - [ ] save last window position
 - [ ] drag & drop new image replace existent
