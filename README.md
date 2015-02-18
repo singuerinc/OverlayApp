@@ -91,30 +91,30 @@ The most common scenario to use it is in web development.
 
 # TODO
 
-[x] <del>more functionality icons</del>
-[x] <del>icon to block window</del>
-[x] <del>guides</del>
-[x] <del>opacity indicator!</del>
-[x] <del>cross to remove image and window</del>
-[ ] zoom image?
-[ ] create cool icon
-[x] <del>invert colors</del> / multiply?
-[ ] save last position / reset position
-[x] <del>lock position</del>, disable mouse (it's not possible)
-[ ] refresh image (automatically)
-[x] <del>copy color to clipboard</del>
-[x] <del>changing image alpha updates the opacity indicator</del>
-[x] <del>on image remove, reset model alpha</del>
-[x] <del>update manager</del>
-[x] <del>analytics</del>
-[ ] builds for Win, <del>Mac</del>, Linux
-[ ] load from url?
-[ ] load multiples images
-[ ] click and drag: draw a rect area
-[ ] scale image
-[x] <del>restore invert colors when remove image</del>
-[ ] save last window position
-[ ] drag & drop new image replace existent
-[ ] more images in readme showing functionality
-[ ] get screenshot and use blend-modes
-[ ] paste image from clipboard
+- [x] <del>more functionality icons</del>
+- [x] <del>icon to block window</del>
+- [x] <del>guides</del>
+- [x] <del>opacity indicator!</del>
+- [x] <del>cross to remove image and window</del>
+- [ ] zoom image?
+- [ ] create cool icon
+- [x] <del>invert colors</del> / multiply?
+- [ ] save last position / reset position
+- [x] <del>lock position</del>, disable mouse (it's not possible)
+- [ ] refresh image (automatically)
+- [x] <del>copy color to clipboard</del>
+- [x] <del>changing image alpha updates the opacity indicator</del>
+- [x] <del>on image remove, reset model alpha</del>
+- [x] <del>update manager</del>
+- [x] <del>analytics</del>
+- [ ] builds for Win, <del>Mac</del>, Linux
+- [ ] load from url?
+- [ ] load multiples images
+- [ ] click and drag: draw a rect area
+- [ ] scale image
+- [x] <del>restore invert colors when remove image</del>
+- [ ] save last window position
+- [ ] drag & drop new image replace existent
+- [ ] more images in readme showing functionality
+- [ ] get screenshot and use blend-modes
+- [ ] paste image from clipboard
