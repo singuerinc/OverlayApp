@@ -44,6 +44,7 @@ public class GuidesView extends Sprite {
   }
 
   public function drawGuides(w:Number, h:Number):void {
+    _h.graphics.clear();
     _h.graphics.lineStyle(1, 0x00FFFF, 1);
     _h.graphics.lineTo(w, 0);
     _v.graphics.lineStyle(1, 0x00FFFF, 1);

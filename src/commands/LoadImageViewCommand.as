@@ -71,11 +71,11 @@ public class LoadImageViewCommand extends Command {
     mediatorMap.mediate(view.bmp);
     mediatorMap.mediate(view.bmp.guides);
 
-    changeAlphaSignal.dispatch(ImageModel.INIT_ALPHA);
-    changeScaleSignal.dispatch(ImageModel.INIT_SCALE);
-
     view.stage.stageWidth = view.bmp.width;
     view.stage.stageHeight = view.bmp.height + 45;
+
+    changeAlphaSignal.dispatch(ImageModel.INIT_ALPHA);
+    changeScaleSignal.dispatch(ImageModel.INIT_SCALE);
 
     view.dropArea.visible = false;
 

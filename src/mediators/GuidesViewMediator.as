@@ -14,28 +14,28 @@ import views.ui.GuidesView;
 
 public class GuidesViewMediator extends Mediator {
 
-    [Inject]
-    public var view:GuidesView;
+  [Inject]
+  public var view:GuidesView;
 
-    [Inject]
-    public var changeScaleSignal:ChangeScaleSignal;
+  [Inject]
+  public var changeScaleSignal:ChangeScaleSignal;
 
-    [Inject]
-    public var model:ImagesMap;
+  [Inject]
+  public var map:ImagesMap;
 
-    override public function initialize():void {
+  override public function initialize():void {
 
-        view.mouseEnabled = false;
-        view.mouseChildren = false;
+    view.mouseEnabled = false;
+    view.mouseChildren = false;
 
-        changeScaleSignal.addWithPriority(_onScaleChanged, -2);
-    }
+    changeScaleSignal.addWithPriority(_onScaleChanged, -2);
+  }
 
-    private function _onScaleChanged(scale:Number):void {
-        var imageView:ImageView = model.current;
-        var model:ImageModel = model.itemFor(view);
-        view.drawGuides(imageView.bmp.bitmap.width * model.scale, imageView.bmp.bitmap.height * model.scale);
-    }
+  private function _onScaleChanged(scale:Number):void {
+    var imageView:ImageView = map.current;
+    var model:ImageModel = map.itemFor(imageView);
+    view.drawGuides(imageView.bmp.bitmap.width, imageView.bmp.bitmap.height);
+  }
 
 }
 }

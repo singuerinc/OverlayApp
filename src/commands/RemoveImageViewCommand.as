@@ -32,6 +32,7 @@ public class RemoveImageViewCommand extends Command {
     view.invertColorsActionBtn.visible = false;
     view.removeImageViewActionBtn.visible = false;
     view.imageAlphaDisplayView.visible = false;
+    view.scaleView.visible = false;
 
     view.dropArea.alpha = 1;
     view.dropArea.visible = true;

@@ -34,7 +34,7 @@ public class ScaleView extends SignalSprite {
   }
 
   public function update(scale:Number):void {
-    _textField.text = 'x' + scale.toString();
+    _textField.text = 'x' + scale.toFixed(2);
   }
 }
 }

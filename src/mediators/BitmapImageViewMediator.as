@@ -7,11 +7,16 @@ import com.greensock.TweenMax;
 import flash.events.Event;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
-import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.ui.Keyboard;
 
+import models.ImageModel;
+
+import models.ImagesMap;
+
 import robotlegs.bender.bundles.mvcs.Mediator;
+
+import signals.ChangeScaleSignal;
 
 import signals.CopyHexColorSignal;
 import signals.CopyLocationSignal;
@@ -27,6 +32,14 @@ public class BitmapImageViewMediator extends Mediator {
   public var colorSignal:CopyHexColorSignal;
   [Inject]
   public var positionSignal:CopyLocationSignal;
+  [Inject]
+  public var changeScaleSignal:ChangeScaleSignal;
+
+  [Inject]
+  public var map:ImagesMap;
+
+  private var _model:ImageModel;
+
 
   private var _alt:Boolean;
   private var _guidesRect:Rectangle;
@@ -34,6 +47,8 @@ public class BitmapImageViewMediator extends Mediator {
   private var _mDown:Boolean;
 
   override public function initialize():void {
+
+    _model = map.itemFor(map.current);
 
     _guidesRect = new Rectangle();
     _guidesRect.width = view.bitmap.width;
@@ -47,7 +62,6 @@ public class BitmapImageViewMediator extends Mediator {
     view.guides.alpha = 0;
 
     view.zoom.visible = false;
-    view.zoom.x = view.bitmap.width + 5;
 
     view.signals.mouseDown.add(_onMouseDown);
     view.signals.mouseMove.add(_onMouseMove);
@@ -57,7 +71,13 @@ public class BitmapImageViewMediator extends Mediator {
     view.stage.addEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown);
     view.stage.addEventListener(KeyboardEvent.KEY_UP, _onKeyUp);
 
+    changeScaleSignal.addWithPriority(_onScaleChanged, -2);
   }
+
+  private function _onScaleChanged(scale:Number):void {
+    view.zoom.x = view.bitmap.width + 5;
+  }
+
 
   private function _onKeyUp(event:KeyboardEvent):void {
     _alt = event.altKey;
@@ -75,10 +95,10 @@ public class BitmapImageViewMediator extends Mediator {
       TweenMax.to(view.guides, .5, {autoAlpha: 1});
     }
 
-    if(_alt && (event.keyCode === Keyboard.NUMPAD_ADD)) {
+    if (_alt && (event.keyCode === Keyboard.NUMPAD_ADD)) {
       view.zoom.zoom++;
       view.zoom.update(view.mouseX, view.mouseY, view.bitmap.bitmapData);
-    } else if(_alt && event.keyCode === Keyboard.NUMPAD_SUBTRACT) {
+    } else if (_alt && event.keyCode === Keyboard.NUMPAD_SUBTRACT) {
       view.zoom.zoom--;
       view.zoom.update(view.mouseX, view.mouseY, view.bitmap.bitmapData);
     }
@@ -89,6 +109,7 @@ public class BitmapImageViewMediator extends Mediator {
       _guidesRect.x = view.mouseX;
       _guidesRect.y = view.mouseY;
       view.guides.update(_guidesRect);
+
       view.zoom.update(view.mouseX, view.mouseY, view.bitmap.bitmapData);
     }
   }
@@ -130,6 +151,7 @@ public class BitmapImageViewMediator extends Mediator {
     if (event.altKey) {
 
       if (_rulerRect.width === 0 && _rulerRect.height === 0) {
+//        positionSignal.dispatch(new Rectangle(_model.getScaled(view.mouseX), _model.getScaled(view.mouseY), 0, 0));
         positionSignal.dispatch(new Rectangle(view.mouseX, view.mouseY, 0, 0));
       } else {
 
@@ -139,6 +161,7 @@ public class BitmapImageViewMediator extends Mediator {
         var w:int = Math.abs(_rulerRect.width);
         var h:int = Math.abs(_rulerRect.height);
 
+//        var rect:Rectangle = new Rectangle(_model.getScaled(x), _model.getScaled(y), _model.getScaled(w), _model.getScaled(h));
         var rect:Rectangle = new Rectangle(x, y, w, h);
 
         positionSignal.dispatch(rect);

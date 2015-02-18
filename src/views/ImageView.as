@@ -53,7 +53,7 @@ public class ImageView extends SignalSprite {
 
     actionsContainer = new Sprite();
     actionsContainer.graphics.beginFill(0x000000);
-    actionsContainer.graphics.drawRect(0, 0, 240, 20);
+    actionsContainer.graphics.drawRect(0, 0, 160, 20);
     actionsContainer.graphics.endFill();
     addChild(actionsContainer);
 

@@ -40,12 +40,16 @@ public class ImageModel {
     this._scale = newValue;
   }
 
-  public function get alpha():Number {
-    return this._alpha;
-  }
-
   public function get scale():Number {
     return this._scale;
+  }
+
+  public function getScaled(value:Number):Number {
+    return value / this.scale;
+  }
+
+  public function get alpha():Number {
+    return this._alpha;
   }
 
   public function set alwaysOnTop(value:Boolean):void {
