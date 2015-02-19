@@ -1,3 +1,5 @@
+![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay.jpg)
+
 ## About
 
 Is an application to overlay an image and use it as a guide.<br/>
