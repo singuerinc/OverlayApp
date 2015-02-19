@@ -57,6 +57,9 @@ The most common scenario to use it is in web development.
 
 ## Change log
 
+### 0.0.72
+- Retina Icon!
+
 ### 0.0.71
 - New Icon!
 
