@@ -15,7 +15,10 @@ The most common scenario to use it is in web development.
 
 ![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
 
+## Features
 
+### Scale image
+![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/demo_scale.gif)
 
 ## Keymap
 
