@@ -55,6 +55,9 @@ The most common scenario to use it is in web development.
 
 ## Change log
 
+### 0.0.71
+- New Icon!
+
 ### 0.0.7
 - Scale image with Z (scale +0.25) or Shift + "Z" (scale -0.25)
 
