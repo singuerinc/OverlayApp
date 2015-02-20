@@ -5,7 +5,7 @@
 Is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
-### [Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.6.air) ###
+### [Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.8.air) ###
 [Adobe AIR](http://get.adobe.com/air) is required
 
 ## How it works ##
