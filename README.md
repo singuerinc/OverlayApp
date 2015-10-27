@@ -128,3 +128,4 @@ The most common scenario to use it is in web development.
 - [ ] more images in readme showing functionality
 - [ ] get screenshot and use blend-modes
 - [ ] paste image from clipboard
+- [ ] restore last image used
