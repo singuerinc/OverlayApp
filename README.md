@@ -1,11 +1,11 @@
-![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay.jpg)
+![overlay](./overlay.jpg)
 
 ## About
 
 Is an application to overlay an image and use it as a guide.<br/>
 The most common scenario to use it is in web development.
 
-### [Download](https://dl.dropboxusercontent.com/u/311265/overlay/build/latest/Overlay_0.0.90.air) ###
+### [Download](./Overlay_0.0.90.air)
 [Adobe AIR](http://get.adobe.com/air) is required
 
 ## How it works ##
@@ -15,12 +15,12 @@ The most common scenario to use it is in web development.
 3. Position the Overlay window where you want it (over Chrome for example) and lock the window (**L** key)
 4. Start coding and try to match the image (suddently the art director will start loving your work)
 
-![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/overlay_animated.gif)
+![overlay](./overlay_animated.gif)
 
 ## Features
 
 ### Scale image
-![overlay](https://dl.dropboxusercontent.com/u/311265/overlay/demo_scale.gif)
+![overlay](./demo_scale.gif)
 
 ## Keymap
 
